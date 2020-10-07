@@ -1,0 +1,18 @@
+.logo {
+  background-image: url("/assets/images/logo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 7em;
+  height: 3em;
+  border-radius: 100px;
+}
+.main {
+  padding: 0;
+}
+.firstInfo {
+  background-color: #0072a3;
+  padding: 0.7em 0;
+}
+.secondInfo .avatar {
+}
