@@ -1,0 +1,169 @@
+.loginPage .body {
+  padding: 3em;
+}
+.loginPage .body .bodyInfo {
+  color: #fff;
+}
+.loginPage .body .bodyInfo h1 {
+  font-weight: bolder;
+}
+.loginPage .body .bodyInfo ul {
+  padding: 1em 0;
+}
+.loginPage .body .bodyInfo ul li {
+  margin-top: 1.5em;
+  font-size: 1em;
+}
+.loginPage .body {
+  background: linear-gradient(-45deg, #a6dcef, #1b262c, #23a6d5, #0f4c75);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.loginPage form {
+  padding: 20px 25px;
+  background-color: #fff;
+  border-radius: 3px;
+  margin: 0 0 10px;
+}
+.loginPage .bodyForm .logo {
+  background-image: url("/assets/images/logo1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 7em;
+  height: 3em;
+  border-radius: 100px;
+  margin: 0 auto;
+}
+.loginPage .bodyForm input {
+  padding: 5px 10px;
+  border: 1px solid #bfcbd9;
+  border-radius: 4px;
+}
+.loginPage .bodyForm .row {
+  margin-top: 1em;
+}
+.loginPage .bodyForm label span {
+  color: red;
+}
+.loginPage .bodyForm #rule {
+  font-size: 0.9em;
+  margin-top: 2em;
+  text-align: center;
+}
+.loginPage .bodyForm button {
+  font-size: 0.8em;
+  padding: 10px 50px;
+  width: 42%;
+  border: none;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+.loginPage #btnSignIn {
+  background-color: #009ce0;
+  color: #fff;
+  font-weight: bold;
+}
+.loginPage .bodyForm #or {
+  font-size: 0.9em;
+  margin: 1em 0;
+  text-align: center;
+  color: #777;
+}
+.loginPage #btnGoogle {
+  padding: 10px;
+}
+.loginPage button p {
+  margin: 0;
+  margin-left: 15px;
+}
+.loginPage button img {
+  width: 15px;
+  height: 15px;
+}
+.loginPage #btnFace {
+  padding: 10px;
+  margin-top: 1em;
+  color: #fff;
+  background-color: #476cb8;
+}
+.loginPage .formBottom {
+  padding: 20px 25px;
+  background-color: #fff;
+  border-radius: 3px;
+  margin: 0 0 10px;
+  text-align: center;
+}
+.loginPage .loginForm form {
+  padding: 20px 40px;
+  background-color: #fff;
+  border-radius: 3px;
+  margin: 0 0 10px;
+}
+.loginPage .loginForm .logo {
+  background-image: url("/assets/images/logo1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 7em;
+  height: 3em;
+  border-radius: 100px;
+  margin: 0 auto;
+}
+.loginPage .loginForm .itemLogin {
+  background: #eff3f6;
+  border: 1px solid #bfcbd9;
+  border-radius: 3px;
+  padding: 5px 10px;
+  margin-top: 1em;
+}
+.loginPage .loginForm .itemLogin svg {
+  margin-right: 5px;
+}
+.loginPage .loginForm .itemLogin input {
+  border: none;
+  background-color: transparent;
+  width: 90%;
+}
+.loginPage .loginForm .itemLogin input:focus {
+  outline-width: 0;
+}
+.loginPage .loginForm button {
+  width: 100%;
+  border: none;
+  padding: 5px 0;
+  border-radius: 4px;
+}
+.loginPage .loginForm hr {
+  margin-top: 2em;
+}
+.loginPage .loginForm .or {
+  font-weight: bolder;
+  font-size: 0.9em;
+  font-weight: 700;
+  color: #888;
+  position: relative;
+  bottom: 1.9em;
+  background-color: #fff;
+  width: 5em;
+  margin: 0 auto;
+  text-align: center;
+}
+.loginPage .loginForm #btnSignIn {
+  margin-top: 1em;
+}
+.loginPage .loginForm button p {
+  font-size: 0.8em;
+}

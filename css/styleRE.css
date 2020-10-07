@@ -1,0 +1,179 @@
+.registerEP .body {
+  background: linear-gradient(-45deg, #a6dcef, #1b262c, #23a6d5, #0f4c75);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  padding: 2em 0;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.registerEP .body-left {
+  color: #fff;
+}
+.registerEP .body-left .itemHead h4 {
+  font-weight: bolder;
+  margin-bottom: 0;
+}
+.registerEP .body-left .itemHead svg {
+  font-size: 1.5em;
+  margin-right: 10px;
+}
+.registerEP .body-left .itemBody {
+  margin: 2em 0;
+  padding: 10px;
+}
+.registerEP .body-left .itemBody .value {
+  text-align: center;
+  background-color: hsla(0, 0%, 100%, 0.27843);
+  height: 115px;
+  border-radius: 50%;
+}
+.registerEP .body-left .itemBody h3 {
+  font-weight: bolder;
+}
+.registerEP .body-left .itemBody span {
+  padding: 0 10px;
+}
+.registerEP .body-left ul li {
+  margin-top: 1em;
+}
+.registerEP .body-right {
+  padding: 10px 16px;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  color: #48576a;
+}
+.registerEP .body-right .title svg {
+  margin-right: 10px;
+}
+.registerEP .body-right .title h5 {
+  font-weight: bolder;
+  margin-bottom: 0;
+}
+.registerEP .body-right #link {
+  margin: 10px 0;
+}
+.form1 {
+  border: 1px solid #eee;
+  padding: 15px 15px 15px 8px;
+  margin: 15px 0;
+  border-radius: 3px;
+  background-color: #fbfbfb;
+}
+.form1 .item {
+  margin-bottom: 1.5em;
+}
+.form1 p {
+  position: relative;
+  bottom: 1.8em;
+  margin-bottom: 0;
+  color: #808b92;
+  width: fit-content;
+  padding: 0 5px;
+  font-size: 15px;
+  background-color: #fff;
+}
+.form1 .item span {
+  color: #e7305b;
+}
+.form1 .item label {
+  font-weight: bolder;
+  margin-right: 10px;
+  margin-bottom: 0;
+  font-size: 0.9em;
+}
+.form1 .item .customInput {
+  padding: 5px 10px;
+  border: 1px solid #bfcbd9;
+  border-radius: 4px;
+  width: 60%;
+}
+.form1 .item .customInput input {
+  border: none;
+  width: 92%;
+  background-color: transparent;
+}
+.form1 .item .customInput input:focus {
+  outline-width: 0;
+}
+.form1 .item .customInput svg {
+  color: #bfcbd9;
+}
+.form1 .item .customSelect {
+  padding: 5px 10px;
+  border: 1px solid #bfcbd9;
+  border-radius: 4px;
+  width: 60%;
+  color: #48576a;
+}
+.registerEP .body-right .rule p {
+  width: 60%;
+  font-size: 0.8em;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+.registerEP .body-right .rule input {
+  margin-bottom: 10px;
+}
+.registerEP form button {
+  width: 100%;
+  padding: 10px 0;
+  color: #fff;
+  border: none;
+  font-weight: bolder;
+  background-color: #e7305b;
+  border-radius: 5px;
+}
+.formLoginE {
+  padding: 10px;
+  width: 100%;
+  font-weight: bolder;
+}
+.formLoginE .title svg {
+  font-size: 1.5em;
+}
+.formLoginE label {
+  margin-top: 1em;
+  font-size: 0.9em;
+}
+.formLoginE .itemLogin {
+  border: 1px solid #bfcbd9;
+  border-radius: 3px;
+  padding: 5px 10px;
+  width: 100%;
+}
+.formLoginE .itemLogin svg {
+  margin-right: 5px;
+}
+.formLoginE .itemLogin input {
+  border: none;
+  background-color: transparent;
+  width: 90%;
+}
+.formLoginE .itemLogin input:focus {
+  outline-width: 0;
+}
+.formLoginE #btnLogin {
+  background-color: #3282b8;
+  margin: 1.5em 0;
+}
+.bodyLE {
+  height: 100vh;
+}
+a:active,
+a:focus,
+a:hover,
+a:visited {
+  text-decoration: none;
+}

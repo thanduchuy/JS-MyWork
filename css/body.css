@@ -1,0 +1,52 @@
+.homePage .firstBody {
+  height: 25rem;
+  width: 100%;
+  background-image: url("/assets/images/laptop.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.homePage .firstBody .row {
+  height: 100%;
+}
+.homePage .firstBody form {
+  background-color: rgba(20, 32, 25, 0.65);
+  padding: 1em;
+  border-radius: 5px;
+}
+.homePage .firstBody form label {
+  color: #fff;
+  text-align: center;
+  width: 100%;
+}
+.homePage .itemForm {
+  background: #eff3f6;
+  border: 1px solid #bfcbd9;
+  border-radius: 3px;
+  padding: 5px 10px;
+}
+.homePage .itemForm svg {
+  margin-right: 5px;
+}
+.homePage .itemForm input {
+  border: none;
+  background-color: transparent;
+  width: 90%;
+}
+.homePage .itemForm input:focus {
+  outline-width: 0;
+}
+.homePage .itemForm select {
+  font-size: 0.7em;
+  border: none;
+  background-color: transparent;
+}
+.homePage .itemForm select:focus {
+  outline-width: 0;
+}
+.homePage button {
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  background-color: #0091ce;
+}

@@ -1,0 +1,99 @@
+.bodyCV {
+  background-color: #e4f9ff;
+}
+.cvBody {
+  padding: 1em 0;
+  color: #1a1a2e;
+}
+.cvBody h3 {
+  font-weight: bolder;
+}
+.cvBody form #name {
+  font-size: 2em;
+  font-weight: bolder;
+  border: none;
+  border-bottom: 3px solid #16213e;
+  background-color: transparent;
+}
+.cvBody form .avatar {
+  background-image: url("/assets/images/employee.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100px;
+  height: 100px;
+  border: 2px solid #16213e;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.cvBody .itemCus1 {
+  height: 50px;
+  margin-bottom: 10px;
+}
+.cvBody .itemCus1 svg {
+  width: 10%;
+  height: 50px;
+  padding: 10px;
+  color: #fff;
+  border-radius: 50%;
+  background-color: #0f3460;
+}
+.cvBody .itemCus1 input {
+  width: 80%;
+  color: #fff;
+  background-color: #0f3460;
+  padding: 10px 20px;
+  border-radius: 100px;
+  border: none;
+}
+.cvBody .objectives .item {
+  background-color: #e94560;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+.cvBody .objectives .item span {
+  background-color: #fff;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  font-weight: bolder;
+  font-size: 1.5em;
+}
+.cvBody .objectives .item input {
+  width: 70%;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+}
+.cvBody .action button {
+  background-color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+}
+.cvBody .action .minus {
+  color: #e94560;
+}
+.cvBody .action .plus {
+  color: #0e63cc;
+}
+.cvBody .itemCus2 {
+  background-color: #07689f;
+  padding: 10px 0;
+  border-radius: 100px;
+  margin-bottom: 10px;
+}
+#eduBody .time span {
+  background: #fff;
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-weight: bolder;
+  color: #0e63cc;
+}
+#eduBody input {
+  padding: 5px 15px;
+}
+svg {
+  pointer-events: none;
+}
