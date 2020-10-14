@@ -128,3 +128,25 @@ a:visited {
   font-weight: bolder;
   margin: 0 5px;
 }
+.el-menu {
+  list-style: none;
+  position: relative;
+  margin: 0;
+  padding-left: 0;
+  line-height: 40px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  
+}
+.el-menu li:hover{
+  background-color: #239fd5;
+}
+.el-submenu-title {
+  cursor: pointer;
+  padding-bottom: 15px;
+}
+.el-menu span {
+  
+  padding-left: 8px;
+  font-size: 14px;
+}
