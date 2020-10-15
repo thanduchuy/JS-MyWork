@@ -104,9 +104,7 @@
 .listMethod svg {
   margin: 0 1em;
 }
-#activeMethod {
-  background-color: #239fd5;
-}
+
 .contact {
   font-size: 0.9em;
   color: #337ab7;
@@ -246,4 +244,8 @@ hr {
 }
 .col-sm-3 {
   float: left;
+}
+.icon4 {
+  background: rgb(86, 230, 86);
+  border-radius: 12px;
 }
