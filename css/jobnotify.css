@@ -249,3 +249,6 @@ hr {
   background: rgb(86, 230, 86);
   border-radius: 12px;
 }
+.next{
+  opacity: 0.5;
+}  
