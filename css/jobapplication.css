@@ -200,9 +200,7 @@ th {
 .listMethod svg {
   margin: 0 1em;
 }
-#activeMethod {
-  background-color: #239fd5;
-}
+
 .contact {
   font-size: 0.9em;
   color: #337ab7;
@@ -250,4 +248,11 @@ a:visited {
   color: #3985bd;
   margin: 1em 0;
   padding: 1em;
+}
+.el-menu li:hover{
+  background-color: #239fd5;
+}
+.icon1{
+  background: rgb(86, 230, 86);
+  border-radius: 12px;
 }
