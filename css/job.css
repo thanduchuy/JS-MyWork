@@ -196,9 +196,7 @@
   .listMethod svg {
     margin: 0 1em;
   }
-  #activeMethod {
-    background-color: #239fd5;
-  }
+  
   .contact {
     font-size: 0.9em;
     color: #337ab7;
