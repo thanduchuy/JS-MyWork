@@ -253,3 +253,7 @@
   .el-menu li:hover{
     background-color: #239fd5;
   }
+  .icon2 {
+  background: rgb(86, 230, 86);
+  border-radius: 12px;
+  }
