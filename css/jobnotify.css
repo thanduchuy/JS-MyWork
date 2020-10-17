@@ -249,6 +249,11 @@ hr {
   background: rgb(86, 230, 86);
   border-radius: 12px;
 }
-.next{
+.next {
   opacity: 0.5;
-}  
+}
+.btn-block:hover {
+  background-color: #2893e4;
+  color: white;
+}
+
