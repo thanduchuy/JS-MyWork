@@ -1,5 +1,5 @@
 .logo {
-  background-image: url("/assets/images/logo.png");
+  background-image: url("../assets/images/logo.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -13,6 +13,13 @@
 .fix {
   margin-right: 15px;
 }
+a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+a {
+  color: #fff;
+}
 .firstInfo {
   background-color: #0072a3;
   padding: 0.7em 0;
@@ -22,7 +29,7 @@
   padding: 0.7em 0;
 }
 .secondInfo .avatar {
-  background-image: url("/assets/images/user.png");
+  background-image: url("..//assets/images/employee.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -150,3 +157,4 @@ a:visited {
   padding-left: 8px;
   font-size: 14px;
 }
+
