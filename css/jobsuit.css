@@ -1,0 +1,267 @@
+.logo {
+  background-image: url("../assets/images/logo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 7em;
+  height: 3em;
+  border-radius: 100px;
+}
+.title {
+  padding-top: 20px;
+}
+.main {
+  padding: 0;
+  background-color: #eff3f6;
+}
+.main .atitle {
+  color: black;
+}
+.main a {
+  color: #fff;
+}
+.atitle:hover {
+  color: #0072a3;
+}
+.el-row {
+  box-sizing: border-box;
+}
+.el-col-24 {
+  width: 100%;
+}
+.el-menu {
+  list-style: none;
+  position: relative;
+  margin: 0;
+  padding-left: 0;
+  line-height: 40px;
+  box-sizing: border-box;
+  white-space: nowrap;
+}
+.el-submenu-title {
+  cursor: pointer;
+  padding-bottom: 15px;
+}
+
+.el-menu span {
+  padding-left: 8px;
+  font-size: 14px;
+}
+
+.el-table {
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  background-color: #fff;
+  border: 1px solid #dfe6ec;
+  font-size: 16px;
+  color: #4a4a4a;
+}
+.el-table-header {
+  table-layout: fixed;
+}
+.el-table,
+.el-table td,
+.el-table th {
+  box-sizing: border-box;
+  position: relative;
+}
+.el-table td,
+.el-table th {
+  padding: 10px 12px;
+  line-height: 1.42857143;
+  height: auto;
+  vertical-align: top;
+}
+.el-table-border td,
+.el-table-border th {
+  border-right: 1px solid #dfe6ec;
+}
+table {
+  display: table;
+  background-color: transparent;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-color: grey;
+}
+col {
+  display: table-column;
+}
+colgroup {
+  display: table-column-group;
+}
+thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+.el-table th.is-center {
+  border-bottom: 1px solid #dfe6ec;
+}
+th {
+  display: table-cell;
+  font-weight: bold;
+}
+.el-table td.is-center,
+.el-table th.is-center {
+  text-align: center;
+}
+.el-table th.is-leaf {
+  background-color: #fffdfd;
+}
+.next {
+  opacity: 0.5;
+}
+.el-table-empty-block {
+  position: relative;
+  min-height: 60px;
+  text-align: center;
+}
+.el-table-empty-text {
+  position: absolute;
+  left: 50%;
+  top: 25%;
+  color: #5e7382;
+  transform: (-50%, -50%);
+}
+.el-table-column-resize {
+  position: absolute;
+  left: 200px;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  border-left: 1px solid #dfe6ec;
+  z-index: 10;
+}
+
+.fix {
+  margin-right: 15px;
+}
+.firstInfo {
+  background-color: #0072a3;
+  padding: 0.7em 0;
+}
+.secondInfo {
+  background-color: #0281b7;
+  padding: 0.7em 0;
+}
+.secondInfo .avatar {
+  background-image: url("..//assets/images/employee.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 7em;
+  height: 7em;
+  border-radius: 100px;
+}
+.secondInfo p {
+  margin: 0.5em 0;
+  color: #044c6b;
+  font-weight: 900;
+  font-size: 18px;
+}
+.secondInfo .processProfile {
+  width: 100%;
+  padding: 0 16px;
+  color: #fff;
+  font-size: 14px;
+}
+.processProfile .process {
+  height: 10px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 100px;
+  padding: 1px;
+}
+.processProfile .process .done {
+  height: 100%;
+  width: 17%;
+  background-color: #ff4949;
+  border-radius: 100px;
+}
+.listMethod {
+  margin: 1em 0;
+  width: 100%;
+  color: #fff;
+}
+.listMethod .item {
+  padding: 1em 0;
+}
+.listMethod svg {
+  margin: 0 1em;
+}
+
+.contact {
+  font-size: 0.9em;
+  color: #337ab7;
+}
+.navigation .item a {
+  color: #9d9d9d;
+}
+.navigation .item span {
+  margin: 0 5px;
+}
+a,
+a:active,
+a:focus,
+a:hover,
+a:visited {
+  text-decoration: none;
+}
+.body .header {
+  background: #eff3f6;
+  padding: 0.5em 0;
+  border-bottom: 1px solid lightslategrey;
+}
+.col-3 {
+  padding-right: 0;
+}
+.col-9 {
+  padding-right: 0;
+}
+.alertPhone {
+  border-radius: 4px;
+  background-color: #ffe195;
+  border: none;
+  color: #af8729;
+  margin: 1em 0;
+  padding: 1em;
+}
+.alertPhone span {
+  font-size: 0.5em;
+  font-weight: bolder;
+}
+.alertWork {
+  border-radius: 4px;
+  background-color: #b4dfff;
+  border: none;
+  color: #3985bd;
+  margin: 1em 0;
+  padding: 1em;
+}
+.next1 {
+  padding-top: 20px;
+}
+.next1 .text {
+  font-weight: bold;
+}
+.next1 .number {
+  color: red;
+}
+.el-menu li:hover {
+  background-color: #239fd5;
+}
+.icon3{
+  background: rgb(86, 230, 86);
+  border-radius: 12px;
+}

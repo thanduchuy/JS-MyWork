@@ -1,0 +1,160 @@
+.logo {
+  background-image: url("../assets/images/logo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 7em;
+  height: 3em;
+  border-radius: 100px;
+}
+.main {
+  padding: 0;
+}
+.fix {
+  margin-right: 15px;
+}
+a:hover {
+  text-decoration: none;
+  color: #fff;
+}
+a {
+  color: #fff;
+}
+.firstInfo {
+  background-color: #0072a3;
+  padding: 0.7em 0;
+}
+.secondInfo {
+  background-color: #0281b7;
+  padding: 0.7em 0;
+}
+.secondInfo .avatar {
+  background-image: url("..//assets/images/employee.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 7em;
+  height: 7em;
+  border-radius: 100px;
+}
+.secondInfo p {
+  margin: 0.5em 0;
+  color: #044c6b;
+  font-weight: 900;
+  font-size: 18px;
+}
+.secondInfo .processProfile {
+  width: 100%;
+  padding: 0 16px;
+  color: #fff;
+  font-size: 14px;
+}
+.processProfile .process {
+  height: 10px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 100px;
+  padding: 1px;
+}
+.processProfile .process .done {
+  height: 100%;
+  width: 17%;
+  background-color: #ff4949;
+  border-radius: 100px;
+}
+.listMethod {
+  margin: 1em 0;
+  width: 100%;
+  color: #fff;
+}
+.listMethod .item {
+  padding: 1em 0;
+}
+.listMethod svg {
+  margin: 0 1em;
+}
+#activeMethod {
+  background-color: #239fd5;
+}
+.contact {
+  font-size: 0.9em;
+  color: #337ab7;
+}
+.navigation .item a {
+  color: #9d9d9d;
+}
+.navigation .item span {
+  margin: 0 5px;
+}
+a,
+a:active,
+a:focus,
+a:hover,
+a:visited {
+  text-decoration: none;
+}
+.body .header {
+  background: #eff3f6;
+  padding: 0.5em 0;
+  border-bottom: 1px solid lightslategrey;
+}
+.col-3 {
+  padding-right: 0;
+}
+.col-9 {
+  padding-right: 0;
+}
+.alertPhone {
+  border-radius: 4px;
+  background-color: #ffe195;
+  border: none;
+  color: #af8729;
+  margin: 1em 0;
+  padding: 1em;
+}
+.alertPhone span {
+  font-size: 0.5em;
+  font-weight: bolder;
+}
+.alertWork {
+  border-radius: 4px;
+  background-color: #b4dfff;
+  border: none;
+  color: #3985bd;
+  margin: 1em 0;
+  padding: 1em;
+}
+.alertPhone svg {
+  cursor: pointer;
+}
+.alertWork svg {
+  cursor: pointer;
+}
+.alertWork span {
+  font-size: 0.5em;
+  font-weight: bolder;
+  margin: 0 5px;
+}
+.el-menu {
+  list-style: none;
+  position: relative;
+  margin: 0;
+  padding-left: 0;
+  line-height: 40px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  
+}
+.el-menu li:hover{
+  background-color: #239fd5;
+}
+.el-submenu-title {
+  cursor: pointer;
+  padding-bottom: 15px;
+}
+.el-menu span {
+  
+  padding-left: 8px;
+  font-size: 14px;
+}
+

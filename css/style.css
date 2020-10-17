@@ -49,3 +49,11 @@ ul {
 input:focus {
   outline-width: 0;
 }
+
+a,
+a:active,
+a:focus,
+a:hover,
+a:visited {
+  text-decoration: none;
+}
