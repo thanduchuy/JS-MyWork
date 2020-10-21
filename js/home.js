@@ -11,22 +11,7 @@ var placeholderText = [
 $('#search').placeholderTypewriter({
   text: placeholderText,
 });
-function addSelectJobs() {
-  let jobs = [
-    "Y tế",
-    "Nông nghiệp",
-    "Công nghiệp",
-    "Xây dựng",
-    "Khai thác",
-    "Dịch vụ",
-    "Văn phòng",
-    "Công nghệ thông tin"
-  ];
-  let row = jobs.map((e) => {
-    return `<option value="${e}">${e}</option>`;
-  });
-  document.getElementById("jobs").innerHTML += row.join(" ");
-}
+
 function addSelectJobs() {
   let jobs = [
     "Y tế",
