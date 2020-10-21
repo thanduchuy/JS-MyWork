@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Job Notify</title>
+    <title>Change Password</title>
     <link rel="stylesheet" href="../../css/style.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="../../css/jobnotify.css" />
-    <script src="/js/user.js"></script>
+    <link rel="stylesheet" href="../../css/changepass.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -104,8 +105,8 @@
                                 </a>
                                 <a href="../user/jobnotify.html">
                                     <li>
-                                        <svg class="icon4" width="0.7em" height="0.7em" viewBox="0 0 16 16"
-                                            class="bi bi-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <svg width="0.7em" height="0.7em" viewBox="0 0 16 16" class="bi bi-circle"
+                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
                                                 d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                         </svg>
@@ -183,8 +184,8 @@
                                 </a>
                                 <a href="../user/changepass.html">
                                     <li>
-                                        <svg width="0.7em" height="0.7em" viewBox="0 0 16 16" class="bi bi-circle"
-                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <svg class="icon8" width="0.7em" height="0.7em" viewBox="0 0 16 16"
+                                            class="bi bi-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
                                                 d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                         </svg>
@@ -277,105 +278,87 @@
                     <div class="title">
                         <a class="atitle" href="../home.html">Dashboard</a>
                         <span>/</span>
-                        <span class="next">Thông báo việc làm phù hợp</span>
+                        <span class="next">Đổi mật khẩu</span>
 
                     </div>
                     <div class="el-col el-col-24" style="padding-left: 10px; padding-right: 10px;">
                         <div class="sbox">
-                            <div class="form">
-                                <div class="navigation">
-                                    <div class="tab-content box">
-                                        <div class="el-col el-col-24" style="padding-left: 10px; padding-right: 10px;">
-                                            <h1 class="heading-title"><strong>Thông báo việc làm</strong></h1>
-                                        </div>
-                                        <div>
-                                            <form action="" class="el-form el-form-top">
-                                                <div class="el-col el-col-24"
-                                                    style="padding-left: 10px; padding-right: 10px;">
-                                                    <p>
-                                                        <strong>Email nhận thông báo: </strong>
-                                                        hiimmax99@gmail.com
-                                                    </p>
-                                                </div>
-                                                <div class="el-col el-col-8"
-                                                    style="padding-left: 10px; padding-right: 10px;">
-                                                    <p>
-                                                        <strong>Tần suất: </strong>
-                                                        3 ngày/lần
-                                                    </p>
-                                                </div>
-                                                <div class="el-col el-col-8"
-                                                    style="padding-left: 10px; padding-right: 10px;">
-                                                    <p>
-                                                        <strong>Địa điểm: </strong>
-                                                        Đà Nẵng
-                                                    </p>
-                                                </div>
-                                                <div class="el-col el-col-8"
-                                                    style="padding-left: 10px; padding-right: 10px;">
-                                                    <p>
-                                                        <strong>Kinh nghiệm: </strong>
-                                                        Chưa có kinh nghiệm
-                                                    </p>
-                                                </div>
-                                                <div class="el-col el-col-8"
-                                                    style="padding-left: 10px; padding-right: 10px;">
-                                                    <p>
-                                                        <strong>Ngành: </strong>
-                                                        IT phần mềm
-                                                    </p>
-                                                </div>
-                                                <div class="el-col el-col-8"
-                                                    style="padding-left: 10px; padding-right: 10px;">
-                                                    <p>
-                                                        <strong>Trình độ: </strong>
-                                                        Cử nhân
-                                                    </p>
-                                                </div>
-                                                <div class="el-col el-col-8"
-                                                    style="padding-left: 10px; padding-right: 10px;">
-                                                    <p>
-                                                        <strong>Mức lương: </strong>
-                                                        Đàm phán
-                                                    </p>
-                                                </div>
-                                                <div class="text-left mb-4 block-action el-col el-col-24"
-                                                    style="padding-left: 10px; padding-right: 10px;">
-                                                    <div class="toolbox">
-                                                        <hr>
-                                                        <div class="row row-custom">
-                                                            <div class="col-sm-3">
-                                                                <a class="el-btn btn-block"
-                                                                    href="../user/jobnotify.html">
-                                                                    <svg width="1em" height="1em" viewBox="0 0 16 16"
-                                                                        class="bi bi-pencil-square" fill="currentColor"
-                                                                        xmlns="http://www.w3.org/2000/svg">
-                                                                        <path
-                                                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                                                        <path fill-rule="evenodd"
-                                                                            d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                                                                    </svg>
-                                                                    Chỉnh sửa
-                                                                </a>
-                                                            </div>
-                                                            <div class="col-sm-3">
-                                                                <a class="el-btn btn-block">
-                                                                    <svg width="1em" height="1em" viewBox="0 0 16 16"
-                                                                        class="bi bi-trash" fill="currentColor"
-                                                                        xmlns="http://www.w3.org/2000/svg">
-                                                                        <path
-                                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                                                                        <path fill-rule="evenodd"
-                                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                                                                    </svg>
-                                                                    Xóa
-                                                                </a>
-                                                            </div>
+                            <div class="tab-content box">
+                                <div>
+                                    <div class="el-col el-col-24" style="padding-left: 10px; padding-right: 10px;">
+                                        <h3 class="heading-title">
+                                            Đổi mật khẩu
+                                        </h3>
+                                    </div>
+                                    <div class="el-col el-col-12" style="padding-left: 10px; padding-right: 10px;">
+                                        <form action="" class="form form-label-top">
+                                            <div class="el-col el-col-24"
+                                                style="padding-left: 10px; padding-right: 10px;">
+                                                <div class="form-item">
+                                                    <label for="fullName" class="form-item-label"><span
+                                                            style="margin-right: 4px; color: #ff4949;">* </span>Mật khẩu
+                                                        cũ</label>
+                                                    <div class="form-item-content">
+                                                        <div class="input">
+                                                            <input type="text" class="input-inner"
+                                                                placeholder="Nhập mật khẩu cũ của bạn">
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </form>
-                                        </div>
+                                            </div>
+                                            <div class="el-col el-col-24"
+                                                style="padding-left: 10px; padding-right: 10px;">
+                                                <div class="form-item">
+                                                    <label for="phone" class="form-item-label"><span
+                                                            style="margin-right: 4px; color: #ff4949;">* </span>Mật khẩu
+                                                        mới</label>
+                                                    <div class="form-item-content">
+                                                        <div class="has-icon">
+                                                            <div class="input">
+                                                                <input type="number" class="input-inner"
+                                                                    placeholder="Nhập mật khẩu mới của bạn">
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="el-col el-col-24"
+                                                style="padding-left: 10px; padding-right: 10px;">
+                                                <div class="form-item">
+                                                    <label for="phone" class="form-item-label"><span
+                                                            style="margin-right: 4px; color: #ff4949;">* </span>Nhắc lại
+                                                        mật khẩu mới</label>
+                                                    <div class="form-item-content">
+                                                        <div class="has-icon">
+                                                            <div class="input">
+                                                                <input type="number" class="input-inner"
+                                                                    placeholder="Nhập mật khẩu mới của bạn">
+                                                            </div>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="text mb-4 block-action el-col el-col-24"
+                                                style="padding-left: 10px; padding-right: 10px;">
+                                                <button type="button" class="button btn btn-light"
+                                                    style="border: 1px solid rgb(110, 109, 109)">
+                                                    Hủy
+                                                </button>
+                                                <button type="button" class="button btn btn-primary">
+                                                    <svg width="1em" height="1em" viewBox="0 0 16 16"
+                                                        class="bi bi-check-circle-fill" fill="currentColor"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd"
+                                                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                                    </svg>
+                                                    Cập nhật
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -388,6 +371,7 @@
     </div>
     </div>
     </div>
+    <script src="../../js/user.js"></script>
 </body>
 
 </html>
