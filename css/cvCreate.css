@@ -20,15 +20,30 @@
   color: #112d4e;
 }
 .active {
-  color: #3f72af;
-  font-size: 2em;
   animation: mymove 0.5s infinite;
 }
 @keyframes mymove {
   from {
     border-bottom: none;
+    font-size: 1.5em;
+    font-weight: bolder;
+    color: #112d4e;
   }
   to {
+    color: #3f72af;
+    font-size: 2em;
     border-bottom: 3px solid #3f72af;
   }
+}
+.exportCV {
+  background-color: #3f72af;
+  color: #fff;
+  font-size: 1.5em;
+  font-weight: bolder;
+  border: none;
+  border-radius: 100px;
+  padding: 5px 10px;
+}
+.exportCV:hover {
+  transform: scaleX(1.5);
 }

@@ -1,0 +1,117 @@
+#formCV2 ul {
+  list-style: none;
+  padding: 1rem 0;
+}
+#formCV2 .header {
+  background-color: #ff7171;
+  border-top-left-radius: 200px;
+  border-bottom-right-radius: 200px;
+}
+#formCV2 .header .info {
+  padding: 2em 0;
+  color: #fff;
+}
+#formCV2 .header .info p {
+  line-height: 1em;
+}
+#formCV2 .header .info .name {
+  font-weight: bolder;
+  font-size: 2em;
+  margin-top: 1em;
+}
+
+#formCV2 .header #avatar2 {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 10em;
+  width: 10em;
+  border: 2px #fff solid;
+  border-radius: 5px;
+}
+#formCV2 .contact {
+  padding: 2em 0;
+  color: #fff;
+}
+#formCV2 .contact .item {
+  margin-top: 1em;
+}
+#formCV2 .body-left {
+  padding-top: 1em;
+  border-right: 3px #ff7171 solid;
+  margin: 1em 0;
+  color: #6e6d6d;
+}
+#formCV2 .body-left .title {
+  position: relative;
+}
+#formCV2 .body-left .title h5 {
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #ff7171;
+  background-image: linear-gradient(50deg, #ff7171 80%, #fff 20%);
+}
+#formCV2 .body-left .title svg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 2em;
+  color: #ff7171;
+}
+
+#formCV2 .body-left li svg {
+  font-size: 1.5rem;
+}
+#formCV2 .body-left li p {
+  width: 90%;
+}
+#formCV2 .body-left .award p {
+  padding: 1rem 0;
+}
+#formCV2 .body-right {
+  padding-top: 1rem;
+  margin: 1em 0;
+  color: #6e6d6d;
+}
+#formCV2 .body-right .title {
+  padding: 7px 20px;
+  color: #fff;
+  background: linear-gradient(-45deg, #ff7171 0%, #ff7171 85%, transparent 15%),
+    linear-gradient(45deg, #fff 0%, #fff 10%, #fff 10%);
+}
+#formCV2 .body-right .title svg {
+  color: #ff7171;
+  font-size: 1.5rem;
+}
+#formCV2 .body-right .title span {
+  font-size: 1.2em;
+}
+#formCV2 .body-right .title #plus {
+  color: #fff;
+  font-size: 1.5rem;
+}
+#formCV2 .body-right .level {
+  font-size: 1em;
+}
+#formCV2 .body-right ul li:first-child {
+  margin: 1em 0px;
+}
+#formCV2 .body-right #highlight {
+  font-weight: bolder;
+  margin-right: 1em;
+}
+#formCV2 .body-right .contentAction {
+  padding: 1rem 0;
+}
+#formCV2 .scale {
+  padding-left: 1rem;
+}
+#formCV2 .body-right .contentAction ul li {
+  margin-top: 1em;
+}
+#formCV2 .body-right .contentProject {
+  padding: 1rem 0;
+}
+#formCV2 .body-right .contentProject ul li {
+  margin-top: 1em;
+}

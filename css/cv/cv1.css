@@ -21,9 +21,9 @@ body {
   background-size: cover;
 }
 #formCV1 .info .avatar p {
-  font-size: 1.5rem;
-  color: #fff;
-  font-weight: bold;
+  font-size: 2rem;
+  color: #3f72af;
+  font-weight: bolder;
   margin: 1rem;
 }
 #formCV1 .background {

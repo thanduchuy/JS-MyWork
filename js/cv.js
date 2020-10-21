@@ -110,10 +110,10 @@ function submitCV() {
   let c2 = formCV.c2 != undefined ? formCV.c2.value : "";
   let c3 = formCV.c3 != undefined ? formCV.c3.value : "";
   let dh = formCV.dh != undefined ? formCV.dh.value : "";
-  importSchools("Cấp 1", c1);
-  importSchools("Cấp 2", c2);
-  importSchools("Cấp 3", c3);
-  importSchools("Đại học", dh);
+  importSchools("Cấp 1", c1, "Tiểu học");
+  importSchools("Cấp 2", c2, "Trung học");
+  importSchools("Cấp 3", c3, "Trung học phổ thông");
+  importSchools("Đại học", dh, "Đại học");
   cv = {
     name: name,
     avatar: avatar,
@@ -128,20 +128,22 @@ function submitCV() {
     schools: schools,
   };
   saveLocalStorage();
-  window.location.href = "http://127.0.0.1:5500/html/cv/cvCreate.html";
+  window.location.href = "http://127.0.0.1:5501/html/cv/cvCreate.html";
 }
 function saveLocalStorage() {
   localStorage.setItem("cv", JSON.stringify(cv));
 }
-function importSchools(key, value) {
+function importSchools(key, value, des) {
   let temp = {
     name: key,
+    description: des,
     value: value,
   };
   if (temp.value != "") {
     schools.push(temp);
   }
 }
+
 function getValueByName(name) {
   let result = [];
   for (element of document.getElementsByName(name)) {
