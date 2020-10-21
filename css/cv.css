@@ -97,3 +97,11 @@
 svg {
   pointer-events: none;
 }
+#submitForm {
+  background-color: #07689f;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  font-weight: bolder;
+  padding: 10px 30px;
+}

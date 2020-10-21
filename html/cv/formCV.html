@@ -66,13 +66,13 @@
       <div class="container cvBody">
         <div class="row">
             <div class="col-12">
-                <form action="">
+                <form action="" name="formCV">
                     <div class="row ">
                       <div class="col-8 d-flex justify-content-between align-items-center">
                         <input type="text" placeholder="Tên của bạn" id="name">
                         <label>
                           <div class="avatar" id="imagePreview"></div>
-                         <input type="file" style="visibility: hidden;" accept="image/*" onchange="showPreview(event)"/>
+                         <input name="avatar" type="file" style="visibility: hidden;" accept="image/*" onchange="showPreview(event)"/>
                      </label>
                       </div>
                     </div>
@@ -86,32 +86,32 @@
                             <path fill-rule="evenodd" d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                             <path d="M8 12c4 0 5 1.755 5 1.755V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-.245S4 12 8 12z"/>
                           </svg>
-                          <input type="email" id="gender" placeholder="Nhập vào giới tính">
+                          <input type="text" id="gender" placeholder="Nhập vào giới tính" name="gender">
                         </div>
                         <div class="itemCus1">
                           <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-calendar3-week-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2h16a2 2 0 0 0-2-2H2zm14 3H0v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3zm-2 3a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM7 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3-2a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM4 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                           </svg>
-                          <input type="email" id="birthday" placeholder="Nhập vào ngày sinh">
+                          <input type="date" id="birthday" placeholder="Nhập vào ngày sinh" name="date">
                         </div>
                         <div class="itemCus1">
                           <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-envelope" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
                           </svg>
-                          <input type="email" id="email" placeholder="Nhập vào email">
+                          <input type="email" id="email" placeholder="Nhập vào email" name="email">
                         </div>
                         <div class="itemCus1">
                           <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-telephone-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M2.267.98a1.636 1.636 0 0 1 2.448.152l1.681 2.162c.309.396.418.913.296 1.4l-.513 2.053a.636.636 0 0 0 .167.604L8.65 9.654a.636.636 0 0 0 .604.167l2.052-.513a1.636 1.636 0 0 1 1.401.296l2.162 1.681c.777.604.849 1.753.153 2.448l-.97.97c-.693.693-1.73.998-2.697.658a17.47 17.47 0 0 1-6.571-4.144A17.47 17.47 0 0 1 .639 4.646c-.34-.967-.035-2.004.658-2.698l.97-.969z"/>
                           </svg>
-                          <input type="text" id="phone" placeholder="Nhập vào sđt">
+                          <input type="text" id="phone" placeholder="Nhập vào sđt" name="phone">
                         </div>
                         <div class="itemCus1">
                           <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-house-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M8 3.293l6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6zm5-.793V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
                             <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
                           </svg>
-                          <input type="text" id="address" placeholder="Nhập vào địa chỉ">
+                          <input type="text" id="address" placeholder="Nhập vào địa chỉ" name="address">
                         </div>
                       </div>
                       <div class="col-6 nominee">
@@ -121,7 +121,7 @@
                             <path fill-rule="evenodd" d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"/>
                             <path fill-rule="evenodd" d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5v1.384l-7.614 2.03a1.5 1.5 0 0 1-.772 0L0 5.884V4.5zm5-2A1.5 1.5 0 0 1 6.5 1h3A1.5 1.5 0 0 1 11 2.5V3h-1v-.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5V3H5v-.5z"/>
                           </svg>
-                          <input type="text" id="job" placeholder="Nhập tên vị trí">
+                          <input type="text" id="job" placeholder="Nhập tên vị trí" name="job">
                         </div>
                       </div>
                     </div>
@@ -139,7 +139,7 @@
                                 <circle cx="3.5" cy="10.5" r=".5"/>
                               </svg>
                             </span>
-                            <input type="text" >
+                            <input type="text" name="objectives" >
                             <div class="action">
                               <button type="button" class="minus" onclick="removeElement(event)">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-node-minus-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -162,14 +162,14 @@
                         <div id="expBody">
                           <div class="itemCus2  d-flex justify-content-around align-items-center">
                              <div class="time col-4 d-flex">
-                              <select id="start1" >
+                              <select id="start1" name="expStart">
                                 <option>Thời gian bắt đầu</option>
                               </select>
-                              <select id="end1">
+                              <select id="end1" name="expEnd">
                                 <option>Thời gian kết thúc</option>
                               </select>
                              </div>
-                              <input type="text" class="col-4" placeholder="Nơi làm việc">
+                              <input type="text" class="col-4" placeholder="Nơi làm việc" name="expValue">
                               <div class="action" class="col-2">
                                 <button type="button" class="minus" onclick="removeElement(event)">
                                   <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bookmark-dash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -195,7 +195,7 @@
                              <div class="time col-2 d-flex">
                               <span>Cấp 1</span>
                              </div>
-                              <input type="text" class="col-8" placeholder="Trường học">
+                              <input type="text" class="col-8" placeholder="Trường học" name="c1">
                               <div class="action" class="col-2">
                                 <button type="button" class="minus" onclick="removeElement(event)">
                                   <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-patch-minus-fll" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -208,7 +208,7 @@
                             <div class="time col-2 d-flex">
                              <span>Cấp 2</span>
                             </div>
-                             <input type="text" class="col-8" placeholder="Trường học">
+                             <input type="text" class="col-8" placeholder="Trường học" name="c2">
                              <div class="action" class="col-2">
                                <button type="button" class="minus" onclick="removeElement(event)">
                                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-patch-minus-fll" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -221,7 +221,7 @@
                           <div class="time col-2 d-flex">
                            <span>Cấp 3</span>
                           </div>
-                           <input type="text" class="col-8" placeholder="Trường học">
+                           <input type="text" class="col-8" placeholder="Trường học" name="c3">
                            <div class="action" class="col-2">
                              <button type="button" class="minus" onclick="removeElement(event)">
                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-patch-minus-fll" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -234,7 +234,7 @@
                         <div class="time col-2 d-flex">
                          <span>Đại học</span>
                         </div>
-                         <input type="text" class="col-8" placeholder="Trường học">
+                         <input type="text" class="col-8" placeholder="Trường học" name="dh">
                          <div class="action" class="col-2">
                            <button type="button" class="minus" onclick="removeElement(event)">
                              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-patch-minus-fll" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -245,6 +245,9 @@
                      </div>
                         </div>
                       </div>
+                    </div>
+                    <div class="footerForm d-flex justify-content-end">
+                      <button id="submitForm" type="button" onclick="submitCV()">Tạo CV</button>
                     </div>
                 </form>
             </div>

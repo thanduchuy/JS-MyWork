@@ -1,5 +1,8 @@
 var objectives = [];
 var index = 1;
+let schools = [];
+let cv = {};
+let url = "";
 customListYear(index);
 function addObjectives() {
   let item = `
@@ -12,7 +15,7 @@ function addObjectives() {
   <circle cx="3.5" cy="8" r=".5"/>
   <circle cx="3.5" cy="10.5" r=".5"/>
 </svg></span>
-    <input type="text" >
+    <input type="text" name="objectives">
     <div class="action">
       <button type="button" class="minus" onclick="removeElement(event)">
         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-node-minus-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -35,7 +38,7 @@ function removeElement(event) {
   parent.remove();
 }
 function customListYear(index) {
-  var start = 1900;
+  var start = 2000;
   var end = new Date().getFullYear();
   var options = new String();
   for (var year = start; year <= end; year++) {
@@ -49,14 +52,14 @@ function addExperience() {
   let item = `
   <div class="itemCus2  d-flex justify-content-around align-items-center">
   <div class="time col-4 d-flex">
-   <select id="start${index}" >
+   <select id="start${index}"  name="expStart">
      <option>Thời gian bắt đầu</option>
    </select>
-   <select id="end${index}">
+   <select id="end${index}"  name="expEnd">
      <option>Thời gian kết thúc</option>
    </select>
   </div>
-   <input type="text" class="col-4" placeholder="Nơi làm việc">
+   <input type="text" class="col-4" placeholder="Nơi làm việc"  name="expValue">
    <div class="action" class="col-2">
      <button type="button" class="minus" onclick="removeElement(event)">
        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bookmark-dash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -80,4 +83,69 @@ function showPreview(event) {
     var preview = document.getElementById("imagePreview");
     preview.style.backgroundImage = `url(${src})`;
   }
+}
+function submitCV() {
+  let name = formCV.name.value;
+  var preview = document.getElementById("imagePreview");
+  let avatar = preview.style.backgroundImage;
+  let gender = formCV.gender.value;
+  let date = formCV.date.value;
+  let email = formCV.email.value;
+  let phone = formCV.phone.value;
+  let address = formCV.address.value;
+  let job = formCV.job.value;
+  let objectives = getValueByName("objectives");
+  let expStarts = getValueByName("expStart");
+  let expEnds = getValueByName("expEnd");
+  let expValues = getValueByName("expValue");
+  let exp = [];
+  for (let i = 0; i < expValues.length; i++) {
+    exp.push({
+      start: expStarts[i],
+      end: expEnds[i],
+      value: expValues[i],
+    });
+  }
+  let c1 = formCV.c1 != undefined ? formCV.c1.value : "";
+  let c2 = formCV.c2 != undefined ? formCV.c2.value : "";
+  let c3 = formCV.c3 != undefined ? formCV.c3.value : "";
+  let dh = formCV.dh != undefined ? formCV.dh.value : "";
+  importSchools("Cấp 1", c1);
+  importSchools("Cấp 2", c2);
+  importSchools("Cấp 3", c3);
+  importSchools("Đại học", dh);
+  cv = {
+    name: name,
+    avatar: avatar,
+    gender: gender,
+    date: date,
+    phone: phone,
+    email: email,
+    address: address,
+    job: job,
+    objectives: objectives,
+    exp: exp,
+    schools: schools,
+  };
+  saveLocalStorage();
+  window.location.href = "http://127.0.0.1:5500/html/cv/cvCreate.html";
+}
+function saveLocalStorage() {
+  localStorage.setItem("cv", JSON.stringify(cv));
+}
+function importSchools(key, value) {
+  let temp = {
+    name: key,
+    value: value,
+  };
+  if (temp.value != "") {
+    schools.push(temp);
+  }
+}
+function getValueByName(name) {
+  let result = [];
+  for (element of document.getElementsByName(name)) {
+    result.push(element.value);
+  }
+  return result;
 }
