@@ -1,5 +1,17 @@
 addSelectJobs();
 addSelectLocation();
+
+/* Placeholder Typewriter */
+var placeholderText = [
+  "Nhập tiêu đề công việc mà bạn muốn...",
+  "Vị trí công việc...",
+  "Địa điểm làm việc...",
+  "Mức lương mong muốn..."
+];
+$('#search').placeholderTypewriter({
+  text: placeholderText,
+});
+
 function addSelectJobs() {
   let jobs = [
     "Y tế",
