@@ -167,3 +167,17 @@
 .loginPage .loginForm button p {
   font-size: 0.8em;
 }
+#error {
+  margin-top: 5px;
+  font-size: 0.8em;
+  background-color: #f56a79;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px 0;
+  text-align: center;
+  font-weight: bolder;
+}
+#alertSuccess {
+  background-color: #28df99;
+  color: #fff;
+}

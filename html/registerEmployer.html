@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/css/styleRE.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   </head>
-  <body>
+  <body onload="loadPage()">
        <div class="registerEP">
     <div class="layoutHeader">
         <div class="container ">
@@ -145,7 +145,7 @@
           </div>
           <div class="col-6 body-right">
                 <div class="row">
-                    <form class="col-12">
+                    <form class="col-12" name="form">
                        <div class="title d-flex align-items-center">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-badge-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm4.5 0a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm5 2.755C12.146 12.825 10.623 12 8 12s-4.146.826-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/>
@@ -164,7 +164,7 @@
                                 Tài khoản email
                               </label>
                               <div class="customInput">
-                                <input type="text" placeholder="Vui lòng nhập email">
+                                <input type="text" placeholder="Vui lòng nhập email" name="email">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-envelope" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
                                   </svg>
@@ -176,7 +176,7 @@
                                 Mật khẩu
                               </label>
                               <div class="customInput">
-                                <input type="text" placeholder="Vui lòng nhập mật khẩu">
+                                <input type="password" placeholder="Vui lòng nhập mật khẩu" name="pass">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-lock-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M2.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"/>
                                     <path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>
@@ -192,7 +192,7 @@
                                 Tên người liên hệ
                               </label>
                               <div class="customInput">
-                                <input type="text" placeholder="Vui lòng nhập tên">
+                                <input type="text" placeholder="Vui lòng nhập tên" name="name">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M2 3a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3zm6 7a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm5 2.755C12.146 11.825 10.623 11 8 11s-4.146.826-5 1.755V13a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/>
                                   </svg>
@@ -204,7 +204,7 @@
                                 Số điện thoại liên hệ
                               </label>
                               <div class="customInput">
-                                <input type="text" placeholder="Vui lòng nhập sdt">
+                                <input type="text" placeholder="Vui lòng nhập sdt" name="phone">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-telephone-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M2.267.98a1.636 1.636 0 0 1 2.448.152l1.681 2.162c.309.396.418.913.296 1.4l-.513 2.053a.636.636 0 0 0 .167.604L8.65 9.654a.636.636 0 0 0 .604.167l2.052-.513a1.636 1.636 0 0 1 1.401.296l2.162 1.681c.777.604.849 1.753.153 2.448l-.97.97c-.693.693-1.73.998-2.697.658a17.47 17.47 0 0 1-6.571-4.144A17.47 17.47 0 0 1 .639 4.646c-.34-.967-.035-2.004.658-2.698l.97-.969z"/>
                                   </svg>
@@ -216,7 +216,7 @@
                                 Tên công ty
                               </label>
                               <div class="customInput">
-                                <input type="text" placeholder="Vui lòng nhập sdt">
+                                <input type="text" placeholder="Vui lòng nhập tên công ty" name="nameCT">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-building" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694L1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z"/>
                                     <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z"/>
@@ -228,7 +228,7 @@
                                 <span>*</span>
                                 Quy mô nhân sự
                               </label>
-                              <select class="customSelect">
+                              <select class="customSelect" name="scale">
                                 <option value="Dưới 20 người">Dưới 20 người</option>
                                 <option value="20 - 150 người">20 - 150 người</option>
                                 <option value="150 - 300 người">150 - 300 người</option>
@@ -240,15 +240,15 @@
                                 Lĩnh vực hoạt động
 
                               </label>
-                              <select class="customSelect">
-                                <option value="Dưới 20 người">Y tế</option>
-                                <option value="20 - 150 người">Nông nghiệp</option>
-                                <option value="150 - 300 người">Công nghiệp</option>
-                                <option value="Trên 300 người">Xây dựng</option>
-                                <option value="Trên 300 người">Khai thác</option>
+                              <select class="customSelect" name="field">
+                                <option value="Y tế">Y tế</option>
+                                <option value="Nông nghiệp">Nông nghiệp</option>
+                                <option value="Công nghiệp">Công nghiệp</option>
+                                <option value="Xây dựng">Xây dựng</option>
+                                <option value="Khai thác">Khai thác</option>
 
-                                <option value="Trên 300 người">Dịch vụ</option>
-                                <option value="Trên 300 người">Văn phòng</option>
+                                <option value="Dịch vụ">Dịch vụ</option>
+                                <option value="Văn phòng">Văn phòng</option>
                               </select>
                            </div>
                            <div class="item d-flex justify-content-end align-items-center">
@@ -257,7 +257,7 @@
                                 Địa chỉ công ty
                               </label>
                               <div class="customInput">
-                                <input type="text" placeholder="Vui lòng nhập địa chỉ">
+                                <input type="text" placeholder="Vui lòng nhập địa chỉ" name="address">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-compass" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M8 15.016a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13zm0 1a7.5 7.5 0 1 0 0-15 7.5 7.5 0 0 0 0 15z"/>
                                     <path d="M6 1a1 1 0 0 1 1-1h2a1 1 0 0 1 0 2H7a1 1 0 0 1-1-1zm.94 6.44l4.95-2.83-2.83 4.95-4.95 2.83 2.83-4.95z"/>
@@ -270,7 +270,7 @@
                                 Tỉnh/thành phố
                               </label>
                               <div class="customInput">
-                                <input type="text" placeholder="Vui lòng nhập tỉnh/thành phố">
+                                <input type="text" placeholder="Vui lòng nhập tỉnh/thành phố" name="city">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bullseye" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                     <path fill-rule="evenodd" d="M8 13A5 5 0 1 0 8 3a5 5 0 0 0 0 10zm0 1A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"/>
@@ -280,12 +280,12 @@
                               </div>
                            </div>
                            <div class="rule d-flex justify-content-end ">
-                            <input type="checkbox" name="" id="">
+                            <input type="checkbox" id="" name="rule">
                            <p> Đồng ý với các Quy định bảo mật & Thỏa thuận sử dụng của Web</p>
                         </div>
-                       
+                        <p id="error">Email đã được sử dụng</p>
                         </div>
-                        <button>
+                        <button type="button" onclick="regisEmployer()">
                             Đăng ký nhà tuyển dụng
                         </button>
                     </form>
@@ -296,6 +296,7 @@
     </div>
   </div>
 </body>
+<script src="../js/regisEmployer.js"></script>
 <script
 src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

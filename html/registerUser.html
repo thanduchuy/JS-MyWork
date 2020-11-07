@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/css/style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   </head>
-  <body>
+  <body onload="loadPage()">
     <div class="loginPage">
         <div class="layoutHeader">
             <div class="container ">
@@ -100,27 +100,27 @@
                 </ul>
               </div>
               <div class="col-7 bodyForm">
-                <form class="d-flex flex-column ">
+                <form class="d-flex flex-column" name="form">
                   <div class="logo"></div>
                   <label>
                     <span>*</span>
                     Họ tên
                   </label>
-                  <input type="text" placeholder="Vui lòng nhập họ tên">
+                  <input type="text" placeholder="Vui lòng nhập họ tên" name="name">
                   <div class="row">
                     <div class="col-6 d-flex flex-column">
                       <label>
                         <span>*</span>
                         Địa chỉ email
                       </label>
-                      <input type="text" placeholder="Vui lòng nhập địa chỉ email">
+                      <input type="text" placeholder="Vui lòng nhập địa chỉ email" name="email">
                     </div>
                     <div class="col-6 d-flex flex-column">
                       <label>
                         <span>*</span>
                         Số điện thoại
                       </label>
-                      <input type="text" placeholder="Vui lòng nhập số điện thoại">
+                      <input type="text" placeholder="Vui lòng nhập số điện thoại" name="phone">
                     </div>
                   </div>
                   <div class="row">
@@ -129,18 +129,19 @@
                         <span>*</span>
                         Mật khẩu
                       </label>
-                      <input type="text" placeholder="Vui lòng nhập mật khẩu">
+                      <input type="password" placeholder="Vui lòng nhập mật khẩu" name="pass">
                     </div>
                     <div class="col-6 d-flex flex-column">
                       <label>
                         <span>*</span>
                         Nhắc lại mật khẩu
                       </label>
-                      <input type="text" placeholder="Vui lòng nhập nhắc lại mật khẩu">
+                      <input type="password" placeholder="Vui lòng nhập nhắc lại mật khẩu" name="repass">
                     </div>
                   </div>
                   <p id="rule">Bằng việc nhấn nút đăng kí bạn đã đồng ý với Thỏa thuận sử dụng của chúng tôi</p>
-                  <button id="btnSignIn">Đăng ký</button>
+                  <p id="error">Bằng việc nhấn nút đăng kí bạn đã đồng ý với Thỏa thuận sử dụng của chúng tôi</p>
+                  <button id="btnSignIn" type="button" onclick="regisUser()">Đăng ký</button>
                   <p id="or">Hoặc</p>
                   <button id="btnGoogle" class="d-flex justify-content-center align-items-center">
                     <img src="/assets/images/google.png">
@@ -155,12 +156,13 @@
                   Bạn đã có tài khoản? <a href="loginUser.html">Đăng nhập ngay</a>!
                 </div>
               </div>
-              
             </div>
           </div>
         </div>
       </div>
+
   </body>
+  <script src="../js/regisUser.js"></script>
   <script
     src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

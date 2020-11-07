@@ -177,3 +177,11 @@ a:hover,
 a:visited {
   text-decoration: none;
 }
+#error {
+  background-color: #e7305b;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  margin: 10px 0;
+  border-radius: 5px;
+}
