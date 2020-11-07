@@ -15,7 +15,7 @@
     <script src="/js/placeholderTypewriter.js"></script>
 </head>
 
-<body>
+<body onload="loadDataFromURL()">
     <div class="homePage">
         <div class="layoutHeader">
             <div class="container">
@@ -312,6 +312,13 @@
             </div>
 
             <div class="col-md-9 col-lg-9">
+                <div class="row">
+                    <div class="col-12 listJobs">
+                        <div id="countJobs">Tìm thấy 521 việc làm đang tuyển dụng</div>
+                        <div id="bodyJobs">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -559,6 +566,7 @@
         </footer>
     </section>
     <script src="/js/home.js"></script>
+    <script src="/js/resultSearch.js"></script>
 </body>
 
 </html>

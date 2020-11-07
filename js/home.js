@@ -73,3 +73,10 @@ function addSelectLocation() {
   });
   document.getElementById("locations").innerHTML += row.join(" ");
 }
+function searchWork() {
+  let name = form.search.value;
+  let jobs = form.jobs.value;
+  let locations = form.locations.value;
+
+  window.location.href = `http://127.0.0.1:5502/html/result.html?name=${name}&jobs=${jobs}&locations=${locations}`;
+}
