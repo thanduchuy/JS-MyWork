@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Result</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/body.css" />
+    <link rel="stylesheet" href="/css/result.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/placeholderTypewriter.js"></script>
+</head>
+
+<body>
+    <div class="homePage">
+        <div class="layoutHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 headerLeft d-flex align-items-center">
+                        <a href="home.html">
+                            <div class="logo"></div>
+                        </a>
+                        <select>
+                <option>Toàn quốc</option>
+                <option>Miền bắc</option>
+                <option>Miền nam</option>
+              </select>
+                        <select name="language" id="language">
+                <option value="EN">🇻🇳&emsp; Tiếng Việt</option>
+                <option value="EN">🇬🇧&emsp; Tiếng Anh</option>
+                <option value="USA">🇯🇵&emsp; Tiếng Nhật</option>
+              </select>
+                    </div>
+                    <div class="col-6 headerRight d-flex justify-content-end">
+                        <ul class="d-flex">
+                            <a href="register.html">
+                                <li class="d-flex flex-column align-items-center justify-content-around" id="active">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        fill-rule="evenodd"
+                        d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+                      />
+                    </svg>
+                                    <span>TẠO TÀI KHOẢN</span>
+                                </li>
+                            </a>
+                            <a href="login.html">
+                                <li class="d-flex flex-column align-items-center justify-content-around">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-lock-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M2.5 9a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2V9z"
+                      />
+                      <path
+                        fill-rule="evenodd"
+                        d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"
+                      />
+                    </svg>
+                                    <span>ĐĂNG NHẬP</span>
+                                </li>
+                            </a>
+
+                            <li class="d-flex flex-column align-items-center justify-content-around">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-briefcase-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      fill-rule="evenodd"
+                      d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"
+                    />
+                    <path
+                      fill-rule="evenodd"
+                      d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5v1.384l-7.614 2.03a1.5 1.5 0 0 1-.772 0L0 5.884V4.5zm5-2A1.5 1.5 0 0 1 6.5 1h3A1.5 1.5 0 0 1 11 2.5V3h-1v-.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5V3H5v-.5z"
+                    />
+                  </svg>
+                                <span>NHÀ TUYỂN DỤNG</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section>
+            <div>
+                <div class="box_search_header">
+                    <div class="container">
+                        <div class="row box_search">
+                            <form action="" class="col-10">
+                                <div class="container formGroup">
+                                    <div class="row d-flex justify-content-around">
+                                        <div class="itemForm col-5 d-flex justify-content-start align-items-center">
+                                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-briefcase-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"/>
+                                <path fill-rule="evenodd" d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5v1.384l-7.614 2.03a1.5 1.5 0 0 1-.772 0L0 5.884V4.5zm5-2A1.5 1.5 0 0 1 6.5 1h3A1.5 1.5 0 0 1 11 2.5V3h-1v-.5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5V3H5v-.5z"/>
+                              </svg>
+                                            <input type="text" class="search-box" name="search" id="search">
+                                        </div>
+                                        <div class="itemForm col-2 d-flex justify-content-around align-items-center">
+                                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear-wide-connected" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M8.932.727c-.243-.97-1.62-.97-1.864 0l-.071.286a.96.96 0 0 1-1.622.434l-.205-.211c-.695-.719-1.888-.03-1.613.931l.08.284a.96.96 0 0 1-1.186 1.187l-.284-.081c-.96-.275-1.65.918-.931 1.613l.211.205a.96.96 0 0 1-.434 1.622l-.286.071c-.97.243-.97 1.62 0 1.864l.286.071a.96.96 0 0 1 .434 1.622l-.211.205c-.719.695-.03 1.888.931 1.613l.284-.08a.96.96 0 0 1 1.187 1.187l-.081.283c-.275.96.918 1.65 1.613.931l.205-.211a.96.96 0 0 1 1.622.434l.071.286c.243.97 1.62.97 1.864 0l.071-.286a.96.96 0 0 1 1.622-.434l.205.211c.695.719 1.888.03 1.613-.931l-.08-.284a.96.96 0 0 1 1.187-1.187l.283.081c.96.275 1.65-.918.931-1.613l-.211-.205a.96.96 0 0 1 .434-1.622l.286-.071c.97-.243.97-1.62 0-1.864l-.286-.071a.96.96 0 0 1-.434-1.622l.211-.205c.719-.695.03-1.888-.931-1.613l-.284.08a.96.96 0 0 1-1.187-1.186l.081-.284c.275-.96-.918-1.65-1.613-.931l-.205.211a.96.96 0 0 1-1.622-.434L8.932.727zM8 12.997a4.998 4.998 0 1 0 0-9.995 4.998 4.998 0 0 0 0 9.996z"/>
+                                <path fill-rule="evenodd" d="M7.375 8L4.602 4.302l.8-.6L8.25 7.5h4.748v1H8.25L5.4 12.298l-.8-.6L7.376 8z"/>
+                              </svg>
+                                            <select name="" id="jobs">
+                                <option value="">Tất cả ngành nghề</option>
+                              </select>
+                                        </div>
+                                        <div class="itemForm col-2 d-flex justify-content-around align-items-center">
+                                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-globe2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855-.143.268-.276.56-.395.872.705.157 1.472.257 2.282.287V1.077zM4.249 3.539a8.372 8.372 0 0 1-1.198-.49 7.01 7.01 0 0 1 2.276-1.52 6.7 6.7 0 0 0-.597.932 8.854 8.854 0 0 0-.48 1.079zM3.509 7.5H1.017A6.964 6.964 0 0 1 2.38 3.825c.47.258.995.482 1.565.667A13.4 13.4 0 0 0 3.508 7.5zm1.4-2.741c.808.187 1.681.301 2.591.332V7.5H4.51c.035-.987.176-1.914.399-2.741zM8.5 5.09V7.5h2.99a12.342 12.342 0 0 0-.399-2.741c-.808.187-1.681.301-2.591.332zM4.51 8.5H7.5v2.409c-.91.03-1.783.145-2.591.332a12.343 12.343 0 0 1-.4-2.741zm3.99 0v2.409c.91.03 1.783.145 2.591.332.223-.827.364-1.754.4-2.741H8.5zm-3.282 3.696A12.63 12.63 0 0 1 7.5 11.91v3.014c-.67-.204-1.335-.82-1.887-1.855a7.776 7.776 0 0 1-.395-.872zm.11 2.276a6.696 6.696 0 0 1-.598-.933 8.853 8.853 0 0 1-.481-1.079 8.38 8.38 0 0 0-1.198.49 7.01 7.01 0 0 0 2.276 1.522zm-1.383-2.964a9.083 9.083 0 0 0-1.565.667A6.963 6.963 0 0 1 1.018 8.5h2.49a13.36 13.36 0 0 0 .437 3.008zm6.728 2.964a7.009 7.009 0 0 0 2.275-1.521 8.376 8.376 0 0 0-1.197-.49 8.853 8.853 0 0 1-.481 1.078 6.688 6.688 0 0 1-.597.933zM8.5 11.909c.81.03 1.577.13 2.282.287-.12.312-.252.604-.395.872-.552 1.035-1.218 1.65-1.887 1.855V11.91zm3.555-.401c.57.185 1.095.409 1.565.667A6.963 6.963 0 0 0 14.982 8.5h-2.49a13.36 13.36 0 0 1-.437 3.008zM14.982 7.5h-2.49a13.361 13.361 0 0 0-.437-3.008 9.123 9.123 0 0 0 1.565-.667A6.963 6.963 0 0 1 14.982 7.5zM11.27 2.461c.177.334.339.694.482 1.078a8.368 8.368 0 0 0 1.196-.49 7.01 7.01 0 0 0-2.275-1.52c.218.283.418.597.597.932zm-.488 1.343c-.705.157-1.473.257-2.282.287V1.077c.67.204 1.335.82 1.887 1.855.143.268.276.56.395.872z"/>
+                              </svg>
+                                            <select name="" id="locations">
+                                <option value="">Địa điểm</option>
+                              </select>
+                                        </div>
+                                        <button class="col-2 d-flex flex-row align-items-center justify-content-around">
+                              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                                <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                              </svg>
+                              Tìm kiếm
+                            </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+    <div class="container">
+        <div class="row reset-row">
+            <div>
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="/" class="nuxt-link-active">
+                            <span>
+                                Trang chủ
+                            </span>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <h1>
+                            Tuyển dụng nhanh và uy tín | Tuyển dụng hiệu quả
+                        </h1>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <section class="filter-job-side-box">
+                    <form class="el-form box-filter-job-search-frm">
+                        <div class="box-category-con box_search_header box-filter-job-search" style="padding: 0px 5px 15px 15px;">
+                            <p style="font-size: 15px; padding-top: 10px; margin-bottom: 0px;">
+                                <strong>
+                                    Mức lương
+                                </strong>
+                            </p>
+                            <div class="box-category-search box_search">
+                                <div class="mw_select input_search item-margin">
+                                    <span class="icon-before">
+                                        <i class="li-cash-dollar">
+                                        </i>
+                                    </span>
+                                    <input style="    border: 1px solid hsla(0, 0%, 77%, .8);
+                                    " placeholder="Mức lương" readonly="readonly" class="form-control">
+                                    <span class="icon-after">
+                                        <i class="el-icon-arrow-down fs-12">         
+                                        </i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="padding: 0px 5px 15px 15px;" class="box-category-con box_general box-filter-job-search">
+                            <p style="font-size: 15px; padding-top: 10px;" class="el1 vb vb-visible">
+                                <strong>
+                                    Ngành nghề
+                                </strong>
+                            </p>
+                            <div style="height: 200px; position: relative; overflow: hidden;" class="el1 vb vb-visible">
+                                <div style="display: block; overflow: hidden scroll; height: 100%; width: calc(100% + 17px);" class="el2 vb-content">
+                                    <div class="box-category-search">
+                                        <div class="mw_checkbox input_search">
+                                            <div class="el-checkbox-group" name="categories" id="categories">
+                                                <label class="el-checkbox checkbox-filter">
+                                                    <span class="el-checkbox__input ">
+                                                        <span class="el-checkbox__inner">
+                                                        </span>
+                                                        <input type="checkbox" value=31 class="el-checkbox__original">
+                                                    </span>
+                                                    <span class="el-checkbox__label">
+                                                        Bán hàng
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="vb-dragger" style="position: absolute; height: 16px; top: 0px;">
+                                        <div class="vb-dragger-styler">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="padding: 0px 5px 15px 15px;" class="box-category-con box_general box-filter-job-search">
+                            <p style="font-size: 15px; padding-top: 10px;" class="el1 vb vb-visible">
+                                <strong>
+                                    Tỉnh Thành
+                                </strong>
+                            </p>
+                            <div style="height: 200px; position: relative; overflow: hidden;" class="el1 vb vb-visible">
+                                <div style="display: block; overflow: hidden scroll; height: 100%; width: calc(100% + 17px);" class="el2 vb-content">
+                                    <div class="box-category-search">
+                                        <div class="mw_checkbox input_search">
+                                            <div class="el-checkbox-group" name="categories" id="categories">
+                                                <label class="el-checkbox checkbox-filter">
+                                                    <span class="el-checkbox__input ">
+                                                        <span class="el-checkbox__inner">
+                                                        </span>
+                                                        <input type="checkbox" value=31 class="el-checkbox__original">
+                                                    </span>
+                                                    <span class="el-checkbox__label">
+                                                        Hà nội
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="vb-dragger" style="position: absolute; height: 16px; top: 0px;">
+                                        <div class="vb-dragger-styler">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="padding: 0px 5px 15px 15px;" class="box-category-con box_general box-filter-job-search">
+                            <p style="font-size: 15px; padding-top: 10px;" class="el1 vb vb-visible">
+                                <strong>
+                                    Cấp bậc
+                                </strong>
+                            </p>
+                            <div style="height: 200px; position: relative; overflow: hidden;" class="el1 vb vb-visible">
+                                <div style="display: block; overflow: hidden scroll; height: 100%; width: calc(100% + 17px);" class="el2 vb-content">
+                                    <div class="box-category-search">
+                                        <div class="mw_checkbox input_search">
+                                            <div class="el-checkbox-group" name="categories" id="categories">
+                                                <label class="el-checkbox checkbox-filter">
+                                                    <span class="el-checkbox__input ">
+                                                        <span class="el-checkbox__inner">
+                                                        </span>
+                                                        <input type="checkbox" value=31 class="el-checkbox__original">
+                                                    </span>
+                                                    <span class="el-checkbox__label">
+                                                        Nhân viên
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="vb-dragger" style="position: absolute; height: 16px; top: 0px;">
+                                        <div class="vb-dragger-styler">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="padding: 0px 5px 15px 15px;" class="box-category-con box_general box-filter-job-search">
+                            <p style="font-size: 15px; padding-top: 10px;" class="el1 vb vb-visible">
+                                <strong>
+                                    Loại hình công việc 
+                                </strong>
+                            </p>
+                            <div style="height: 200px; position: relative; overflow: hidden;" class="el1 vb vb-visible">
+                                <div style="display: block; overflow: hidden scroll; height: 100%; width: calc(100% + 17px);" class="el2 vb-content">
+                                    <div class="box-category-search">
+                                        <div class="mw_checkbox input_search">
+                                            <div class="el-checkbox-group" name="categories" id="categories">
+                                                <label class="el-checkbox checkbox-filter">
+                                                    <span class="el-checkbox__input ">
+                                                        <span class="el-checkbox__inner">
+                                                        </span>
+                                                        <input type="checkbox" value=31 class="el-checkbox__original">
+                                                    </span>
+                                                    <span class="el-checkbox__label">
+                                                        Toàn thời gian cố định
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="vb-dragger" style="position: absolute; height: 16px; top: 0px;">
+                                        <div class="vb-dragger-styler">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+
+            </div>
+
+            <div class="col-md-9 col-lg-9">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="box_index">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 text-center item">
+                            <p class="count">
+                                2,440,493
+                            </p>
+                            <p>
+                                Ứng viên
+                            </p>
+                        </div>
+                        <div class="col-lg-3 col-md-3 text-center item">
+                            <p class="count">
+                                784,700
+                            </p>
+                            <p>
+                                Việc làm
+                            </p>
+                        </div>
+                        <div class="col-lg-3 col-md-3 text-center item">
+                            <p class="count">
+                                431,171
+                            </p>
+                            <p>
+                                Nhà tuyển dụng
+                            </p>
+                        </div>
+                        <div class="col-lg-3 col-md-3 text-center item">
+                            <p class="count">
+                                5,996,025
+                            </p>
+                            <p>
+                                Lượt ứng tuyển
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="box-fixer">
+                <div class="first">
+                    <img src="/assets/images/iconfb.png">
+                </div>
+                <div>
+                    <img src="/assets/images/phone.png">
+                </div>
+                <div class="last">
+                    <img src="/assets/images/mail.png">
+                </div>
+            </div>
+        </div>
+        <div class="el-dialog__wrapper" style="display:none;z-index:9999999;">
+            <div class="el-dialog el-dialog--small box-right-dialog" style="top:15%;">
+                <div class="el-dialog__header">
+                    <span class="el-dialog__title">
+                      </span>
+                    <button type="button" aria-label="Close" class="el-dialog__headerbtn">
+                          <i class="el-dialog__close el-icon el-icon-close"></i>
+                      </button>
+                </div>
+            </div>
+        </div>
+        <div class="el-dialog__wrapper" style="display:none;z-index:9999999;">
+            <div class="el-dialog el-dialog--small box-right-dialog" style="top:15%;">
+                <div class="el-dialog__header">
+                    <span class="el-dialog__title">
+                      </span>
+                    <button type="button" aria-label="Close" class="el-dialog__headerbtn">
+                          <i class="el-dialog__close el-icon el-icon-close"></i>
+                      </button>
+                </div>
+            </div>
+        </div>
+        <div class="el-dialog__wrapper" style="display:none;z-index:9999999;">
+            <div class="el-dialog el-dialog--small box-right-dialog" style="top:15%;">
+                <div class="el-dialog__header">
+                    <span class="el-dialog__title">
+                      </span>
+                    <button type="button" aria-label="Close" class="el-dialog__headerbtn">
+                          <i class="el-dialog__close el-icon el-icon-close"></i>
+                      </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section>
+        <div class="block-hq">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-3">
+                        <ul>
+                            <li class="divider-header">
+                                Về MyWork
+                            </li>
+                            <li>
+                                <a href="login.html" title="Giới thiệu về MyWork">Giới thiệu</a>
+                            </li>
+                            <li>
+                                <a href="login.html" title="Thỏa thuận sử dụng">Thỏa thuận sử dụng</a>
+                            </li>
+                            <li>
+                                <a href="login.html" title="Quy định bảo mật">Quy định bảo mật</a>
+                            </li>
+                            <li>
+                                <a href="login.html" title="Hợp tác">Hợp tác</a>
+                            </li>
+                            <li>
+                                <a href="login.html" title="Liên hệ">Liên hệ</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <ul>
+                            <li class="divider-header">
+                                Công cụ
+                            </li>
+                            <li>
+                                <a href="login.html" title="Tag kỹ năng">Tag kỹ năng </a>
+                            </li>
+                            <li>
+                                <a href="login.html" title="Quy chế">Quy chế</a>
+                            </li>
+                            <li>
+                                <a href="login.html" title="Chính sách bảo mật">Chính sách bảo mật</a>
+                            </li>
+                            <li>
+                                <a href="login.html" title="Cơ chế giải quyết tranh chấp">Cơ chế giải quyết tranh chấp</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <ul>
+                            <li class="divider-header">
+                                Kết nối với MyWork
+                            </li>
+                            <li>
+                                <a href="login.html">
+                                    <img src="/assets/images/facebook.png" target="_blank" class="social">
+                                </a>
+                                <a href="login.html">
+                                    <img src="/assets/images/google.png" target="_blank" class="social">
+                                </a>
+                                <a href="login.html">
+                                    <img src="/assets/images/yt.jpg" class="social" target="_blank">
+                                </a>
+                            </li>
+                            <li class="divider-header mt-20">
+                                Chứng nhận bởi
+                            </li>
+                            <li>
+                                <a>
+                                    <img width="65">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="mw_footer">
+            <div class="container">
+                <div class="scroll-to-top">
+                    <i class="li-chevron-up"> 
+                      </i>
+                </div>
+                <div class="row info-footer">
+                    <div class="col-md-12 info-left col-xs-12">
+                        <div class="text-center mb-30">
+                            <h4 class="text-uppercase">
+                                Hệ sinh thái Tuyển dụng hàng đầu
+                            </h4>
+                            <div class="head-title text-center">
+                                MyWork - Tìm việc làm, tìm việc nhanh, tuyển dụng uy tín và hiệu quả!
+                            </div>
+                        </div>
+                        <p class="head-title fw-500">
+                            Công Ty Cổ phần My Work
+                        </p>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <p>
+                                    <i class="li-telephone">
+                                      </i> &nbsp;
+                                    <strong>
+                                          Điện thoại
+                                      </strong> : (028) 710 88688 | (024) 710 88688
+                                </p>
+                                <p>
+                                    <i class="li-apartment">
+                                      </i> &nbsp;
+                                    <span>
+                                          <strong>
+                                              Trụ sở
+                                          </strong>
+                                          : Tòa nhà Siêu Việt, 23 Trần Cao Vân, Phường Đa Kao, Quận 1, 
+                                          <br>
+                                          TP. Hồ Chí Minh.
+                                      </span>
+                                </p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p>
+                                    <i class="li-envelope">
+                                      </i> &nbsp;
+                                    <strong>
+                                          Email
+                                      </strong> : hotro@mywork.com.vn
+                                </p>
+                                <p>
+                                    <i class="li-apartment mr-15">
+                                      </i> &nbsp;
+                                    <span>
+                                          <strong>Chi nhánh</strong>
+                                          : Tầng 12A, Tòa nhà Center Building, Số 1 Nguyễn Huy Tưởng, Quận Thanh Xuân, Hà Nội.
+                                      </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom">
+                <div class="container">
+                    <div class="info-tag">
+                        <a href="/" title="Tìm việc làm" class="nuxt-link-exact-active nuxt-link-active">Tìm việc làm</a> &nbsp;|
+                        <a href="/" title="Việc làm 24h" class="nuxt-link-exact-active nuxt-link-active">Việc làm 24h</a>&nbsp;|
+                        <a href="/" title="Tìm việc nhanh" class="nuxt-link-exact-active nuxt-link-active">Tìm việc nhanh</a>&nbsp;|
+                        <a href="/" title="Việc làm" class="nuxt-link-exact-active nuxt-link-active">Việc làm</a>&nbsp;|
+                        <a href="/" title="Tuyển dụng" class="nuxt-link-exact-active nuxt-link-active">Tuyển dụng</a>&nbsp;|
+                        <a href="/" title="Việc làm Hồ Chí Minh" class="nuxt-link-exact-active nuxt-link-active">Việc làm Hồ Chí Minh</a>&nbsp;|
+                        <a href="/" title="Việc làm Đà Nẵng" class="nuxt-link-exact-active nuxt-link-active">Việc làm Hà Nội</a>&nbsp;|
+                        <a href="/" title="Việc làm Hà Nội" class="nuxt-link-exact-active nuxt-link-active">Việc làm Đà Nẵng</a>&nbsp;
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </section>
+    <script src="/js/home.js"></script>
+</body>
+
+</html>
