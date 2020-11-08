@@ -128,7 +128,7 @@ function submitCV() {
     schools: schools,
   };
   saveLocalStorage();
-  window.location.href = "http://127.0.0.1:5501/html/cv/cvCreate.html";
+  window.location.href = "http://127.0.0.1:5502/html/cv/cvCreate.html";
 }
 function saveLocalStorage() {
   localStorage.setItem("cv", JSON.stringify(cv));

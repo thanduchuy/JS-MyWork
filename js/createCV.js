@@ -7,7 +7,7 @@ function createCV() {
   if (localStorage.getItem("cv") != null) {
     cv = getData();
   } else {
-    window.location.href = "http://127.0.0.1:5500/html/cv/formCV.html";
+    window.location.href = "http://127.0.0.1:5502//html/cv/formCV.html";
   }
   document.getElementById(`formCV2`).style.display = "none";
   valueForm1();
@@ -193,6 +193,12 @@ function setValueExperience2(arr) {
   document.getElementById("exp2").innerHTML = result.join("");
 }
 function exportCV() {
-  var element = document.getElementById("formCV1");
-  print(element);
+  window.scrollTo(0,0);
+  html2canvas(document.getElementById("formCV1"),{ 
+    allowTaint: true,
+    taintTest: false
+  }).then(canvas => {
+    let imageData = canvas.toDataURL('image/jpeg');
+    console.log(imageData);
+  })
 }

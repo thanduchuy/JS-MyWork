@@ -12,9 +12,9 @@ body {
     0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
     0 100px 80px rgba(0, 0, 0, 0.12);
   border-radius: 5px;
+  height: 35em;
 }
 #formCV1 .info .avatar {
-  background-image: url("https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.0-9/73219335_1023856171339783_6034211635340509184_o.jpg?_nc_cat=102&_nc_sid=e3f864&_nc_ohc=4kz3eEgnnD0AX88eDEG&_nc_ht=scontent.fsgn2-5.fna&oh=5dddda240be127fb758dcf9371128833&oe=5F883172");
   height: 17rem;
   background-repeat: no-repeat;
   background-position: center;
