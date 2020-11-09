@@ -1,4 +1,5 @@
 let cv = {};
+let nameCV = "formCV1";
 function getData() {
   let cv = JSON.parse(localStorage.getItem("cv"));
   return cv;
@@ -89,6 +90,7 @@ function selectCV(id) {
   document.getElementById(`formCV${id != 1 ? 1 : 2}`).style.display = "none";
   document.getElementById(`formCV${id == 1 ? 1 : 2}`).style.display = "block";
   id == 1 ? valueForm1() : valueForm2();
+  nameCV = id == 1 ? "formCV1" : "formCV2"
 }
 function setBackgroundAvatar(url) {
   var preview = document.getElementById("avatar");
@@ -194,11 +196,29 @@ function setValueExperience2(arr) {
 }
 function exportCV() {
   window.scrollTo(0,0);
-  html2canvas(document.getElementById("formCV1"),{ 
+  html2canvas(document.getElementById(nameCV),{ 
     allowTaint: true,
     taintTest: false
   }).then(canvas => {
     let imageData = canvas.toDataURL('image/jpeg');
-    console.log(imageData);
+    addCVUser(imageData)
   })
+}
+function addCVUser(data) {
+  let user = JSON.parse(sessionStorage.getItem("userLogin"))
+  if (user != null) {
+    let listCV = JSON.parse(localStorage.getItem("listCV"))
+    let cv = {
+      id:1,
+      idUser:user.id,
+      cvImage: data
+    }
+    if (listCV != null) {
+      cv.id = listCV.length + 1
+      listCV.push(cv)
+      localStorage.setItem("listCV",JSON.stringify(listCV))
+    } else {
+      localStorage.setItem("listCV",JSON.stringify([cv]))
+    }
+  }
 }

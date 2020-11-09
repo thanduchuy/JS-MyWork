@@ -1,0 +1,85 @@
+.navigaTitle {
+  padding: 10px;
+  color: #97a8be;
+  cursor: text;
+  font-size: 1em;
+  background: #f2f2f2;
+}
+.formCV {
+  background-color: white;
+  border-radius: 5px;
+}
+.formCV .topForm {
+  height: 12em;
+}
+.formCV .botForm {
+  height: 5em;
+  padding: 10px;
+  margin: 0 5px;
+  border-top: 1px lightgray solid;
+}
+.formCV .botForm button {
+  color: #fff;
+  background-color: #009ce0;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 15px;
+}
+.topForm .imageForm {
+  width: 100%;
+  height: 8em;
+  padding: 30px;
+  background-color: #f2f2f2;
+  border-radius: 50%;
+}
+.topForm .title {
+  font-weight: bolder;
+  font-size: 18px;
+  padding: 10px 0;
+  border-bottom: 1px lightgray solid;
+}
+.topForm .body {
+  font-size: 13px;
+  padding: 10px 0;
+}
+#seenBtn {
+  color: #009ce0;
+  background-color: #fff;
+  border: 1px solid #009ce0;
+}
+.mainList {
+  background: #fff3d7;
+  border: 1px solid #ecd6a1;
+  height: 28em;
+  margin: 20px 5px;
+  border-radius: 5px;
+}
+.mainList .topList h3 {
+  color: #926d14;
+  font-size: 18px;
+  padding: 10px;
+  border-bottom: 1px solid #ecd6a1;
+}
+.mainList .topList h3 span {
+  color: #fff;
+  background-color: red;
+  padding: 2px 5px;
+  font-size: 12px;
+  margin-left: 5px;
+  border-radius: 2px;
+}
+.mainList .bodyList p {
+  color: #926d14;
+  font-size: 12px;
+}
+.bodyList .item {
+  background-color: red;
+  border-radius: 5px;
+  height: 15em;
+}
+#imgList {
+  height: 10em;
+  width: 100%;
+  position: absolute;
+  top: -2em;
+}

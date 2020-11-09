@@ -94,9 +94,13 @@ a:visited {
   text-decoration: none;
 }
 .body .header {
-  background: #eff3f6;
+  background: #f2f2f2;
   padding: 0.5em 0;
   border-bottom: 1px solid lightslategrey;
+}
+.body .main {
+  background: #f2f2f2;
+  height: 135vh;
 }
 .col-3 {
   padding-right: 0;
@@ -143,9 +147,8 @@ a:visited {
   line-height: 40px;
   box-sizing: border-box;
   white-space: nowrap;
-  
 }
-.el-menu li:hover{
+.el-menu li:hover {
   background-color: #239fd5;
 }
 .el-submenu-title {
@@ -153,8 +156,6 @@ a:visited {
   padding-bottom: 15px;
 }
 .el-menu span {
-  
   padding-left: 8px;
   font-size: 14px;
 }
-
