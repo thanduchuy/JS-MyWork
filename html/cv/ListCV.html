@@ -11,10 +11,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/userInfo.css" />
   <link rel="stylesheet" href="/css/cv/managerCV.css" />
-  
+  <link rel="stylesheet" type="text/css" href="/css/cv/lightbox.min.css"/>
+  <script src="/js/lightbox-plus-jquery.min.js"></script>
 </head>
 
-<body>
+<body onload="loadPage()">
   <div class="container-fluid main">
     <div class="row fix">
       <div class="col-3 Info">
@@ -267,19 +268,7 @@
                             <p>Mẫu CV thể hiện kinh nghiệm làm việc của bạn theo dòng thời gian, ấn tượng, sử dụng được cho nhiều ngành nghề
                             <br>Thiết kế tập chuyên nghiệp, tập trung vào hình ảnh của ứng viên, phù hợp với các vị trí yêu cầu ngoại hình</p>
                             <div class="list">
-                                <div class="row">
-                                    <div class="col-3">
-                                        <div class="col-12 item">
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="col-12 item">
-                                        </div>
-                                    </div>
-                                    <div class="col-3">
-                                        <div class="col-12 item">
-                                        </div>
-                                    </div>
+                                <div class="row" id="list">
                                 </div>
                             </div>
                         </div>
@@ -293,6 +282,7 @@
       </div>
     </div>
   </div>
+  <script src="/js/listcv.js"></script>
 </body>
 
 </html>

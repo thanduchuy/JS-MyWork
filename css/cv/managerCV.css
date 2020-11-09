@@ -73,9 +73,14 @@
   font-size: 12px;
 }
 .bodyList .item {
-  background-color: red;
-  border-radius: 5px;
   height: 15em;
+  padding: 5px;
+  filter: grayscale(100%);
+  transition: 1s;
+}
+.bodyList .item:hover {
+  filter: grayscale(0%);
+  transform: scale(1.1);
 }
 #imgList {
   height: 10em;
