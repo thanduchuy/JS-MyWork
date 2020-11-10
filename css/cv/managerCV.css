@@ -88,3 +88,11 @@
   position: absolute;
   top: -2em;
 }
+#removeCV {
+  border-radius: 100%;
+  border: none;
+  background-color: red;
+  color: #fff;
+  position: absolute;
+  bottom: -10px;
+}
