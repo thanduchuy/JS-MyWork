@@ -1,19 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>ViecLamOnline</title>
 
-	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-	<link rel="icon" type="image/png" href="assets/AT-pro-logo.png"/>
+	<meta name="viewport"
+		content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="icon" type="image/png" href="assets/AT-pro-logo.png" />
 
 	<!-- Import lib -->
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
 	<link rel="stylesheet" type="text/css" href="fontawesome-free/css/all.min.css">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+		integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+		crossorigin="anonymous"></script>
 	<!-- End import lib -->
 
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body class="overlay-scrollbar">
 	<!-- navbar -->
 	<div class="navbar">
@@ -42,7 +54,7 @@
 				<div class="avt dropdown">
 					<img src="assets/tuat.jpg" alt="User image" class="dropdown-toggle" data-toggle="user-menu">
 					<ul id="user-menu" class="dropdown-menu">
-						<li  class="dropdown-menu-item">
+						<li class="dropdown-menu-item">
 							<a class="dropdown-menu-link">
 								<div>
 									<i class="fas fa-user-tie"></i>
@@ -58,8 +70,8 @@
 								<span>Settings</span>
 							</a>
 						</li>
-				
-						<li  class="dropdown-menu-item">
+
+						<li class="dropdown-menu-item">
 							<a href="#" class="dropdown-menu-link">
 								<div>
 									<i class="fas fa-sign-out-alt"></i>
@@ -77,8 +89,8 @@
 	<!-- sidebar -->
 	<div class="sidebar">
 		<ul class="sidebar-nav">
-			<li class="sidebar-nav-item">
-				<a href="#" class="sidebar-nav-link">
+			<li class="sidebar-nav-item" onclick="showData(0)">
+				<a href="#" class="sidebar-nav-link" data-active='0'>
 					<div>
 						<i class="fas fa-tachometer-alt"></i>
 					</div>
@@ -87,39 +99,39 @@
 					</span>
 				</a>
 			</li>
-			<li class="sidebar-nav-item">
-				<a href="#" class="sidebar-nav-link active">
+			<li class="sidebar-nav-item" onclick="showData(1)">
+				<a href="#" class="sidebar-nav-link active" data-active="1">
 					<div>
 						<i class="fab fa-accusoft"></i>
 					</div>
 					<span>UNCENSORED POST</span>
 				</a>
 			</li>
-			<li  class="sidebar-nav-item">
-				<a href="#" class="sidebar-nav-link">
+			<li class="sidebar-nav-item" onclick="showData(2)">
+				<a href="#" class="sidebar-nav-link" data-active="2">
 					<div>
 						<i class="fas fa-tasks"></i>
 					</div>
 					<span>CENSORED POST</span>
 				</a>
 			</li>
-			<li  class="sidebar-nav-item">
-				<a href="#" class="sidebar-nav-link">
+			<li class="sidebar-nav-item" onclick="showData(3)">
+				<a href="#" class="sidebar-nav-link" data-active="3">
 					<div>
 						<i class="fas fa-spinner"></i>
 					</div>
 					<span>CENSORED USER</span>
 				</a>
 			</li>
-			<li  class="sidebar-nav-item">
-				<a href="#" class="sidebar-nav-link">
+			<li class="sidebar-nav-item" onclick="showData(4)">
+				<a href="#" class="sidebar-nav-link" data-active="4">
 					<div>
 						<i class="fas fa-check-circle"></i>
 					</div>
 					<span>UNCENSORED USER</span>
 				</a>
 			</li>
-			<li  class="sidebar-nav-item">
+			<li class="sidebar-nav-item">
 				<a href="#" class="sidebar-nav-link">
 					<div>
 						<i class="fas fa-bug"></i>
@@ -127,7 +139,7 @@
 					<span>RECRUITMENT HISTORY</span>
 				</a>
 			</li>
-			<li  class="sidebar-nav-item">
+			<li class="sidebar-nav-item">
 				<a href="#" class="sidebar-nav-link">
 					<div>
 						<i class="fas fa-chart-line"></i>
@@ -135,7 +147,7 @@
 					<span>DISCRIPTION COMPANY</span>
 				</a>
 			</li>
-			<li  class="sidebar-nav-item">
+			<li class="sidebar-nav-item">
 				<a href="#" class="sidebar-nav-link">
 					<div>
 						<i class="fas fa-book-open"></i>
@@ -143,7 +155,7 @@
 					<span>INFORMATION COMPANY</span>
 				</a>
 			</li>
-			<li  class="sidebar-nav-item">
+			<li class="sidebar-nav-item">
 				<a href="#" class="sidebar-nav-link">
 					<div>
 						<i class="fab fa-algolia"></i>
@@ -156,7 +168,7 @@
 	<!-- end sidebar -->
 	<!-- main content -->
 	<div class="wrapper">
-		<div class="row" style="margin-left: 200px;">
+		<div class="row">
 			<div class="col-3 col-m-6 col-sm-6">
 				<div class="counter bg-primary">
 					<p>
@@ -175,72 +187,9 @@
 					<p>UNCENSORED POST</p>
 				</div>
 			</div>
-			<div class="col-3 col-m-6 col-sm-6">
-				<div class="counter bg-success">
-					<p>
-						<i class="fas fa-bug"></i>
-					</p>
-					<h3>10</h3>
-					<p>Deleted Post</p>
-				</div>
-			</div>
-			
 		</div>
-		<div class="row">
-			<div class="col-8 col-m-12 col-sm-12" style="width: 100%;">
-				<div class="card">
-					<div class="card-header">
-						<h3>
-							Data Response
-						</h3>
-						<i class="fas fa-ellipsis-h"></i>
-					</div>
-					<div class="card-content">
-						<table>
-							<thead>
-								<tr>
-									<th>Id</th>
-									<th>Project</th>
-									<th>Manager</th>
-									<th>Status</th>
-									<th>Due date</th>
-									<th>Due date</th>
-									<th>Due date</th>
-									<th>Button</th>
 
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>1</td>
-									<td>React</td>
-									<td>Tran Anh Tuat</td>
-									<td>
-										<span class="dot">
-											<i class="bg-success"></i>
-											Completed
-										</span>
-									</td>
-									<td>17/07/2020</td>
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>Vue</td>
-									<td>Bui Nhu Sang</td>
-									<td>
-										<span class="dot">
-											<i class="bg-warning"></i>
-											In progress
-										</span>
-									</td>
-									<td>18/07/2020</td>
-								</tr>
-								
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
+		<div class="row" id="row">
 			
 		</div>
 		<!-- <div class="row">
@@ -262,6 +211,35 @@
 	<!-- import script -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 	<script src="index.js"></script>
+	<script src="data_user.js"></script>
+
 	<!-- end import script -->
 </body>
+
 </html>
+
+<!-- <div class="col-8 col-m-12 col-sm-12" style="width: 100%;">
+	<div class="card">
+		<div class="card-header">
+			<h3>
+				Data User Response
+			</h3>
+			<i class="fas fa-ellipsis-h"></i>
+		</div>
+		<div class="card-content">
+			<table>
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Name</th>
+						<th>Phone</th>
+						<th>Email</th>
+						<th style="padding-left: 40px;">Event</th>
+					</tr>
+				</thead>
+				<tbody id="user-item">
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div> -->
