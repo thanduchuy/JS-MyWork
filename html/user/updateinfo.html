@@ -14,7 +14,7 @@
 
 </head>
 
-<body onload="getSessionUser()">
+<body>
     <div class="container-fluid main">
         <div class="row fix">
             <div class="col-3 Info">
@@ -291,7 +291,7 @@
                                         </h3>
                                     </div>
                                     <div class="el-col el-col-12" style="padding-left: 10px; padding-right: 10px;">
-                                        <form action="" class="form form-label-top" name="form">
+                                        <form action="" class="form form-label-top">
                                             <div class="el-col el-col-24"
                                                 style="padding-left: 10px; padding-right: 10px;">
                                                 <div class="form-item">
@@ -301,7 +301,7 @@
                                                     <div class="form-item-content">
                                                         <div class="input">
                                                             <input type="text" class="input-inner"
-                                                                placeholder="Nhập họ và tên của bạn" name="fullname">
+                                                                placeholder="Nhập họ và tên của bạn">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -316,7 +316,7 @@
                                                         <div class="has-icon">
                                                             <div class="input">
                                                                 <input type="number" class="input-inner"
-                                                                    placeholder="Nhập số điện thoại của bạn" name="phone">
+                                                                    placeholder="Nhập số điện thoại của bạn">
                                                             </div>
                                                             <svg class="icon-info icon" width="1em" height="1em"
                                                                 viewBox="0 0 16 16" class="bi bi-info-circle-fill"
@@ -341,7 +341,7 @@
                                                                 Ngày sinh
                                                             </label>
                                                             <div class="form-item-content">
-                                                                <select id="dateinfo" name="date">
+                                                                <select name="" id="dateinfo">
                                                                     <option value=""> Chọn ngày</option>
                                                                 </select>
                                                             </div>
@@ -356,7 +356,7 @@
                                                                 Tháng sinh
                                                             </label>
                                                             <div class="form-item-content">
-                                                                <select  id="monthinfo" name="month">
+                                                                <select name="" id="monthinfo">
                                                                     <option value=""> Chọn tháng</option>
                                                                 </select>
                                                             </div>
@@ -371,7 +371,7 @@
                                                                 Năm sinh
                                                             </label>
                                                             <div class="form-item-content">
-                                                                <select  id="yearinfo" name="year">
+                                                                <select name="" id="yearinfo">
                                                                     <option value=""> Chọn năm</option>
                                                                 </select>
                                                             </div>
@@ -389,7 +389,7 @@
                                                     <div class="form-item-content">
                                                         <div class="input">
                                                             <input type="text" class="input-inner"
-                                                                placeholder="Nhập email của bạn" name="mail">
+                                                                placeholder="Nhập email của bạn">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -407,7 +407,7 @@
                                                                 </label>
                                                                 <div class="form-item-content"
                                                                     style="padding-left: 10px; padding-right: 10px;">
-                                                                    <select  id="countryId" name="country">
+                                                                    <select name="" id="countryId">
                                                                         <option value=""> Chọn quốc tịch</option>
                                                                     </select>
                                                                 </div>
@@ -422,7 +422,7 @@
                                                                 </label>
                                                                 <div class="form-item-content"
                                                                     style="padding-left: 10px; padding-right: 10px;">
-                                                                    <select  id="city" name="city">
+                                                                    <select name="" id="city">
                                                                         <option value=""> Chọn tỉnh / thành phố</option>
                                                                     </select>
                                                                 </div>
@@ -437,7 +437,7 @@
                                                                 </label>
                                                                 <div class="form-item-content"
                                                                     style="padding-left: 10px; padding-right: 10px;">
-                                                                    <select  id="district" name="district">
+                                                                    <select name="" id="district">
                                                                         <option value=""> Chọn quận / huyện</option>
                                                                     </select>
                                                                 </div>
@@ -453,7 +453,7 @@
                                                                 <div class="form-item-content">
                                                                     <div class="input">
                                                                         <input type="text" class="input-inner"
-                                                                            placeholder="Nhập địa chỉ của bạn" name="address">
+                                                                            placeholder="Nhập địa chỉ của bạn">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -518,7 +518,7 @@
                                                     </svg>
                                                     <span>Quay lại</span>
                                                 </a>
-                                                <button type="button" class="button btn btn-primary" onclick="updateProfileUser()">
+                                                <button type="button" class="button btn btn-primary">
                                                     <svg width="1em" height="1em" viewBox="0 0 16 16"
                                                         class="bi bi-check-circle-fill" fill="currentColor"
                                                         xmlns="http://www.w3.org/2000/svg">
@@ -541,8 +541,7 @@
     </div>
     </div>
     </div>
-    <script src="/js/updateinfo.js"></script>
-    <script src="/js/user.js"></script>
+    <script src="../../js/user.js"></script>
 </body>
 
 </html>

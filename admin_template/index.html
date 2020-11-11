@@ -43,9 +43,9 @@
 		</ul>
 		<!-- end nav left -->
 		<!-- form -->
-		<form class="navbar-search">
-			<input type="text" name="Search" class="navbar-search-input" placeholder="What you looking for...">
-			<i class="fas fa-search"></i>
+		<form class="navbar-search"  name="form">
+			<input type="text" name="search" class="navbar-search-input" placeholder="What you looking for...">
+			<i class="fas fa-search" onclick="search()" ></i>
 		</form>
 		<!-- end form -->
 		<!-- nav right -->
@@ -118,7 +118,7 @@
 			<li class="sidebar-nav-item" onclick="showData(3)">
 				<a href="#" class="sidebar-nav-link" data-active="3">
 					<div>
-						<i class="fas fa-spinner"></i>
+						<i class="fas fa-check-circle"></i>
 					</div>
 					<span>CENSORED USER</span>
 				</a>
@@ -126,7 +126,7 @@
 			<li class="sidebar-nav-item" onclick="showData(4)">
 				<a href="#" class="sidebar-nav-link" data-active="4">
 					<div>
-						<i class="fas fa-check-circle"></i>
+						<i class="fas fa-spinner"></i>
 					</div>
 					<span>UNCENSORED USER</span>
 				</a>
