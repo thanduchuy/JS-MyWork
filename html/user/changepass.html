@@ -14,7 +14,7 @@
 
 </head>
 
-<body onload="getSessionUser()">
+<body>
     <div class="container-fluid main">
         <div class="row fix">
             <div class="col-3 Info">
@@ -291,21 +291,19 @@
                                         </h3>
                                     </div>
                                     <div class="el-col el-col-12" style="padding-left: 10px; padding-right: 10px;">
-                                        <form action="" class="form form-label-top" name="form">
+                                        <form action="" class="form form-label-top">
                                             <div class="el-col el-col-24"
                                                 style="padding-left: 10px; padding-right: 10px;">
                                                 <div class="form-item">
                                                     <label for="fullName" class="form-item-label"><span
                                                             style="margin-right: 4px; color: #ff4949;">* </span>Mật khẩu
                                                         cũ</label>
-                                                    
                                                     <div class="form-item-content">
                                                         <div class="input">
-                                                            <input type="password" class="input-inner"
-                                                                placeholder="Nhập mật khẩu cũ của bạn" name="oldpass">
+                                                            <input type="text" class="input-inner"
+                                                                placeholder="Nhập mật khẩu cũ của bạn">
                                                         </div>
                                                     </div>
-                                                    <p id="error">Mật khẩu cũ không đúng. Vui lòng nhập lại.</p>
                                                 </div>
                                             </div>
                                             <div class="el-col el-col-24"
@@ -317,9 +315,8 @@
                                                     <div class="form-item-content">
                                                         <div class="has-icon">
                                                             <div class="input">
-                                                                <input type="password" class="input-inner"
-                                                                    placeholder="Nhập mật khẩu mới của bạn"
-                                                                    name="newpass">
+                                                                <input type="number" class="input-inner"
+                                                                    placeholder="Nhập mật khẩu mới của bạn">
                                                             </div>
 
                                                         </div>
@@ -336,13 +333,13 @@
                                                     <div class="form-item-content">
                                                         <div class="has-icon">
                                                             <div class="input">
-                                                                <input type="password" class="input-inner"
-                                                                    placeholder="Nhập mật khẩu mới của bạn"
-                                                                    name="remindpass">
+                                                                <input type="number" class="input-inner"
+                                                                    placeholder="Nhập mật khẩu mới của bạn">
                                                             </div>
+
                                                         </div>
+
                                                     </div>
-                                                    <p id="error2">Mật khẩu nhập lại không đúng. Vui lòng nhập lại.</p>
                                                 </div>
                                             </div>
                                             <div class="text mb-4 block-action el-col el-col-24"
@@ -351,7 +348,7 @@
                                                     style="border: 1px solid rgb(110, 109, 109)">
                                                     Hủy
                                                 </button>
-                                                <button type="button" class="button btn btn-primary" onclick="updateProfileUser()">
+                                                <button type="button" class="button btn btn-primary">
                                                     <svg width="1em" height="1em" viewBox="0 0 16 16"
                                                         class="bi bi-check-circle-fill" fill="currentColor"
                                                         xmlns="http://www.w3.org/2000/svg">
@@ -374,8 +371,7 @@
     </div>
     </div>
     </div>
-    <script src="/js/changepass.js"></script>
-    
+    <script src="../../js/user.js"></script>
 </body>
 
 </html>
