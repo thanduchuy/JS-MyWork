@@ -47,7 +47,7 @@ function regisEmployer() {
                 saveProfileEmployer(employers);
             }
             clearForm();
-            window.location.href = "http://127.0.0.1:5501/html/loginEmployer.html";
+            window.location.href = "http://127.0.0.1:5502/html/loginEmployer.html";
         }
     } else {
         document.getElementById("error").innerHTML = "Vui lòng đồng ý điều khoản";

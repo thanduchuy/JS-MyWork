@@ -34,7 +34,7 @@ function addUserToLocal(user) {
             users.push(user);
             saveLocalStorage(users);
         }
-        window.location.href = "http://127.0.0.1:5501/html/loginUser.html";
+        window.location.href = "http://127.0.0.1:5502/html/loginUser.html";
         resetForm()
     } else {
         document.getElementById("error").innerHTML = "Email đã được sử dụng";

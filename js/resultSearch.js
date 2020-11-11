@@ -47,7 +47,7 @@ function formatArray(arr) {
         <div class="item">
         <div class="row">
             <div class="col-8">
-                <a class="nameJob" href="#">${item.nameJob}</a>
+                <a class="nameJob" href="/html/detailjob.html">${item.nameJob}</a>
                 <p class="nameCompany">${item.nameCompany}</p>
                 <div class="row d-flex justify-content-between">
                     <div class="col-3">

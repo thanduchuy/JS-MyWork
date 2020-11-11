@@ -1,6 +1,7 @@
 let jobs = []
 let listCV = []
 let cvChoose = 0
+let user = {}
 function loadData() {
     jobs = loadJobLocal()
     showJobViewMuch()
@@ -70,7 +71,7 @@ function shuffle(a) {
     return a;
 }
 function getListCVOfUser() {
-    let user = JSON.parse(sessionStorage.getItem("userLogin"))
+    user = JSON.parse(sessionStorage.getItem("userLogin"))
     let temp = JSON.parse(localStorage.getItem("listCV"))
     listCV = temp.filter(element => element["idUser"] == user["id"])
     info.phone.value = user["phone"]
@@ -100,4 +101,30 @@ function chooseCVSent(index) {
         document.getElementsByName("itemCV")[i].style.borderColor = i == index ? "#009ce0" : "#e1e1e1"
         document.getElementsByName("checkCV")[i].style.display = i == index ? "block" : "none"
     }
+}
+function senttCVToEmployer() {
+    let phone = info.phone.value;
+    let email = info.email.value;
+    let cv = listCV[cvChoose];
+    let name = user["name"];
+
+    let cvSent = {
+        phone : phone,
+        email : email,
+        cvImage : cv["cvImage"],
+        idUser : user["id"],
+        idEmployer : "U000",
+        name: name
+    }
+
+    let cvSents = JSON.parse(localStorage.getItem("cvSent"));
+    if (cvSents == null) {
+        cvSent["id"] = `CV1`
+        localStorage.setItem("cvSent",JSON.stringify([cvSent]));
+    } else {
+        cvSent["id"] = `CV${cvSents.length+1}`;
+        cvSents.push(cvSent);
+        localStorage.setItem("cvSent",JSON.stringify(cvSents));
+    }
+    window.location.href = "http://127.0.0.1:5502/html/home.html";
 }

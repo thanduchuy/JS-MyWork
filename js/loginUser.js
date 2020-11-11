@@ -10,7 +10,7 @@ function getData() {
 }
 function checkUser(email,pass) {
     for(item of users) {
-        if (item.email == email && item.pass == pass) {
+        if (item.email == email && item.pass == pass && item.role == "user") {
             saveSession(item)
             return true
         }

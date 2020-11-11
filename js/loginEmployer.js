@@ -12,7 +12,7 @@ function loginEmployer() {
     let pass = form.password.value;
     if (checkUser(email,pass)) {
         resetForm();
-        window.location.href = "http://127.0.0.1:5501/html/home.html";
+        window.location.href = "http://127.0.0.1:5502/html/home.html";
     } else {
         document.getElementById("error").innerHTML = "Tên tài khoản hoặc mật khẩu không đúng"
         document.getElementById("error").style.display = 'block';
@@ -20,7 +20,7 @@ function loginEmployer() {
 }
 function checkUser(email,pass) {
     for(item of users) {
-        if (item.email == email && item.pass == pass) {
+        if (item.email == email && item.pass == pass && item.role == "employer") {
             saveSession(item)
             return true
         }

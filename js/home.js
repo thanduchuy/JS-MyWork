@@ -80,3 +80,20 @@ function searchWork() {
 
   window.location.href = `http://127.0.0.1:5502/html/result.html?name=${name}&jobs=${jobs}&locations=${locations}`;
 }
+function getUserLogin() {
+  let user = JSON.parse(sessionStorage.getItem("userLogin"));
+  if (user != null) {
+    document.getElementById("nameUser").innerHTML = user["name"]
+    document.getElementById("user").style.display = "inline"
+    document.getElementById("login").style.display = "none"
+    document.getElementById("regis").style.display = "none"
+  } else {
+    document.getElementById("user").style.display = "none"
+    document.getElementById("login").style.display = "inline"
+    document.getElementById("regis").style.display = "inline"
+  }
+}
+function onLogOut() {
+  sessionStorage.removeItem("userLogin");
+  location.reload();
+}
