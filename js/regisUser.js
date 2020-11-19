@@ -1,46 +1,8 @@
-let users = [];
 
+ var db = firebase.firestore();
 function loadPage() {
     document.getElementById("error").style.display = 'none';
-    users = getData();
-    console.log(users);
-}
-function getData() {
-    let users = JSON.parse(localStorage.getItem("user"));
-    return users;
-}
-function saveLocalStorage(user) {
-    localStorage.setItem("user", JSON.stringify(user));
-}
-function checkUserExisted(user) {
-    if (users == null) {
-        return true
-    } else {
-        for (item of users) {
-            if (item.email == user.email) {
-                return false
-            }
-        }
-    }  
-    return true
-}
-function addUserToLocal(user) {
-    if (checkUserExisted(user) ) {
-        if (users == null) {
-            user["id"] = "u1"
-            saveLocalStorage([user]);
-        } else {
-            user["id"] = `u${users.length+1}`;
-            users.push(user);
-            saveLocalStorage(users);
-        }
-        window.location.href = "http://127.0.0.1:5501/html/loginUser.html";
-        resetForm()
-    } else {
-        document.getElementById("error").innerHTML = "Email đã được sử dụng";
-        document.getElementById("error").style.display = 'block'
-    }
-
+    console.log(getUserLogged());
 }
 function resetForm() {
     form.name.value = ""
@@ -76,8 +38,46 @@ function regisUser() {
                 role : "user",
                 active : false 
             }
-            addUserToLocal(user)
+            registerUser(user);
            }
         }
     }
+}
+
+
+function registerUser(userAR) {
+    firebase.auth().createUserWithEmailAndPassword(userAR.email, userAR.pass)
+    .then((user) => {
+        let id = user["user"]["uid"];
+        addProfileUser(id,userAR);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+}
+function addProfileUser(id,user) {
+    db.collection("Profile").doc(id).set({
+        name: user.name,
+        phone: user.phone,
+        email: user.email,
+        birthday: "",
+        gender: "",
+        status: "",
+        address: "",
+        nation: "",
+        city: "",
+        district: "",
+        role: "User"
+    })
+    .then(function() {
+        document.location.href = "http://127.0.0.1:5502/html/home.html";
+    })
+    .catch(function(error) {
+        console.error("Error writing document: ", error);
+    });
+}   
+
+function getUserLogged() {
+    var user = firebase.auth().currentUser;
+    return user
 }
