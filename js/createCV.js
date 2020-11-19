@@ -202,24 +202,31 @@ function exportCV() {
     taintTest: false
   }).then(canvas => {
     let imageData = canvas.toDataURL('image/jpeg');
-    addCVUser(imageData)
+    getUserLogged().then(user=>{
+      addDocToCVCollection(imageData,user.uid);
+    })
   })
 }
-function addCVUser(data) {
-  let user = JSON.parse(sessionStorage.getItem("userLogin"))
-  if (user != null) {
-    let listCV = JSON.parse(localStorage.getItem("listCV"))
-    let cv = {
-      id:1,
-      idUser:user.id,
-      cvImage: data
-    }
-    if (listCV != null) {
-      cv.id = listCV.length + 1
-      listCV.push(cv)
-      localStorage.setItem("listCV",JSON.stringify(listCV))
-    } else {
-      localStorage.setItem("listCV",JSON.stringify([cv]))
-    }
-  }
+function getUserLogged() {
+  return new Promise ((resove,reject)=>{
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        resove(user)
+      } else {
+        reject("ERROR")
+      }
+    });
+  })
+}
+
+function addDocToCVCollection(url,idUser) {
+  db.collection("CV").add({
+      cvImage: url,
+      idUser: idUser
+  }).then(function(docRef) {
+      alert("Thêm CV thành công");
+  })
+  .catch(function(error) {
+      console.error("Error adding document: ", error);
+  });
 }

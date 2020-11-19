@@ -173,3 +173,11 @@ function addDocToCVCollection(url,idUser,user) {
         console.error("Error adding document: ", error);
     });
 }
+function cvUser(id) {
+    db.collection("CV").where("idUser", "==", id)
+    .get().then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            console.log(doc.id, " => ", doc.data());
+        });
+    });
+}
