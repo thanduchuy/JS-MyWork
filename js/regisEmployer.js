@@ -1,9 +1,8 @@
 let users = [];
 let employers = [];
+var db = firebase.firestore();
 function loadPage() {
     document.getElementById("error").style.display = "none"
-    users = getData();
-    employers = getProfileEmployer();
 }
 function regisEmployer() {
     let email = form.email.value;
@@ -28,73 +27,20 @@ function regisEmployer() {
                 email : email,
                 pass : pass,
                 role : "employer",
-                active : false 
-            }
-            addUserToLocal(user);
-            let employer = {
+                active : false,
                 nameCT : nameCT,
                 scale : scale,
                 field : field,
                 address : address,
                 city : city
             }
-            if (employers == null) {
-                employer["id"] = "u1"
-                saveProfileEmployer([employer]);
-            } else {
-                employer["id"] = `u${employers.length+1}`;
-                employers.push(employer);
-                saveProfileEmployer(employers);
-            }
+            registerUser(user)
             clearForm();
-            window.location.href = "http://127.0.0.1:5501/html/loginEmployer.html";
         }
     } else {
         document.getElementById("error").innerHTML = "Vui lòng đồng ý điều khoản";
         document.getElementById("error").style.display = 'block';
     }
-}
-function addUserToLocal(user) {
-    if (checkUserExisted(user) ) {
-        if (users == null) {
-            user["id"] = "u1"
-            saveLocalStorage([user]);
-        } else {
-            user["id"] = `u${users.length+1}`;
-            users.push(user);
-            saveLocalStorage(users);
-        }
-    } else {
-        document.getElementById("error").innerHTML = "Email đã được sử dụng";
-        document.getElementById("error").style.display = 'block'
-    }
-
-}
-function checkUserExisted(user) {
-    if (users == null) {
-        return true
-    } else {
-        for (item of users) {
-            if (item.email == user.email) {
-                return false
-            }
-        }
-    }  
-    return true
-}
-function getProfileEmployer() {
-    let employer = JSON.parse(localStorage.getItem("employers"));
-    return employer;
-}
-function saveProfileEmployer(employers) {
-    localStorage.setItem("employers", JSON.stringify(employers));
-}
-function getData() {
-    let users = JSON.parse(localStorage.getItem("user"));
-    return users;
-}
-function saveLocalStorage(user) {
-    localStorage.setItem("user", JSON.stringify(user));
 }
 function clearForm() {
     form.email.value = "";
@@ -110,3 +56,39 @@ function clearForm() {
     document.getElementById("error").style.display = 'none'
 }
 
+
+function registerUser(userAR) {
+    firebase.auth().createUserWithEmailAndPassword(userAR.email, userAR.pass)
+    .then((user) => {
+        let id = user["user"]["uid"];
+        addProfileUser(id,userAR);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+}
+function addProfileUser(id,user) {
+    db.collection("Profile").doc(id).set({
+        name: user.name,
+        phone: user.phone,
+        email: user.email,
+        birthday: "",
+        gender: "",
+        status: "",
+        address: user.address,
+        nation: "",
+        city: user.city,
+        district: "",
+        role: "Employer",
+        active : false,
+        nameCompany : user.nameCT,
+        scale : user.scale,
+        field : user.field
+    })
+    .then(function() {
+        document.location.href = "http://127.0.0.1:5502/html/home.html";
+    })
+    .catch(function(error) {
+        console.error("Error writing document: ", error);
+    });
+}   

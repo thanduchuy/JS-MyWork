@@ -67,7 +67,8 @@ function addProfileUser(id,user) {
         nation: "",
         city: "",
         district: "",
-        role: "User"
+        role: "User",
+        active : false
     })
     .then(function() {
         document.location.href = "http://127.0.0.1:5502/html/home.html";

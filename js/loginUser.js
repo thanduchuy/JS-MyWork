@@ -2,23 +2,6 @@ var db = firebase.firestore();
 function loadPage() {
     document.getElementById("error").style.display = 'none';
 }
-
-function addDocToJobCollection(job) {
-    db.collection("Jobs").add({
-        nameJob: job.nameJob,
-        nameCompany: job.nameCompany,
-        salary: job.salary,
-        career: job.career,
-        location: job.location,
-        datePost: job.datePost,
-        imageCompany: job.imageCompany
-    }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
-    })
-    .catch(function(error) {
-        console.error("Error adding document: ", error);
-    });
-}
 function loginUser() {
     let email = form.email.value;
     let pass = form.pass.value;
