@@ -1,19 +1,53 @@
 let jobs = []
 let listCV = []
 let cvChoose = 0
+
 function loadData() {
     jobs = loadJobLocal()
     showJobViewMuch()
     getListCVOfUser()
 }
+
 function loadJobLocal() {
     return JSON.parse(localStorage.getItem("jobs"))
 }
+
+function jobSearchByName(name) {
+    return new Promise((resove, reject) => {
+        let listJob = []
+        db.collection("Jobs").where("nameJob", "==", name)
+            .get().then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    console.log(doc.id, " => ", doc.data());
+                    let job = {
+                        id: doc.id,
+                        career: doc.data().career,
+                        datePost: doc.data().datePost,
+                        imageCompany: doc.data().imageCompany,
+                        location: doc.data().location,
+                        nameCompany: doc.data().nameCompany,
+                        nameJob: doc.data().nameJob,
+                        salary: doc.data().salary
+                    }
+                    listJob.push(job);
+                });
+                resove(listJob);
+            });
+    })
+}
+
+function formatArray(arr) {
+    let inner = "";
+    for (let i = 0; i < 8; i++) {
+        inner += `    `;
+    }
+}
+
 function showJobViewMuch() {
     let temp = shuffle(jobs);
     let inner = "";
     for (let index = 0; index < 3; index++) {
-        inner+= `
+        inner += `
         <div class="col-md-12 col-lg-12 job-over-item">
         <div class="row job-item">
             <p class="j-title-text-ellipsis">
@@ -62,6 +96,7 @@ function showJobViewMuch() {
     }
     document.getElementById("jobViewMuch").innerHTML = inner;
 }
+
 function shuffle(a) {
     for (let i = a.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -69,13 +104,14 @@ function shuffle(a) {
     }
     return a;
 }
+
 function getListCVOfUser() {
     let user = JSON.parse(sessionStorage.getItem("userLogin"))
     let temp = JSON.parse(localStorage.getItem("listCV"))
     listCV = temp.filter(element => element["idUser"] == user["id"])
     info.phone.value = user["phone"]
     info.email.value = user["email"]
-    document.getElementById("listCV").innerHTML =  listCV.map((element,index)=> {
+    document.getElementById("listCV").innerHTML = listCV.map((element, index) => {
         return `
         <div class="col-4">
             <div class="col-12 items d-flex justify-content-center align-items-center" name="itemCV"
@@ -94,6 +130,7 @@ function getListCVOfUser() {
     document.getElementsByName("checkCV")[0].style.display = "block"
 
 }
+
 function chooseCVSent(index) {
     cvChoose = index
     for (var i = 0; i < listCV.length; i++) {

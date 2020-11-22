@@ -6,14 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Detail Job</title>
     <link rel="stylesheet" href="/css/style.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/css/detailjob.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <script src="..\js\placeholderTypewriter.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-storage.js"></script>
+
+    <script src="/js/FireBase.js"></script>
 </head>
 
 <body onload="loadData()">
@@ -24,7 +30,7 @@
                     <div class="col-6 headerLeft d-flex align-items-center">
                         <a href="home.html">
                             <div class="logo">
-                            
+
                             </div>
                         </a>
                         <select>
@@ -42,8 +48,7 @@
                         <ul class="d-flex">
                             <a style="text-decoration: none;" href="register.html">
                                 <li class="d-flex flex-column align-items-center justify-content-around">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill"
-                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd"
                                             d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                                     </svg>
@@ -52,8 +57,7 @@
                             </a>
                             <a style="text-decoration: none;" href="login.html">
                                 <li class="d-flex flex-column align-items-center justify-content-around">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill"
-                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd"
                                             d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
                                     </svg>
@@ -62,8 +66,7 @@
                             </a>
                             <a style="text-decoration: none;" href="login.html">
                                 <li class="d-flex flex-column align-items-center justify-content-around">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bell-fill"
-                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bell-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path
                                             d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
                                     </svg>
@@ -72,8 +75,7 @@
                             </a>
                             <a style="text-decoration: none;" href="user/UserInfo.html">
                                 <li class="d-flex flex-column align-items-center justify-content-around">
-                                    <img src="..//assets/images/employee.png" alt="employee"
-                                        style="height: 25px; width: 25px;">
+                                    <img src="..//assets/images/employee.png" alt="employee" style="height: 25px; width: 25px;">
                                     <span>CÁ NHÂN <svg width="1em" height="1em" viewBox="0 0 16 16"
                                             class="bi bi-chevron-down" fill="currentColor"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -83,8 +85,7 @@
                                 </li>
                             </a>
                             <li class="d-flex flex-column align-items-center justify-content-around" id="active">
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-briefcase-fill"
-                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-briefcase-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
                                         d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z" />
                                     <path fill-rule="evenodd"
@@ -104,8 +105,7 @@
                         <div class="container formGroup">
                             <div class="row d-flex justify-content-around">
                                 <div class="itemForm col-5 d-flex justify-content-start align-items-center">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-briefcase-fill"
-                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-briefcase-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd"
                                             d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z" />
                                         <path fill-rule="evenodd"
@@ -114,8 +114,7 @@
                                     <input type="text" class="search-box" name="search" id="search">
                                 </div>
                                 <div class="itemForm col-2 d-flex justify-content-around align-items-center">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear-wide-connected"
-                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear-wide-connected" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd"
                                             d="M8.932.727c-.243-.97-1.62-.97-1.864 0l-.071.286a.96.96 0 0 1-1.622.434l-.205-.211c-.695-.719-1.888-.03-1.613.931l.08.284a.96.96 0 0 1-1.186 1.187l-.284-.081c-.96-.275-1.65.918-.931 1.613l.211.205a.96.96 0 0 1-.434 1.622l-.286.071c-.97.243-.97 1.62 0 1.864l.286.071a.96.96 0 0 1 .434 1.622l-.211.205c-.719.695-.03 1.888.931 1.613l.284-.08a.96.96 0 0 1 1.187 1.187l-.081.283c-.275.96.918 1.65 1.613.931l.205-.211a.96.96 0 0 1 1.622.434l.071.286c.243.97 1.62.97 1.864 0l.071-.286a.96.96 0 0 1 1.622-.434l.205.211c.695.719 1.888.03 1.613-.931l-.08-.284a.96.96 0 0 1 1.187-1.187l.283.081c.96.275 1.65-.918.931-1.613l-.211-.205a.96.96 0 0 1 .434-1.622l.286-.071c.97-.243.97-1.62 0-1.864l-.286-.071a.96.96 0 0 1-.434-1.622l.211-.205c.719-.695.03-1.888-.931-1.613l-.284.08a.96.96 0 0 1-1.187-1.186l.081-.284c.275-.96-.918-1.65-1.613-.931l-.205.211a.96.96 0 0 1-1.622-.434L8.932.727zM8 12.997a4.998 4.998 0 1 0 0-9.995 4.998 4.998 0 0 0 0 9.996z" />
                                         <path fill-rule="evenodd"
@@ -126,8 +125,7 @@
                                     </select>
                                 </div>
                                 <div class="itemForm col-2 d-flex justify-content-around align-items-center">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-globe2"
-                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-globe2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd"
                                             d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855-.143.268-.276.56-.395.872.705.157 1.472.257 2.282.287V1.077zM4.249 3.539a8.372 8.372 0 0 1-1.198-.49 7.01 7.01 0 0 1 2.276-1.52 6.7 6.7 0 0 0-.597.932 8.854 8.854 0 0 0-.48 1.079zM3.509 7.5H1.017A6.964 6.964 0 0 1 2.38 3.825c.47.258.995.482 1.565.667A13.4 13.4 0 0 0 3.508 7.5zm1.4-2.741c.808.187 1.681.301 2.591.332V7.5H4.51c.035-.987.176-1.914.399-2.741zM8.5 5.09V7.5h2.99a12.342 12.342 0 0 0-.399-2.741c-.808.187-1.681.301-2.591.332zM4.51 8.5H7.5v2.409c-.91.03-1.783.145-2.591.332a12.343 12.343 0 0 1-.4-2.741zm3.99 0v2.409c.91.03 1.783.145 2.591.332.223-.827.364-1.754.4-2.741H8.5zm-3.282 3.696A12.63 12.63 0 0 1 7.5 11.91v3.014c-.67-.204-1.335-.82-1.887-1.855a7.776 7.776 0 0 1-.395-.872zm.11 2.276a6.696 6.696 0 0 1-.598-.933 8.853 8.853 0 0 1-.481-1.079 8.38 8.38 0 0 0-1.198.49 7.01 7.01 0 0 0 2.276 1.522zm-1.383-2.964a9.083 9.083 0 0 0-1.565.667A6.963 6.963 0 0 1 1.018 8.5h2.49a13.36 13.36 0 0 0 .437 3.008zm6.728 2.964a7.009 7.009 0 0 0 2.275-1.521 8.376 8.376 0 0 0-1.197-.49 8.853 8.853 0 0 1-.481 1.078 6.688 6.688 0 0 1-.597.933zM8.5 11.909c.81.03 1.577.13 2.282.287-.12.312-.252.604-.395.872-.552 1.035-1.218 1.65-1.887 1.855V11.91zm3.555-.401c.57.185 1.095.409 1.565.667A6.963 6.963 0 0 0 14.982 8.5h-2.49a13.36 13.36 0 0 1-.437 3.008zM14.982 7.5h-2.49a13.361 13.361 0 0 0-.437-3.008 9.123 9.123 0 0 0 1.565-.667A6.963 6.963 0 0 1 14.982 7.5zM11.27 2.461c.177.334.339.694.482 1.078a8.368 8.368 0 0 0 1.196-.49 7.01 7.01 0 0 0-2.275-1.52c.218.283.418.597.597.932zm-.488 1.343c-.705.157-1.473.257-2.282.287V1.077c.67.204 1.335.82 1.887 1.855.143.268.276.56.395.872z" />
                                     </svg>
@@ -190,19 +188,16 @@
                                     <h1 class="main-title">
                                         <span>Cán Bộ Pháp Lý Địa Bàn</span>
                                     </h1>
-                                    <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html"
-                                        title="CÔNG TY LUẬT TNHH MTV HPDR" target="_blank">
+                                    <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html" title="CÔNG TY LUẬT TNHH MTV HPDR" target="_blank">
                                         <h4 class="desc-for-title mb-20">
-                                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-building"
-                                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-building" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd"
                                                     d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694L1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z" />
                                                 <path
                                                     d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z" />
                                             </svg>
                                             <span>CÔNG TY LUẬT TNHH MTV HPDR</span>
-                                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-patch-check"
-                                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-patch-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd"
                                                     d="M10.273 2.513l-.921-.944.715-.698.622.637.89-.011a2.89 2.89 0 0 1 2.924 2.924l-.01.89.636.622a2.89 2.89 0 0 1 0 4.134l-.637.622.011.89a2.89 2.89 0 0 1-2.924 2.924l-.89-.01-.622.636a2.89 2.89 0 0 1-4.134 0l-.622-.637-.89.011a2.89 2.89 0 0 1-2.924-2.924l.01-.89-.636-.622a2.89 2.89 0 0 1 0-4.134l.637-.622-.011-.89a2.89 2.89 0 0 1 2.924-2.924l.89.01.622-.636a2.89 2.89 0 0 1 4.134 0l-.715.698a1.89 1.89 0 0 0-2.704 0l-.92.944-1.32-.016a1.89 1.89 0 0 0-1.911 1.912l.016 1.318-.944.921a1.89 1.89 0 0 0 0 2.704l.944.92-.016 1.32a1.89 1.89 0 0 0 1.912 1.911l1.318-.016.921.944a1.89 1.89 0 0 0 2.704 0l.92-.944 1.32.016a1.89 1.89 0 0 0 1.911-1.912l-.016-1.318.944-.921a1.89 1.89 0 0 0 0-2.704l-.944-.92.016-1.32a1.89 1.89 0 0 0-1.912-1.911l-1.318.016z" />
                                                 <path fill-rule="evenodd"
@@ -213,15 +208,11 @@
                                 </div>
                                 <div class="col-md-12 col-lg-12" style="display: flex;">
                                     <div class="box-main-info-job" style="width:77%;padding-right: 15px;">
-                                        <div class="box-main-info-job-left"
-                                            style="border: 1px solid #dae2ec; background-color: #f7fbff;">
+                                        <div class="box-main-info-job-left" style="border: 1px solid #dae2ec; background-color: #f7fbff;">
                                             <div class="row" style="padding: 17px 15px 0 17px">
                                                 <div class="col-md-6">
-                                                    <div
-                                                        style="position: relative; display: flex; border-bottom: 1px solid #ddd; padding-bottom: 13px;">
-                                                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16"
-                                                            class="bi bi-cash" fill="currentColor"
-                                                            xmlns="http://www.w3.org/2000/svg">
+                                                    <div style="position: relative; display: flex; border-bottom: 1px solid #ddd; padding-bottom: 13px;">
+                                                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-cash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                             <path fill-rule="evenodd"
                                                                 d="M15 4H1v8h14V4zM1 3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H1z" />
                                                             <path
@@ -231,18 +222,14 @@
                                                             <span
                                                                 style="font-size: 16px; color: #939393; text-transform: uppercase;">Mức
                                                                 lương</span>
-                                                            <br>
-                                                            15 triệu - 20 triệu
-                                                            <span>(Có phần trăm hoa hồng)</span>
+                                                        <br> 15 triệu - 20 triệu
+                                                        <span>(Có phần trăm hoa hồng)</span>
                                                         </span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div
-                                                        style="position: relative; display: flex; border-bottom: 1px solid #ddd; padding-bottom: 13px;">
-                                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16"
-                                                            class="bi bi-alarm" fill="currentColor"
-                                                            xmlns="http://www.w3.org/2000/svg">
+                                                    <div style="position: relative; display: flex; border-bottom: 1px solid #ddd; padding-bottom: 13px;">
+                                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-alarm" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                             <path fill-rule="evenodd"
                                                                 d="M6.5 0a.5.5 0 0 0 0 1H7v1.07a7.001 7.001 0 0 0-3.273 12.474l-.602.602a.5.5 0 0 0 .707.708l.746-.746A6.97 6.97 0 0 0 8 16a6.97 6.97 0 0 0 3.422-.892l.746.746a.5.5 0 0 0 .707-.708l-.601-.602A7.001 7.001 0 0 0 9 2.07V1h.5a.5.5 0 0 0 0-1h-3zm1.038 3.018a6.093 6.093 0 0 1 .924 0 6 6 0 1 1-.924 0zM8.5 5.5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9V5.5zM0 3.5c0 .753.333 1.429.86 1.887A8.035 8.035 0 0 1 4.387 1.86 2.5 2.5 0 0 0 0 3.5zM13.5 1c-.753 0-1.429.333-1.887.86a8.035 8.035 0 0 1 3.527 3.527A2.5 2.5 0 0 0 13.5 1z" />
                                                         </svg>
@@ -250,19 +237,16 @@
                                                             <span
                                                                 style="font-size: 16px; color: #939393; text-transform: uppercase;">Hạn
                                                                 nộp hồ sơ</span>
-                                                            <br>
-                                                            <span>04/11/2020</span>
+                                                        <br>
+                                                        <span>04/11/2020</span>
                                                         </span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row" style="padding: 17px 15px 0 17px">
                                                 <div class="col-md-6">
-                                                    <div
-                                                        style="position: relative; display: flex; border-bottom: 1px solid #ddd; padding-bottom: 13px;">
-                                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16"
-                                                            class="bi bi-geo-alt" fill="currentColor"
-                                                            xmlns="http://www.w3.org/2000/svg">
+                                                    <div style="position: relative; display: flex; border-bottom: 1px solid #ddd; padding-bottom: 13px;">
+                                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-geo-alt" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                             <path fill-rule="evenodd"
                                                                 d="M12.166 8.94C12.696 7.867 13 6.862 13 6A5 5 0 0 0 3 6c0 .862.305 1.867.834 2.94.524 1.062 1.234 2.12 1.96 3.07A31.481 31.481 0 0 0 8 14.58l.208-.22a31.493 31.493 0 0 0 1.998-2.35c.726-.95 1.436-2.008 1.96-3.07zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
                                                             <path fill-rule="evenodd"
@@ -272,17 +256,13 @@
                                                             <span
                                                                 style="font-size:16px; color: #939393; text-transform: uppercase;">Địa
                                                                 điểm tuyển dụng</span>
-                                                            <div class="txt-ellipsis">Đà Nẵng, Hải Dương, Lâm Đồng,
-                                                                Quảng Ngãi, Quảng Ninh</div>
+                                                        <div class="txt-ellipsis">Đà Nẵng, Hải Dương, Lâm Đồng, Quảng Ngãi, Quảng Ninh</div>
                                                         </span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div
-                                                        style="position: relative; display: flex; border-bottom: 1px solid #ddd; padding-bottom: 13px;">
-                                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16"
-                                                            class="bi bi-gear-wide-connected" fill="currentColor"
-                                                            xmlns="http://www.w3.org/2000/svg">
+                                                    <div style="position: relative; display: flex; border-bottom: 1px solid #ddd; padding-bottom: 13px;">
+                                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-gear-wide-connected" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                             <path fill-rule="evenodd"
                                                                 d="M8.932.727c-.243-.97-1.62-.97-1.864 0l-.071.286a.96.96 0 0 1-1.622.434l-.205-.211c-.695-.719-1.888-.03-1.613.931l.08.284a.96.96 0 0 1-1.186 1.187l-.284-.081c-.96-.275-1.65.918-.931 1.613l.211.205a.96.96 0 0 1-.434 1.622l-.286.071c-.97.243-.97 1.62 0 1.864l.286.071a.96.96 0 0 1 .434 1.622l-.211.205c-.719.695-.03 1.888.931 1.613l.284-.08a.96.96 0 0 1 1.187 1.187l-.081.283c-.275.96.918 1.65 1.613.931l.205-.211a.96.96 0 0 1 1.622.434l.071.286c.243.97 1.62.97 1.864 0l.071-.286a.96.96 0 0 1 1.622-.434l.205.211c.695.719 1.888.03 1.613-.931l-.08-.284a.96.96 0 0 1 1.187-1.187l.283.081c.96.275 1.65-.918.931-1.613l-.211-.205a.96.96 0 0 1 .434-1.622l.286-.071c.97-.243.97-1.62 0-1.864l-.286-.071a.96.96 0 0 1-.434-1.622l.211-.205c.719-.695.03-1.888-.931-1.613l-.284.08a.96.96 0 0 1-1.187-1.186l.081-.284c.275-.96-.918-1.65-1.613-.931l-.205.211a.96.96 0 0 1-1.622-.434L8.932.727zM8 12.997a4.998 4.998 0 1 0 0-9.995 4.998 4.998 0 0 0 0 9.996z" />
                                                             <path fill-rule="evenodd"
@@ -292,20 +272,16 @@
                                                             <span
                                                                 style="font-size: 16px; color: #939393; text-transform: uppercase;">Ngành
                                                                 nghề</span>
-                                                            <br>
-                                                            <div class="txt-ellipsis">Bảo vệ/ An ninh/ Vệ sỹ, Kế toán -
-                                                                Kiểm toán, Ngân hàng/ Tài chính</div>
+                                                        <br>
+                                                        <div class="txt-ellipsis">Bảo vệ/ An ninh/ Vệ sỹ, Kế toán - Kiểm toán, Ngân hàng/ Tài chính</div>
                                                         </span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row" style="padding: 17px 15px 0 17px">
                                                 <div class="col-md-6">
-                                                    <div
-                                                        style="position: relative; display: flex; border-bottom: 1px solid #ddd; padding-bottom: 13px;">
-                                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16"
-                                                            class="bi bi-file-person" fill="currentColor"
-                                                            xmlns="http://www.w3.org/2000/svg">
+                                                    <div style="position: relative; display: flex; border-bottom: 1px solid #ddd; padding-bottom: 13px;">
+                                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-file-person" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                             <path fill-rule="evenodd"
                                                                 d="M12 1H4a1 1 0 0 0-1 1v10.755S4 11 8 11s5 1.755 5 1.755V2a1 1 0 0 0-1-1zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z" />
                                                             <path fill-rule="evenodd"
@@ -315,17 +291,14 @@
                                                             <span
                                                                 style="font-size: 16px; color: #939393; text-transform: uppercase;">Chức
                                                                 vụ</span>
-                                                            <br>
-                                                            <div class="txt-ellipsis">Nhân viên</div>
+                                                        <br>
+                                                        <div class="txt-ellipsis">Nhân viên</div>
                                                         </span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div
-                                                        style="position: relative; display: flex; border-bottom: 1px solid #ddd; padding-bottom: 13px;">
-                                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16"
-                                                            class="bi bi-briefcase" fill="currentColor"
-                                                            xmlns="http://www.w3.org/2000/svg">
+                                                    <div style="position: relative; display: flex; border-bottom: 1px solid #ddd; padding-bottom: 13px;">
+                                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-briefcase" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                             <path fill-rule="evenodd"
                                                                 d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-6h-1v6a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-6H0v6z" />
                                                             <path fill-rule="evenodd"
@@ -335,19 +308,16 @@
                                                             <span
                                                                 style="font-size: 16px; color: #939393; text-transform: uppercase;">Kinh
                                                                 nghiệm</span>
-                                                            <br>
-                                                            <div class="txt-ellipsis">Chưa có kinh nghiệm</div>
+                                                        <br>
+                                                        <div class="txt-ellipsis">Chưa có kinh nghiệm</div>
                                                         </span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row" style="padding: 17px 15px 0 17px">
                                                 <div class="col-md-6">
-                                                    <div
-                                                        style="position: relative; display: flex; border-bottom: 1px solid #ddd; padding-bottom: 13px;">
-                                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16"
-                                                            class="bi bi-shop" fill="currentColor"
-                                                            xmlns="http://www.w3.org/2000/svg">
+                                                    <div style="position: relative; display: flex; border-bottom: 1px solid #ddd; padding-bottom: 13px;">
+                                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-shop" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                             <path fill-rule="evenodd"
                                                                 d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
                                                         </svg>
@@ -355,17 +325,15 @@
                                                             <span
                                                                 style="font-size: 16px; color: #939393; text-transform: uppercase;">Hình
                                                                 thức làm việc</span>
-                                                            <br>
-                                                            <div class="txt-ellipsis">Toàn thời gian cố định</div>
+                                                        <br>
+                                                        <div class="txt-ellipsis">Toàn thời gian cố định</div>
                                                         </span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div style="position: relative; display: flex; border-bottom: 1px
                                                         solid #ddd; padding-bottom: 13px;">
-                                                        <svg width=" 1.2em" height="1.2em" viewBox="0 0 16 16"
-                                                            class="bi bi-newspaper" fill="currentColor"
-                                                            xmlns="http://www.w3.org/2000/svg">
+                                                        <svg width=" 1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-newspaper" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                             <path fill-rule="evenodd"
                                                                 d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z" />
                                                             <path
@@ -375,19 +343,16 @@
                                                             <span
                                                                 style="font-size: 16px; color: #939393; text-transform: uppercase;">Yêu
                                                                 cầu bằng cấp</span>
-                                                            <br>
-                                                            <div class="txt-ellipsis">Trung cấp</div>
+                                                        <br>
+                                                        <div class="txt-ellipsis">Trung cấp</div>
                                                         </span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row" style="padding: 17px 15px 0 17px">
                                                 <div class="col-md-6">
-                                                    <div
-                                                        style="position: relative; display: flex; padding-bottom: 4px;">
-                                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16"
-                                                            class="bi bi-person-fill" fill="currentColor"
-                                                            xmlns="http://www.w3.org/2000/svg">
+                                                    <div style="position: relative; display: flex; padding-bottom: 4px;">
+                                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                             <path fill-rule="evenodd"
                                                                 d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
                                                         </svg>
@@ -395,17 +360,14 @@
                                                             <span
                                                                 style="font-size: 16px; color: #939393; text-transform: uppercase;">Số
                                                                 lượng cần tuyển</span>
-                                                            <br>
-                                                            <div class="txt-ellipsis">10</div>
+                                                        <br>
+                                                        <div class="txt-ellipsis">10</div>
                                                         </span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div
-                                                        style="position: relative; display: flex; padding-bottom: 4px;">
-                                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16"
-                                                            class="bi bi-people" fill="currentColor"
-                                                            xmlns="http://www.w3.org/2000/svg">
+                                                    <div style="position: relative; display: flex; padding-bottom: 4px;">
+                                                        <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-people" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                             <path fill-rule="evenodd"
                                                                 d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1h7.956a.274.274 0 0 0 .014-.002l.008-.002c-.002-.264-.167-1.03-.76-1.72C13.688 10.629 12.718 10 11 10c-1.717 0-2.687.63-3.24 1.276-.593.69-.759 1.457-.76 1.72a1.05 1.05 0 0 0 .022.004zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10c-1.668.02-2.615.64-3.16 1.276C1.163 11.97 1 12.739 1 13h3c0-1.045.323-2.086.92-3zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
                                                         </svg>
@@ -413,8 +375,8 @@
                                                             <span
                                                                 style="font-size: 16px; color: #939393; text-transform: uppercase;">
                                                                 Yêu cầu giới tính</span>
-                                                            <br>
-                                                            <div class="txt-ellipsis">Nam</div>
+                                                        <br>
+                                                        <div class="txt-ellipsis">Nam</div>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -424,10 +386,7 @@
                                     <div class="box-main-info-job" style="width: 23%;">
                                         <div class="box-main-info-job-right menu-fixed-absolute" style="top: 0px;">
                                             <div style="width: 100%;">
-                                                <button style="background-color: #fea31e; border-color: #fea31e;"
-                                                    type="button" class="el-button btn-call-action el-button-warning"
-                                                    data-toggle="modal" data-target="#exampleModal"
-                                                    >
+                                                <button style="background-color: #fea31e; border-color: #fea31e;" type="button" class="el-button btn-call-action el-button-warning" data-toggle="modal" data-target="#exampleModal">
                                                     <span>
                                                         <svg width="1em" height="1em" viewBox="0 0 16 16"
                                                             class="bi bi-person-fill" fill="currentColor"
@@ -440,8 +399,7 @@
                                                 </button>
                                             </div>
                                             <div>
-                                                <button style="border: 1px solid #bfcbd9;" type="button"
-                                                    class="el-button el-button-info is-plain">
+                                                <button style="border: 1px solid #bfcbd9;" type="button" class="el-button el-button-info is-plain">
                                                     <span>
                                                         <svg width="1em" height="1em" viewBox="0 0 16 16"
                                                             class="bi bi-suit-heart-fill" fill="currentColor"
@@ -456,28 +414,20 @@
                                             <div>
                                                 <div class="box-func el-tooltip">
                                                     <a href="#" target="_blank" class="btn-share-fb">
-                                                        <svg width="1em" height="1em" viewBox="0 0 16 16"
-                                                            class="bi bi-share" fill="currentColor"
-                                                            xmlns="http://www.w3.org/2000/svg">
+                                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-share" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                             <path fill-rule="evenodd"
                                                                 d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
-                                                        </svg>
-                                                        Chia sẻ công việc
+                                                        </svg> Chia sẻ công việc
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="box-logo">
                                                 <div class="j_logo" style="margin-bottom: 0;">
-                                                    <img src="/assets/images/7fd5b1cb-ea36-4d63-8d10-5f8198a4f332_200x200.png"
-                                                        style="width: 161px; height: 161px;" alt="">
+                                                    <img src="/assets/images/7fd5b1cb-ea36-4d63-8d10-5f8198a4f332_200x200.png" style="width: 161px; height: 161px;" alt="">
                                                 </div>
-                                                <div class="view-more-job"
-                                                    style="border: 1px solid #eee; display: flex;">
-                                                    <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html"
-                                                        title="Xem tất cả tuyển dụng của CÔNG TY LUẬT TNHH MTV HPDR"
-                                                        target="_blank" class="el-tooltip">
-                                                        <button type="button"
-                                                            class="el-button view-more el-button-text is-plain">
+                                                <div class="view-more-job" style="border: 1px solid #eee; display: flex;">
+                                                    <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html" title="Xem tất cả tuyển dụng của CÔNG TY LUẬT TNHH MTV HPDR" target="_blank" class="el-tooltip">
+                                                        <button type="button" class="el-button view-more el-button-text is-plain">
                                                             <span>Việc làm cùng công ty</span>
                                                             <svg width="1em" height="1em" viewBox="0 0 16 16"
                                                                 class="bi bi-arrow-right-short" fill="currentColor"
@@ -502,87 +452,51 @@
                                 <div class="col-md-9 col-lg-9" style="margin-top: 20px;">
                                     <h3 class="heading-title">Mô tả công việc</h3>
                                     <div class="mw-box-item">
-                                        - Hỗ trợ Luật sư và Bộ phận nghiệp vụ tố tụng xác minh/ đối chiếu các thông tin
-                                        của Khách hàng theo vụ việc ủy quyền của Ngân hàng;
-                                        <br>
-                                        - Xác lập hồ sơ pháp lý khởi kiện đối với các trường hợp Khách hàng được Ngân
-                                        hàng ủy quyền;
-                                        <br>
-                                        - Tư vấn, giải thích pháp luật;
-                                        <br>
-                                        - Chuyển văn bản, công văn khởi kiện đến Khách hàng/ Cơ quan nhà nước có thẩm
-                                        quyền theo phân công;
-                                        <br>
-                                        - Thực hiện các thủ tục pháp lý khác liên quan đến việc xác lập hồ sơ pháp lý
-                                        khởi kiện (nếu có);
-                                        <br>
-                                        * Nơi làm việc:
-                                        <br>
-                                        - Lâm Đồng: 02 NV
-                                        <br>
-                                        - Đắc Lắc: 02 NV
-                                        <br>
-                                        - Gia Lai: 02 NV
-                                        <br>
-                                        - Quảng Nam: 02 NV
-                                        <br>
-                                        - Quảng Ngãi: 02 NV
-                                        <br>
-                                        - Đà Nẵng: 02 NV
-                                        <br>
-                                        - Hải Phòng: 02 NV
-                                        <br>
-                                        - Hải Dương : 02 NV
-                                        <br>
-                                        - Quảng Ninh : 02 NV
-                                        <br>
-                                        - Hưng Yên : 02 NV
+                                        - Hỗ trợ Luật sư và Bộ phận nghiệp vụ tố tụng xác minh/ đối chiếu các thông tin của Khách hàng theo vụ việc ủy quyền của Ngân hàng;
+                                        <br> - Xác lập hồ sơ pháp lý khởi kiện đối với các trường hợp Khách hàng được Ngân hàng ủy quyền;
+                                        <br> - Tư vấn, giải thích pháp luật;
+                                        <br> - Chuyển văn bản, công văn khởi kiện đến Khách hàng/ Cơ quan nhà nước có thẩm quyền theo phân công;
+                                        <br> - Thực hiện các thủ tục pháp lý khác liên quan đến việc xác lập hồ sơ pháp lý khởi kiện (nếu có);
+                                        <br> * Nơi làm việc:
+                                        <br> - Lâm Đồng: 02 NV
+                                        <br> - Đắc Lắc: 02 NV
+                                        <br> - Gia Lai: 02 NV
+                                        <br> - Quảng Nam: 02 NV
+                                        <br> - Quảng Ngãi: 02 NV
+                                        <br> - Đà Nẵng: 02 NV
+                                        <br> - Hải Phòng: 02 NV
+                                        <br> - Hải Dương : 02 NV
+                                        <br> - Quảng Ninh : 02 NV
+                                        <br> - Hưng Yên : 02 NV
                                     </div>
                                     <h3 class="heading-title">Quyền lợi được hưởng</h3>
                                     <div class="mw-box-item">
                                         Lương + Phụ cấp: 5.000.000đ – 7.000.000đ;
-                                        <br>
-                                        Thưởng theo kết quả công việc: 6.000.000Đ – 20.000.000Đ ( Căn cứ vào kết quả
-                                        công việc);
-                                        <br>
-                                        Đào tạo, hướng dẫn nghiệp vụ miễn phí.
-                                        <br>
-                                        BHXH, BHYT, BHTN,… và các chế độ khác theo quy định của Nhà nước;
-                                        <br>
-                                        Thưởng năm/ thưởng thâm niên công tác;
-                                        <br>
-                                        Được hỗ trợ chỗ ở/ xăng/ điện thoại/ tiền học việc và các hỗ trợ khác (nếu có);
-                                        <br>
-                                        Môi trường làm việc thoải mái, hòa đồng, gắn bó lâu dài và lộ trình thăng tiến
-                                        rõ ràng;
+                                        <br> Thưởng theo kết quả công việc: 6.000.000Đ – 20.000.000Đ ( Căn cứ vào kết quả công việc);
+                                        <br> Đào tạo, hướng dẫn nghiệp vụ miễn phí.
+                                        <br> BHXH, BHYT, BHTN,… và các chế độ khác theo quy định của Nhà nước;
+                                        <br> Thưởng năm/ thưởng thâm niên công tác;
+                                        <br> Được hỗ trợ chỗ ở/ xăng/ điện thoại/ tiền học việc và các hỗ trợ khác (nếu có);
+                                        <br> Môi trường làm việc thoải mái, hòa đồng, gắn bó lâu dài và lộ trình thăng tiến rõ ràng;
                                     </div>
                                     <h3 class="heading-title">Yêu cầu công việc</h3>
                                     <div class="mw-box-item">
                                         Không yêu cầu kinh nghiệm;
-                                        <br>
-                                        Chăm chỉ, chịu khó, trung thực;
-                                        <br>
-                                        Có phương tiện cá nhân đi lại.
-                                        <br>
-                                        Trình độ trung cấp (tất cả các chuyên ngành: Ưu tiên chuyên ngành Luật; An
-                                        ninh; Pháp lý; …, Công an/ Bộ đội phục viên,…)
+                                        <br> Chăm chỉ, chịu khó, trung thực;
+                                        <br> Có phương tiện cá nhân đi lại.
+                                        <br> Trình độ trung cấp (tất cả các chuyên ngành: Ưu tiên chuyên ngành Luật; An ninh; Pháp lý; …, Công an/ Bộ đội phục viên,…)
                                     </div>
                                     <h3 class="heading-title">Yêu cầu hồ sơ</h3>
                                     <div class="mw-box-item">
                                         - Đơn xin việc.
-                                        <br>
-                                        - Sơ yếu lý lịch.
-                                        <br>
-                                        - Hộ khẩu, chứng minh nhân dân và giấy khám sức khỏe.
-                                        <br>
-                                        - Các bằng cấp có liên quan.
+                                        <br> - Sơ yếu lý lịch.
+                                        <br> - Hộ khẩu, chứng minh nhân dân và giấy khám sức khỏe.
+                                        <br> - Các bằng cấp có liên quan.
                                     </div>
                                 </div>
-                                <div class="col-md-12 col-lg-12 box-main-info-job"
-                                    style="margin-top:20px; margin-bottom: 35px; ">
+                                <div class="col-md-12 col-lg-12 box-main-info-job" style="margin-top:20px; margin-bottom: 35px; ">
                                     <div class="apply-resume-footer">
-                                        <button type="button" style="background-color: #fea31e; border-color: #fea31e;"
-                                            class="el-button btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+                                        <button type="button" style="background-color: #fea31e; border-color: #fea31e;" class="el-button btn btn-warning" data-toggle="modal" data-target="#exampleModal">
                                             <span><svg width="1em" height="1em" viewBox="0 0 16 16"
                                                     class="bi bi-file-person" fill="currentColor"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -608,12 +522,10 @@
                                         </button>
                                         <div class="box-func el-tooltip">
                                             <a href="#" target="_blank" class="btn-share-fb">
-                                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-share"
-                                                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-share" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd"
                                                         d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
-                                                </svg>
-                                                Chia sẻ công việc
+                                                </svg> Chia sẻ công việc
                                             </a>
                                         </div>
                                         <button type="button" class="el-button el-button-info is-plain">
@@ -636,8 +548,7 @@
                                         <h3 class="heading-title mt-n">Thông tin liên hệ</h3>
                                         <div class="mw-box-item box-contact">
                                             <div class="image-map mt-15 mb-5">
-                                                <img 
-                                                    style="width: 100%;" class="img-rounded" alt="">
+                                                <img style="width: 100%;" class="img-rounded" alt="">
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6 col-lg-3 label-contact">
@@ -698,20 +609,16 @@
                                             <div class="col-md-3">
                                                 <div class="box-logo">
                                                     <div class="j-logo" style="border:none;">
-                                                        <img src="/assets/images/7fd5b1cb-ea36-4d63-8d10-5f8198a4f332_200x200.png"
-                                                            style="width: 161px; height: 161px;" alt="">
+                                                        <img src="/assets/images/7fd5b1cb-ea36-4d63-8d10-5f8198a4f332_200x200.png" style="width: 161px; height: 161px;" alt="">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-9">
                                                 <p class="company-name">
-                                                    <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html"
-                                                        style="color: #000000;">
+                                                    <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html" style="color: #000000;">
                                                         <strong>CÔNG TY LUẬT TNHH MTV HPDR</strong></a>
                                                 </p>
-                                                <p class="address"><svg width="1em" height="1em" viewBox="0 0 16 16"
-                                                        class="bi bi-geo-alt" fill="currentColor"
-                                                        xmlns="http://www.w3.org/2000/svg">
+                                                <p class="address"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-geo-alt" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                         <path fill-rule="evenodd"
                                                             d="M12.166 8.94C12.696 7.867 13 6.862 13 6A5 5 0 0 0 3 6c0 .862.305 1.867.834 2.94.524 1.062 1.234 2.12 1.96 3.07A31.481 31.481 0 0 0 8 14.58l.208-.22a31.493 31.493 0 0 0 1.998-2.35c.726-.95 1.436-2.008 1.96-3.07zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
                                                         <path fill-rule="evenodd"
@@ -721,18 +628,14 @@
                                                     <span>Đại Lộ Võ Văn Kiệt, Phường Phước Long, Thành Phố Nha Trang,
                                                         Tỉnh Khánh Hòa.</span> </p>
                                                 <p class="config">
-                                                    <svg width="1em" height="1em" viewBox="0 0 16 16"
-                                                        class="bi bi-person" fill="currentColor"
-                                                        xmlns="http://www.w3.org/2000/svg">
+                                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                         <path fill-rule="evenodd"
                                                             d="M10 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm6 5c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
                                                     </svg>
-                                                    <label class="mr-3">Quy mô nhân sự:</label>
-                                                    20 - 150 người
+                                                    <label class="mr-3">Quy mô nhân sự:</label> 20 - 150 người
                                                 </p>
                                                 <p class="action-company" style="font-weight: 500;">
-                                                    <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html"
-                                                        target="_blank" class="el-tooltip">Xem chi tiết <svg width="1em"
+                                                    <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html" target="_blank" class="el-tooltip">Xem chi tiết <svg width="1em"
                                                             height="1em" viewBox="0 0 16 16"
                                                             class="bi bi-arrow-right-short" fill="currentColor"
                                                             xmlns="http://www.w3.org/2000/svg">
@@ -752,11 +655,9 @@
                                 <div class="col-lg-12 cold-md-12">
                                     <div class="box-right box-items">
                                         <div class="box-jobs-company recruiting">
-                                            <p class="title-right br-b"
-                                                style="font-size: 17px; text-align: center; font-weight: 800;">Việc làm
-                                                được xem nhiều nhất</p>
+                                            <p class="title-right br-b" style="font-size: 17px; text-align: center; font-weight: 800;">Việc làm được xem nhiều nhất</p>
                                             <div class="row mt-5" id="jobViewMuch">
-                                                
+
                                             </div>
                                         </div>
                                     </div>
@@ -768,21 +669,17 @@
                         <div class="col-md-12 col-lg-12">
                             <div class="box multiple custom-box-job" style="margin-top:20px;margin-bottom: 40px;">
                                 <h3 class="heading-title">Việc làm tương tự đang tuyển gấp</h3>
-                                <div class="row-relate-job job-box-involve"
-                                    style="margin-top:15px; background: #ffffff;">
+                                <div class="row-relate-job job-box-involve" style="margin-top:15px; background: #ffffff;">
                                     <div class="col-md-6 col-lg-6 job-over-item">
                                         <div target="_self" class="row job-item" style="border:none;">
                                             <div class="col-md-12 col-lg-12 job-info">
                                                 <div class="col-md-12 col-lg-12 job-info-child">
                                                     <div class="company-logo">
-                                                        <a
-                                                            href="https://mywork.com.vn/tuyen-dung/viec-lam/1351708/can-bo-phap-ly-dia-ban-khu-vuc-mien-trung.html"></a>
+                                                        <a href="https://mywork.com.vn/tuyen-dung/viec-lam/1351708/can-bo-phap-ly-dia-ban-khu-vuc-mien-trung.html"></a>
                                                     </div>
                                                     <div class="company-name">
                                                         <p class="j-title-text-ellipsis">
-                                                            <a href="https://mywork.com.vn/tuyen-dung/viec-lam/1351708/can-bo-phap-ly-dia-ban-khu-vuc-mien-trung.html?utm_source=JobDetail&utm_campaign=JobSimilar&utm_medium=JobDetailBottom"
-                                                                title="Cán bộ Pháp Lý Địa Bàn - Khu vực miền Trung"
-                                                                target="_blank" class="el-tooltip item">
+                                                            <a href="https://mywork.com.vn/tuyen-dung/viec-lam/1351708/can-bo-phap-ly-dia-ban-khu-vuc-mien-trung.html?utm_source=JobDetail&utm_campaign=JobSimilar&utm_medium=JobDetailBottom" title="Cán bộ Pháp Lý Địa Bàn - Khu vực miền Trung" target="_blank" class="el-tooltip item">
                                                                 <span>
                                                                     <strong>
                                                                         Cán bộ Pháp Lý Địa Bàn - Khu vực Miền Trung
@@ -792,8 +689,7 @@
                                                         </p>
                                                         <div class="j-company">
                                                             <div class="name">
-                                                                <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html"
-                                                                    target="_blank" title="Công ty Luật TNHH MTV Hpdr">
+                                                                <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html" target="_blank" title="Công ty Luật TNHH MTV Hpdr">
                                                                     <span>
                                                                         Công ty Luật TNHH MTV Hpdr
                                                                     </span>
@@ -815,94 +711,74 @@
                                         </h3>
                                     </div>
                                     <div class="col-md-4 col-lg-4 item-more">
-                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right"
-                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
                                                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                                         </svg>
-                                        <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html"
-                                            title="CÔNG TY LUẬT TNHH MTV HPDR">Tìm việc làm khác của nhà tuyển dụng</a>
+                                        <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html" title="CÔNG TY LUẬT TNHH MTV HPDR">Tìm việc làm khác của nhà tuyển dụng</a>
                                     </div>
                                     <div class="col-md-4 col-lg-4 item-more">
-                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right"
-                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
                                                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                                         </svg>
-                                        <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html"
-                                            title="CÔNG TY LUẬT TNHH MTV HPDR">Tìm việc làm Bảo vệ/ An ninh/ Vệ sỹ</a>
+                                        <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html" title="CÔNG TY LUẬT TNHH MTV HPDR">Tìm việc làm Bảo vệ/ An ninh/ Vệ sỹ</a>
                                     </div>
                                     <div class="col-md-4 col-lg-4 item-more">
-                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right"
-                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
                                                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                                         </svg>
-                                        <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html"
-                                            title="CÔNG TY LUẬT TNHH MTV HPDR">Tìm việc làm Kế toán - Kiểm toán</a>
+                                        <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html" title="CÔNG TY LUẬT TNHH MTV HPDR">Tìm việc làm Kế toán - Kiểm toán</a>
                                     </div>
                                     <div class="col-md-4 col-lg-4 item-more">
-                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right"
-                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
                                                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                                         </svg>
-                                        <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html"
-                                            title="CÔNG TY LUẬT TNHH MTV HPDR">Tìm việc làm Ngân hàng/ Tài chính</a>
+                                        <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html" title="CÔNG TY LUẬT TNHH MTV HPDR">Tìm việc làm Ngân hàng/ Tài chính</a>
                                     </div>
                                     <div class="col-md-4 col-lg-4 item-more">
-                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right"
-                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
                                                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                                         </svg>
-                                        <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html"
-                                            title="CÔNG TY LUẬT TNHH MTV HPDR">Tìm việc làm tại Đà Nẵng</a>
+                                        <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html" title="CÔNG TY LUẬT TNHH MTV HPDR">Tìm việc làm tại Đà Nẵng</a>
                                     </div>
                                     <div class="col-md-4 col-lg-4 item-more">
-                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right"
-                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
                                                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                                         </svg>
-                                        <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html"
-                                            title="CÔNG TY LUẬT TNHH MTV HPDR">Tìm việc làm tại Hải Dương</a>
+                                        <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html" title="CÔNG TY LUẬT TNHH MTV HPDR">Tìm việc làm tại Hải Dương</a>
                                     </div>
                                     <div class="col-md-4 col-lg-4 item-more">
-                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right"
-                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
                                                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                                         </svg>
-                                        <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html"
-                                            title="CÔNG TY LUẬT TNHH MTV HPDR">Tìm việc làm tại Lâm Đồng</a>
+                                        <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html" title="CÔNG TY LUẬT TNHH MTV HPDR">Tìm việc làm tại Lâm Đồng</a>
                                     </div>
                                     <div class="col-md-4 col-lg-4 item-more">
-                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right"
-                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
                                                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                                         </svg>
-                                        <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html"
-                                            title="CÔNG TY LUẬT TNHH MTV HPDR">Tìm việc làm tại Quảng Ngãi</a>
+                                        <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html" title="CÔNG TY LUẬT TNHH MTV HPDR">Tìm việc làm tại Quảng Ngãi</a>
                                     </div>
                                     <div class="col-md-4 col-lg-4 item-more">
-                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right"
-                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
                                                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                                         </svg>
-                                        <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html"
-                                            title="CÔNG TY LUẬT TNHH MTV HPDR">Tìm việc làm tại Quảng Ninh</a>
+                                        <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html" title="CÔNG TY LUẬT TNHH MTV HPDR">Tìm việc làm tại Quảng Ninh</a>
                                     </div>
                                     <div class="col-md-4 col-lg-4 item-more">
-                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right"
-                                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chevron-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd"
                                                 d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
                                         </svg>
-                                        <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html"
-                                            title="CÔNG TY LUẬT TNHH MTV HPDR">Tìm việc làm chi tiết</a>
+                                        <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html" title="CÔNG TY LUẬT TNHH MTV HPDR">Tìm việc làm chi tiết</a>
                                     </div>
                                 </div>
                             </div>
@@ -957,7 +833,7 @@
                                 <li>
                                     <a href="login.html" title="Cơ chế giải quyết tranh chấp">Cơ chế giải quyết tranh chấp</a>
                                 </li>
-    
+
                             </ul>
                         </div>
                         <div class="col-md-3">
@@ -1055,7 +931,7 @@
                     <div class="container">
                         <div class="info-tag">
                             <a href="/" title="Tìm việc làm" class="nuxt-link-exact-active nuxt-link-active">Tìm việc làm</a> &nbsp;|
-    
+
                             <a href="/" title="Việc làm 24h" class="nuxt-link-exact-active nuxt-link-active">Việc làm 24h</a>&nbsp;|
                             <a href="/" title="Tìm việc nhanh" class="nuxt-link-exact-active nuxt-link-active">Tìm việc nhanh</a>&nbsp;|
                             <a href="/" title="Việc làm" class="nuxt-link-exact-active nuxt-link-active">Việc làm</a>&nbsp;|
@@ -1063,7 +939,7 @@
                             <a href="/" title="Việc làm Hồ Chí Minh" class="nuxt-link-exact-active nuxt-link-active">Việc làm Hồ Chí Minh</a>&nbsp;|
                             <a href="/" title="Việc làm Đà Nẵng" class="nuxt-link-exact-active nuxt-link-active">Việc làm Hà Nội</a>&nbsp;|
                             <a href="/" title="Việc làm Hà Nội" class="nuxt-link-exact-active nuxt-link-active">Việc làm Đà Nẵng</a>&nbsp;
-    
+
                         </div>
                     </div>
                 </div>
@@ -1222,50 +1098,49 @@
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Nộp hồ sơ ứng tuyển</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nộp hồ sơ ứng tuyển</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
-            </div>
-            <div class="modal-body">
-              <p class="topModal">
-                Bạn đang ứng tuyển vào vị trí: <span>Database Devs (Sql, Oracle, Mysql) - Up To 15Mil</span> của <span>Công ty TNHH SÀI GÒN BPO</span>
-              </p>
-              <div class="infoContact">
-                  <h4>Xác nhận thông tin liên hệ</h4>
-                  <p>Vui lòng xác nhận các thông tin dưới đây để nhà tuyển dụng có thể liên hệ với bạn.
-                    Các thay đổi sẽ được cập nhật vào hồ sơ.</p>
-                    <form action="" class="row" name="info">
-                        <div class="col-6">
-                            <label><span>*</span>Số điện thoại</label>
-                            <input type="text" placeholder="Số điện thoại" name="phone">
-                        </div>
-                        <div class="col-6">
+                </div>
+                <div class="modal-body">
+                    <p class="topModal">
+                        Bạn đang ứng tuyển vào vị trí: <span>Database Devs (Sql, Oracle, Mysql) - Up To 15Mil</span> của <span>Công ty TNHH SÀI GÒN BPO</span>
+                    </p>
+                    <div class="infoContact">
+                        <h4>Xác nhận thông tin liên hệ</h4>
+                        <p>Vui lòng xác nhận các thông tin dưới đây để nhà tuyển dụng có thể liên hệ với bạn. Các thay đổi sẽ được cập nhật vào hồ sơ.</p>
+                        <form action="" class="row" name="info">
+                            <div class="col-6">
+                                <label><span>*</span>Số điện thoại</label>
+                                <input type="text" placeholder="Số điện thoại" name="phone">
+                            </div>
+                            <div class="col-6">
                                 <label><span>*</span>Địa chỉ Email</label>
                                 <input type="text" placeholder="Địa chỉ Email" name="email">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="listCV">
+                        <h4>CV tự giới thiệu</h4>
+                        <div class="row" id="listCV">
                         </div>
-                    </form>
-              </div>
-              <div class="listCV">
-                  <h4>CV tự giới thiệu</h4>
-                  <div class="row" id="listCV">
-                  </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Tạo mới CV</button>
-              <button type="button" id="btnSent">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tạo mới CV</button>
+                    <button type="button" id="btnSent">
 
                 <p><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-envelope-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
                   </svg>Nộp hồ sơ ứng tuyển</p>
             </button>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
     <script src="..\js\home.js"></script>
     <script src="/js/detailJob.js"></script>
 </body>
