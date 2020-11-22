@@ -1,45 +1,41 @@
 var db = firebase.firestore();
 var List = []
-
 function loadPage() {
-    getUserLogged().then(user => {
-        cvUser(user.uid).then(list => {
+    getUserLogged().then(user=>{
+        cvUser(user.uid).then(list=>{
             List = list
             loadDataListCV(list)
         })
     })
 }
-
 function getUserLogged() {
-    return new Promise((resove, reject) => {
-        firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-                resove(user)
-            } else {
-                reject("ERROR")
-            }
+    return new Promise ((resove,reject)=>{
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          resove(user)
+        } else {
+          reject("ERROR")
+        }
+      });
+    })
+}
+function cvUser(id) {
+    return new Promise((resove,reject)=>{
+        let listCV = []
+        db.collection("CV").where("idUser", "==", id)
+        .get().then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                let cv = {
+                    id:doc.id,
+                    cvImage:doc.data().cvImage,
+                    idUser:doc.data().idUser
+                }
+                listCV.push(cv);
+            });
+            resove(listCV);
         });
     })
 }
-
-function cvUser(id) {
-    return new Promise((resove, reject) => {
-        let listCV = []
-        db.collection("CV").where("idUser", "==", id)
-            .get().then(function(querySnapshot) {
-                querySnapshot.forEach(function(doc) {
-                    let cv = {
-                        id: doc.id,
-                        cvImage: doc.data().cvImage,
-                        idUser: doc.data().idUser
-                    }
-                    listCV.push(cv);
-                });
-                resove(listCV);
-            });
-    })
-}
-
 function loadDataListCV(arr) {
     let list = arr.map(element => {
         return `
@@ -57,21 +53,18 @@ function loadDataListCV(arr) {
     })
     document.getElementById("list").innerHTML = list.join("");
 }
-
 function removeCV(id) {
-    deleteDocFromCollection("CV", id);
+    deleteDocFromCollection("CV",id);
 }
-
 function removeElement(id) {
-    return List.filter(element => {
+    return List.filter(element=>{
         element.id != id
     })
 }
-
-function deleteDocFromCollection(nameCollection, id) {
+function deleteDocFromCollection(nameCollection,id) {
     db.collection(nameCollection).doc(id).delete().then(function() {
-        loadDataListCV(removeElement(id))
-        alert("Bạn đã xoá thành công")
+       loadDataListCV(removeElement(id))
+       alert("Bạn đã xoá thành công")
     }).catch(function(error) {
         console.error("Error removing document: ", error);
     });
