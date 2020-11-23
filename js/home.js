@@ -69,6 +69,7 @@ function addSelectLocation() {
         "Sóc Trăng",
         "Bạc Liêu",
         "Cà Mau",
+        "Hà Nội",
     ];
     let row = locations.map((e) => {
         return `<option value="${e}">${e}</option>`;

@@ -68,6 +68,7 @@ function addSelectLocation() {
         "Sóc Trăng",
         "Bạc Liêu",
         "Cà Mau",
+        "Hà Nội",
     ];
     let row = locations.map((e) => {
         return `<option value="${e}">${e}</option>`;
@@ -197,19 +198,63 @@ function searchBox(e) {
 
 function searchCareer() {
     var career = document.getElementById("jobs");
+    var location = document.getElementById("locations");
+    if (location.options[location.selectedIndex].value == "") {
+        console.log("location k co gia tri")
+        jobSearchByCareer(career.options[career.selectedIndex].text).then(list => {
+            document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
+            document.getElementById("countJobs").innerHTML = `Tìm thấy ${list.length} việc làm đang tuyển dụng`;
+        })
+        return;
+    }
+    if (location.options[location.selectedIndex].value != "" && career.options[career.selectedIndex].value == "") {
+        console.log("location co gia tri")
+        jobSearchByLocation(location.options[location.selectedIndex].text).then(list => {
+            document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
+            document.getElementById("countJobs").innerHTML = `Tìm thấy ${list.length} việc làm đang tuyển dụng`;
+        })
+        return;
 
-    jobSearchByCareer(career.options[career.selectedIndex].text).then(list => {
-        document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
-        document.getElementById("countJobs").innerHTML = `Tìm thấy ${list.length} việc làm đang tuyển dụng`;
-    })
+    }
+    if (location.options[location.selectedIndex].value != "" && career.options[career.selectedIndex].value != "") {
+        console.log("location  co gia tri , career co gia tri")
+        jobSearchByCarloca(career.options[career.selectedIndex].text, location.options[location.selectedIndex].text).then(list => {
+            document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
+            document.getElementById("countJobs").innerHTML = `Tìm thấy ${list.length} việc làm đang tuyển dụng`;
+        })
+        return;
+    }
 }
 
 function searchLocation() {
+    var career = document.getElementById("jobs");
     var location = document.getElementById("locations");
-    jobSearchByLocation(location.options[location.selectedIndex].text).then(list => {
-        document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
-        document.getElementById("countJobs").innerHTML = `Tìm thấy ${list.length} việc làm đang tuyển dụng`;
-    })
+    if (career.options[career.selectedIndex].value == "") {
+        console.log("career k gia tri")
+        jobSearchByLocation(location.options[location.selectedIndex].text).then(list => {
+            document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
+            document.getElementById("countJobs").innerHTML = `Tìm thấy ${list.length} việc làm đang tuyển dụng`;
+        })
+        return;
+    }
+    if (career.options[career.selectedIndex].value != "" && location.options[location.selectedIndex].value == "") {
+        console.log("career co gia tri")
+        jobSearchByCareer(career.options[career.selectedIndex].text).then(list => {
+            document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
+            document.getElementById("countJobs").innerHTML = `Tìm thấy ${list.length} việc làm đang tuyển dụng`;
+        })
+        return;
+    }
+    if (location.options[location.selectedIndex].value != "" && career.options[career.selectedIndex].value != "") {
+        console.log("location  co gia tri , career co gia tri")
+        jobSearchByCarloca(career.options[career.selectedIndex].text, location.options[location.selectedIndex].text).then(list => {
+            document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
+            document.getElementById("countJobs").innerHTML = `Tìm thấy ${list.length} việc làm đang tuyển dụng`;
+        })
+        return;
+
+    }
+
 }
 
 
@@ -219,7 +264,7 @@ function jobSearchByCarloca(career, location) {
         db.collection("Jobs").where("career", "==", career).where("location", "==", location)
             .get().then(function(querySnapshot) {
                 querySnapshot.forEach(function(doc) {
-                    console.log(doc.id, " => ", doc.data());
+
                     let job = {
                         id: doc.id,
                         career: doc.data().career,
@@ -243,7 +288,7 @@ function jobSearchByCareer(career) {
         db.collection("Jobs").where("career", "==", career)
             .get().then(function(querySnapshot) {
                 querySnapshot.forEach(function(doc) {
-                    console.log(doc.id, " => ", doc.data());
+
                     let job = {
                         id: doc.id,
                         career: doc.data().career,
