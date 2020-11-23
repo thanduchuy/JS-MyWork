@@ -75,6 +75,28 @@ function addSelectLocation() {
     document.getElementById("locations").innerHTML += row.join(" ");
 }
 
+function getJob() {
+    return new Promise((resove, reject) => {
+        let listJob = []
+        db.collection("Jobs")
+            .get().then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    let job = {
+                        id: doc.id,
+                        career: doc.data().career,
+                        datePost: doc.data().datePost,
+                        imageCompany: doc.data().imageCompany,
+                        location: doc.data().location,
+                        nameCompany: doc.data().nameCompany,
+                        nameJob: doc.data().nameJob,
+                        salary: doc.data().salary
+                    }
+                    listJob.push(job);
+                });
+                resove(listJob);
+            });
+    })
+}
 
 
 
@@ -82,9 +104,27 @@ function loadDataFromURL() {
     var url_string = window.location;
     var url = new URL(url_string);
     var name = url.searchParams.get("name");
+    name.toLowerCase().trim();
     var career = url.searchParams.get("career");
     var location = url.searchParams.get("location");
-    console.log(location);
+    if (name == "" && career == "" && location == "") {
+        getJob().then(list => {
+            document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
+            document.getElementById("countJobs").innerHTML = `Tìm thấy ${list.length} việc làm đang tuyển dụng`;
+        })
+        return;
+    }
+    if (location != "" && career != "" && name != "") {
+        getJob().then(list => {
+            let temp = list;
+            temp = temp.filter(element => {
+                return element.nameJob.toLowerCase().trim().includes(name) && element.career.trim() == career && element.location.trim() == location;
+            })
+            document.getElementById("bodyJobs").innerHTML = formatArray(temp).join("");
+            document.getElementById("countJobs").innerHTML = `Tìm thấy ${temp.length} việc làm đang tuyển dụng`;
+        })
+        return;
+    }
     if (name == "" && career == "") {
         jobSearchByLocation(location).then(list => {
             document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
@@ -100,11 +140,14 @@ function loadDataFromURL() {
         return;
     }
     if (location == "" && career == "") {
-        jobSearchByName(name).then(list => {
-            document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
-            document.getElementById("countJobs").innerHTML = `Tìm thấy ${list.length} việc làm đang tuyển dụng`;
+        getJob().then(list => {
+            let temp = list;
+            temp = temp.filter(element => {
+                return element.nameJob.toLowerCase().trim().includes(name);
+            })
+            document.getElementById("bodyJobs").innerHTML = formatArray(temp).join("");
+            document.getElementById("countJobs").innerHTML = `Tìm thấy ${temp.length} việc làm đang tuyển dụng`;
         })
-        return;
     }
     if (name == "") {
         jobSearchByCarloca(career, location).then(list => {
@@ -114,23 +157,24 @@ function loadDataFromURL() {
         return;
     }
     if (career == "") {
-        jobSearchByNameloca(name, location).then(list => {
-            document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
-            document.getElementById("countJobs").innerHTML = `Tìm thấy ${list.length} việc làm đang tuyển dụng`;
+        getJob().then(list => {
+            let temp = list;
+            temp = temp.filter(element => {
+                return element.nameJob.toLowerCase().trim().includes(name) && element.location.trim() == location;
+            })
+            document.getElementById("bodyJobs").innerHTML = formatArray(temp).join("");
+            document.getElementById("countJobs").innerHTML = `Tìm thấy ${temp.length} việc làm đang tuyển dụng`;
         })
         return;
     }
     if (location == "") {
-        jobSearchByNamecar(name, career).then(list => {
-            document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
-            document.getElementById("countJobs").innerHTML = `Tìm thấy ${list.length} việc làm đang tuyển dụng`;
-        })
-        return;
-    }
-    if (location != "" && career != "" && name != "") {
-        jobSearchByAll(career, location, name).then(list => {
-            document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
-            document.getElementById("countJobs").innerHTML = `Tìm thấy ${list.length} việc làm đang tuyển dụng`;
+        getJob().then(list => {
+            let temp = list;
+            temp = temp.filter(element => {
+                return element.nameJob.toLowerCase().trim().includes(name) && element.career.trim() == career;
+            })
+            document.getElementById("bodyJobs").innerHTML = formatArray(temp).join("");
+            document.getElementById("countJobs").innerHTML = `Tìm thấy ${temp.length} việc làm đang tuyển dụng`;
         })
         return;
     }
@@ -138,13 +182,18 @@ function loadDataFromURL() {
 //document.getElementById("bodyJobs").innerHTML = formatArray(result).join("");
 //document.getElementById("countJobs").innerHTML = `Tìm thấy ${result.length} việc làm đang tuyển dụng`;
 function searchBox(e) {
-    var name = e.target.value;
-    console.log(name);
-    SearchByName(name).then(list => {
-        document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
-        document.getElementById("countJobs").innerHTML = `Tìm thấy ${list.length} việc làm đang tuyển dụng`;
+    var name = e.target.value.toLowerCase().trim();
+    getJob().then(list => {
+        let temp = list;
+        temp = temp.filter(element => {
+            return element.nameJob.toLowerCase().trim().includes(name);
+        })
+        document.getElementById("bodyJobs").innerHTML = formatArray(temp).join("");
+        document.getElementById("countJobs").innerHTML = `Tìm thấy ${temp.length} việc làm đang tuyển dụng`;
     })
 }
+
+
 
 function jobSearchByCarloca(career, location) {
     return new Promise((resove, reject) => {
@@ -174,126 +223,6 @@ function jobSearchByCareer(career) {
     return new Promise((resove, reject) => {
         let listJob = []
         db.collection("Jobs").where("career", "==", career)
-            .get().then(function(querySnapshot) {
-                querySnapshot.forEach(function(doc) {
-                    console.log(doc.id, " => ", doc.data());
-                    let job = {
-                        id: doc.id,
-                        career: doc.data().career,
-                        datePost: doc.data().datePost,
-                        imageCompany: doc.data().imageCompany,
-                        location: doc.data().location,
-                        nameCompany: doc.data().nameCompany,
-                        nameJob: doc.data().nameJob,
-                        salary: doc.data().salary
-                    }
-                    listJob.push(job);
-                });
-                resove(listJob);
-            });
-    })
-}
-
-function jobSearchByNamecar(name, career) {
-    return new Promise((resove, reject) => {
-        let listJob = []
-        db.collection("Jobs").where("name", "==", name).where("career", "==", career)
-            .get().then(function(querySnapshot) {
-                querySnapshot.forEach(function(doc) {
-                    console.log(doc.id, " => ", doc.data());
-                    let job = {
-                        id: doc.id,
-                        career: doc.data().career,
-                        datePost: doc.data().datePost,
-                        imageCompany: doc.data().imageCompany,
-                        location: doc.data().location,
-                        nameCompany: doc.data().nameCompany,
-                        nameJob: doc.data().nameJob,
-                        salary: doc.data().salary
-                    }
-                    listJob.push(job);
-                });
-                resove(listJob);
-            });
-    })
-}
-
-function jobSearchByNameloca(name, location) {
-    return new Promise((resove, reject) => {
-        let listJob = []
-        db.collection("Jobs").where("name", "==", name).where("location", "==", location)
-            .get().then(function(querySnapshot) {
-                querySnapshot.forEach(function(doc) {
-                    console.log(doc.id, " => ", doc.data());
-                    let job = {
-                        id: doc.id,
-                        career: doc.data().career,
-                        datePost: doc.data().datePost,
-                        imageCompany: doc.data().imageCompany,
-                        location: doc.data().location,
-                        nameCompany: doc.data().nameCompany,
-                        nameJob: doc.data().nameJob,
-                        salary: doc.data().salary
-                    }
-                    listJob.push(job);
-                });
-                resove(listJob);
-            });
-    })
-}
-
-function jobSearchByAll(career, location, name) {
-    return new Promise((resove, reject) => {
-        let listJob = []
-        db.collection("Jobs").where("career", "==", career).where("location", "==", location).where("nameJob", "==", name)
-            .get().then(function(querySnapshot) {
-                querySnapshot.forEach(function(doc) {
-                    console.log(doc.id, " => ", doc.data());
-                    let job = {
-                        id: doc.id,
-                        career: doc.data().career,
-                        datePost: doc.data().datePost,
-                        imageCompany: doc.data().imageCompany,
-                        location: doc.data().location,
-                        nameCompany: doc.data().nameCompany,
-                        nameJob: doc.data().nameJob,
-                        salary: doc.data().salary
-                    }
-                    listJob.push(job);
-                });
-                resove(listJob);
-            });
-    })
-}
-
-function SearchByName(name) {
-    return new Promise((resove, reject) => {
-        let listJob = []
-        db.collection("Jobs").where("nameJob", "==", name)
-            .get().then(function(querySnapshot) {
-                querySnapshot.forEach(function(doc) {
-                    console.log(doc.id, " => ", doc.data());
-                    let job = {
-                        id: doc.id,
-                        career: doc.data().career,
-                        datePost: doc.data().datePost,
-                        imageCompany: doc.data().imageCompany,
-                        location: doc.data().location,
-                        nameCompany: doc.data().nameCompany,
-                        nameJob: doc.data().nameJob,
-                        salary: doc.data().salary
-                    }
-                    listJob.push(job);
-                });
-                resove(listJob);
-            });
-    })
-}
-
-function jobSearchByName(name) {
-    return new Promise((resove, reject) => {
-        let listJob = []
-        db.collection("Jobs").where("nameJob", "==", name)
             .get().then(function(querySnapshot) {
                 querySnapshot.forEach(function(doc) {
                     console.log(doc.id, " => ", doc.data());
