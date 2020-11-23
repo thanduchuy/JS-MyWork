@@ -1,6 +1,6 @@
 addSelectJobs();
 addSelectLocation();
-
+getUserLogged();
 var db = firebase.firestore();
 /* Placeholder Typewriter */
 var placeholderText = [
@@ -12,7 +12,15 @@ var placeholderText = [
 $('#search').placeholderTypewriter({
     text: placeholderText,
 });
-
+function getUserLogged() {
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            console.log(user);
+        } else {
+            console.log("NAN");
+        }
+    });
+}
 function addSelectJobs() {
     let jobs = [
         "Y tế",

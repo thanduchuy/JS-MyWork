@@ -80,7 +80,7 @@ function addProfileUser(id,user) {
         city: user.city,
         district: "",
         role: "Employer",
-        active : false,
+        active : true,
         nameCompany : user.nameCT,
         scale : user.scale,
         field : user.field
