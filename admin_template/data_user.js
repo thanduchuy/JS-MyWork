@@ -195,7 +195,9 @@ function eventActiveUser(id) {
 
 function showUserToEdit(user) {
     var renderUser = user.map((element, index) => {
-        return `<div class="modal-dialog" role="document">
+
+        return `
+        <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
@@ -228,7 +230,7 @@ function showUserToEdit(user) {
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
-                                        onclick="saveUpdate()" >Save</button>
+                                        onclick="saveUpdate()" data-dismiss="modal" target="_blank" >Save</button>
                                 </div>							
                             </form>
                         </div>	
@@ -257,7 +259,7 @@ function getUserActive(listUser) {
               onclick="eventShowDataEdit('${element.id}')">Edit</button>
           <!-- Modal ADD DATA -->
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
         </div>
           <button type="button" class="btn btn-primary" onclick="eventDelete('${element.id}')">
               Delete
@@ -281,7 +283,7 @@ function getUserSearch(listUser) {
               onclick="eventShowDataEdit(${element.id})">Edit</button>
           <!-- Modal ADD DATA -->
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
         </div>
           <button type="button" class="btn btn-primary" onclick="eventDelete(${element.id})">
               Delete
