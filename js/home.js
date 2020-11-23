@@ -1,6 +1,6 @@
 addSelectJobs();
 addSelectLocation();
-
+getUserLogged();
 var db = firebase.firestore();
 /* Placeholder Typewriter */
 var placeholderText = [
@@ -12,7 +12,25 @@ var placeholderText = [
 $('#search').placeholderTypewriter({
     text: placeholderText,
 });
-
+function onLogOut() {
+    firebase.auth().signOut().then(function() {
+        location.reload();
+    }).catch(function(error) {
+        console.log("fail");
+    });
+}
+function getUserLogged() {
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            document.getElementById("emailUser").innerHTML = user.email
+            document.getElementById("notlogin").style.display = "none"
+            document.getElementById("logged").style.display = "inline"
+        } else {
+            document.getElementById("notlogin").style.display = "inline"
+            document.getElementById("logged").style.display = "none"
+        }
+    });
+}
 function addSelectJobs() {
     let jobs = [
         "Y tế",

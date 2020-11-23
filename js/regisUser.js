@@ -36,7 +36,7 @@ function regisUser() {
                 email : email,
                 pass : pass,
                 role : "user",
-                active : false 
+                active : true 
             }
             registerUser(user);
            }
