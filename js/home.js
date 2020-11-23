@@ -12,12 +12,22 @@ var placeholderText = [
 $('#search').placeholderTypewriter({
     text: placeholderText,
 });
+function onLogOut() {
+    firebase.auth().signOut().then(function() {
+        location.reload();
+    }).catch(function(error) {
+        console.log("fail");
+    });
+}
 function getUserLogged() {
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-            console.log(user);
+            document.getElementById("emailUser").innerHTML = user.email
+            document.getElementById("notlogin").style.display = "none"
+            document.getElementById("logged").style.display = "inline"
         } else {
-            console.log("NAN");
+            document.getElementById("notlogin").style.display = "inline"
+            document.getElementById("logged").style.display = "none"
         }
     });
 }
