@@ -196,16 +196,17 @@ function searchBox(e) {
 }
 
 function searchCareer() {
-    var e = document.getElementById("jobs");
-    jobSearchByCareer(e.options[e.selectedIndex].text).then(list => {
+    var career = document.getElementById("jobs");
+
+    jobSearchByCareer(career.options[career.selectedIndex].text).then(list => {
         document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
         document.getElementById("countJobs").innerHTML = `Tìm thấy ${list.length} việc làm đang tuyển dụng`;
     })
 }
 
 function searchLocation() {
-    var e = document.getElementById("locations");
-    jobSearchByLocation(e.options[e.selectedIndex].text).then(list => {
+    var location = document.getElementById("locations");
+    jobSearchByLocation(location.options[location.selectedIndex].text).then(list => {
         document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
         document.getElementById("countJobs").innerHTML = `Tìm thấy ${list.length} việc làm đang tuyển dụng`;
     })
