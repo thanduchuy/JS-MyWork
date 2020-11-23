@@ -13,13 +13,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="/js/placeholderTypewriter.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-storage.js"></script>
-
-    <script src="/js/FireBase.js"></script>
 
 </head>
 
@@ -133,7 +126,7 @@
                         <option value="">Địa điểm</option>
                       </select>
                                 </div>
-                                <button class="col-2 d-flex flex-row align-items-center justify-content-around" type="button" onclick="searchWork()">
+                        <button class="col-2 d-flex flex-row align-items-center justify-content-around" type="button" onclick="searchWork()">
                       <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
                         <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
@@ -170,7 +163,7 @@
                                                 <div class="box_shadow_slider">
                                                     <a href="login.html" target="_blank">
                                                         <div class="icon-top-field">
-                                                            <img alt="item" class="lazy-load" src="https://mywork.com.vn/nganh_chung.png" lazy="loaded">
+                                                            <img alt="item" class="lazy-load" src="/assets/images/laptop.jpg" lazy="loaded">
                                                         </div>
                                                         <div class="top-field-name">
                                                             <span class="text_bold">
@@ -191,7 +184,7 @@
                                                 <div class="box_shadow_slider">
                                                     <a href="login.html" target="_blank">
                                                         <div class="icon-top-field">
-                                                            <img alt="item" class="lazy-load" src="https://mywork.com.vn/nganh_chung.png" lazy="loaded">
+                                                            <img alt="item" class="lazy-load" src="/assets/images/laptop.jpg" lazy="loaded">
                                                         </div>
                                                         <div class="top-field-name">
                                                             <span class="text_bold">
@@ -212,7 +205,7 @@
                                                 <div class="box_shadow_slider">
                                                     <a href="login.html" target="_blank">
                                                         <div class="icon-top-field">
-                                                            <img alt="item" class="lazy-load" src="https://mywork.com.vn/nganh_chung.png" lazy="loaded">
+                                                            <img alt="item" class="lazy-load" src="/assets/images/laptop.jpg" lazy="loaded">
                                                         </div>
                                                         <div class="top-field-name">
                                                             <span class="text_bold">
@@ -233,7 +226,7 @@
                                                 <div class="box_shadow_slider">
                                                     <a href="login.html" target="_blank">
                                                         <div class="icon-top-field">
-                                                            <img alt="item" class="lazy-load" src="https://mywork.com.vn/nganh_chung.png" lazy="loaded">
+                                                            <img alt="item" class="lazy-load" src="/assets/images/laptop.jpg" lazy="loaded">
                                                         </div>
                                                         <div class="top-field-name">
                                                             <span class="text_bold">
@@ -254,7 +247,7 @@
                                                 <div class="box_shadow_slider">
                                                     <a href="login.html" target="_blank">
                                                         <div class="icon-top-field">
-                                                            <img alt="item" class="lazy-load" src="https://mywork.com.vn/nganh_chung.png" lazy="loaded">
+                                                            <img alt="item" class="lazy-load" src="/assets/images/laptop.jpg" lazy="loaded">
                                                         </div>
                                                         <div class="top-field-name">
                                                             <span class="text_bold">
@@ -275,7 +268,7 @@
                                                 <div class="box_shadow_slider">
                                                     <a href="login.html" target="_blank">
                                                         <div class="icon-top-field">
-                                                            <img alt="item" class="lazy-load" src="https://mywork.com.vn/nganh_chung.png" lazy="loaded">
+                                                            <img alt="item" class="lazy-load" src="/assets/images/laptop.jpg" lazy="loaded">
                                                         </div>
                                                         <div class="top-field-name">
                                                             <span class="text_bold">
@@ -306,13 +299,103 @@
 
                             </h2>
                             <div class=" col-lg-12 col-md-12" style="padding: 5px;">
+                                <div class="col-md-6 col-lg-6 job-over-item">
+                                    <div class="row job-itemnow">
+                                        <div class="col-md-12 col-lg-12 job_info">
+                                            <div class="company_logo">
+                                                <a href="login.html " class title="" target="_blank">
+                                                    <div class="logo_box">
+                                                        <img class="lazy-load" src="/assets/images/logo.png" lazy="loaded">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="company_name">
+                                                <p class="j_title text_ellipsis">
+                                                    <a href="login.html" id="vieclamtuyengap" class="el-tooltip item" title="">
+                                                        <span>
+                                                              <strong>Trình Dược Viên - Bán Hàng</strong>
+                                                          </span>
+                                                    </a>
+                                                </p>
+                                                <div class="j_company">
+                                                    <div class="name">
+                                                        <a href="login.html" target="_blank" title="Công Ty TNHH Full Well Trading Việt Nam tuyển dụng">
+                                                            <span>
+                                                                  Công Ty TNHH Full Well Trading Việt Nam
+                                                              </span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="viewed">
+                                                    </div>
+                                                </div>
+                                                <div class="table-item">
+                                                    <div class="dollar">
+                                                        <i class="li-cash-dollar">
+                                                          </i> &nbsp;10 triệu - 18 triệu
 
-                                <div id="hurryjobs"></div>
+                                                    </div>
+                                                    <div title="Ha noi" class="location text_ellipsis" style="padding-left: 90px;">
+                                                        <i class="li-map-marker">
+                                                          </i> &nbsp;Hà Nội
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="mt-n mb-20 maker-none">
+                                </div>
+                                <div class="col-md-6 col-lg-6 job-over-item">
+                                    <div class="row job-itemnow">
+                                        <div class="col-md-12 col-lg-12 job_info">
+                                            <div class="company_logo">
+                                                <a href="login.html " class title="" target="_blank">
+                                                    <div class="logo_box">
+                                                        <img class="lazy-load" src="/assets/images/logo.png" lazy="error">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="company_name">
+                                                <p class="j_title text_ellipsis">
+                                                    <a href="login.html" id="vieclamtuyengap" class="el-tooltip item" title="">
+                                                        <span>
+                                                              <strong>Trình Dược Viên - Bán Hàng</strong>
+                                                          </span>
+                                                    </a>
+                                                </p>
+                                                <div class="j_company">
+                                                    <div class="name">
+                                                        <a href="login.html" target="_blank" title="Công Ty TNHH Full Well Trading Việt Nam tuyển dụng">
+                                                            <span>
+                                                                  Công Ty TNHH Full Well Trading Việt Nam
+                                                              </span>
+                                                        </a>
+                                                    </div>
+                                                    <div class="viewed">
+                                                    </div>
+                                                </div>
+                                                <div class="table-item">
+                                                    <div class="dollar">
+                                                        <i class="li-cash-dollar">
+                                                          </i> &nbsp;10 triệu - 18 triệu
+
+                                                    </div>
+                                                    <div title="Ha noi" class="location text_ellipsis" style="padding-left: 90px;">
+                                                        <i class="li-map-marker">
+                                                          </i> &nbsp;Hà Nội
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="mt-n mb-20 maker-none">
+                                </div>
                             </div>
                             <div class="col-md-12">
                                 <a href="login.html" class="btn-block" target="_blank">
                                     <div class="text-center" style="margin-bottom: 15px;">
-                                        <button type="button" class="el-button el-button--primary" onclick=More1()> 
+                                        <button type="button" class="el-button el-button--primary"> 
                                               <i class="el-icon-plus mr-3"></i>
                                               Xem thêm
                                           </button>
@@ -358,17 +441,108 @@
                                       </i> &nbsp;Việc làm hấp dẫn
                             </h2>
                             <div class="col-lg-12 col-md-12" style="padding: 5px;">
+                                <div class="col-md-6 col-lg-6 job-over-item" style="height: 80px ;">
+                                    <div class="row job-item">
+                                        <div class="col-md-12 col-lg-12 job_info">
+                                            <div class="company_logo">
+                                                <a href="login.html">
+                                                    <div class="logo_box">
+                                                        <img class="lazy-load" src="/assets/images/laptop.jpg" lazy="loaded">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="company_namehot">
+                                                <div class="content">
+                                                    <p class="j_title text_ellipsis">
+                                                        <a href="login.html" class="el-tooltip item" id="vieclamhapdan" title="Chuyên Viên Kinh Doanh BĐS Có Lương Cứng" target="_blank">
+                                                            <span>
+                                                                      <strong>Chuyên Viên Kinh Doanh BĐS Có Lương Cứng</strong>
+                                                                  </span>
+                                                        </a>
+                                                    </p>
+                                                    <div class="j_company">
+                                                        <div class="name">
+                                                            <a href="login.html" title="Công Ty Cổ Phần Đầu Tư Địa ốc Bighomes tuyển dụng">
+                                                                <span>Công Ty Cổ Phần Đầu Tư Địa ốc Bighomes</span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="viewed"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="extra-info">
+                                                <div class="table-item">
+                                                    <div class="dollar">
+                                                        <i class="li-cash-dollar">
+                                                                  
+                                                              </i> &nbsp;7 triệu - 10 triệu
+                                                    </div>
+                                                    <div title="Hà Nội" class="location text_ellipsis">
+                                                        <i class="li-map-marker">
 
-                                <div id="hotjobs">
+                                                              </i>&nbsp;Hà Nội
 
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                <div class="col-md-6 col-lg-6 job-over-item" style="height: 80px ;">
+                                    <div class="row job-item">
+                                        <div class="col-md-12 col-lg-12 job_info">
+                                            <div class="company_logo">
+                                                <a href="login.html">
+                                                    <div class="logo_box">
+                                                        <img class="lazy-load" src="/assets/images/laptop.jpg" lazy="loaded">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="company_namehot">
+                                                <div class="content">
+                                                    <p class="j_title text_ellipsis">
+                                                        <a href="login.html" class="el-tooltip item" id="vieclamhapdan" title="Chuyên Viên Kinh Doanh BĐS Có Lương Cứng" target="_blank">
+                                                            <span>
+                                                                      <strong>Chuyên Viên Kinh Doanh BĐS Có Lương Cứng</strong>
+                                                                  </span>
+                                                        </a>
+                                                    </p>
+                                                    <div class="j_company">
+                                                        <div class="name">
+                                                            <a href="login.html" title="Công Ty Cổ Phần Đầu Tư Địa ốc Bighomes tuyển dụng">
+                                                                <span>Công Ty Cổ Phần Đầu Tư Địa ốc Bighomes</span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="viewed"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="extra-info">
+                                                <div class="table-item">
+                                                    <div class="dollar">
+                                                        <i class="li-cash-dollar">
+                                                                  
+                                                              </i> &nbsp;7 triệu - 10 triệu
+                                                    </div>
+                                                    <div title="Hà Nội" class="location text_ellipsis">
+                                                        <i class="li-map-marker">
 
+                                                              </i>&nbsp;Hà Nội
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
                             <div class="col-md-12" style="padding-top: 10px;">
                                 <div class="text-center" style="margin-bottom: 15px;">
                                     <a href="login.html" class="btn-block" target="_blank">
-                                        <button type="button" class="el-button el-button--primary" onclick="More2()">
+                                        <button type="button" class="el-button el-button--primary">
                                               <i class="el-icon-plus mr-3">
                                               </i>
                                               Xem thêm
@@ -382,7 +556,55 @@
                                 <i class="li-briefcase"></i> &nbsp;Việc làm lương cao
                             </h2>
                             <div class="col-lg-12 col-md-12" style="padding: 5px;">
-                                <div id="salaryjobs"></div>
+                                <div class="col-md-16 col-lg-6 mw-box-item job-over-item" style="height: 80px ;">
+                                    <div class="row job-item ">
+                                        <div class="col-md-12 col-lg-12 job_info">
+                                            <div class="company_logo">
+                                                <a href="login.html" class title="Nhân Viên Phát Triển Thị Trường Tại Hà Nội, Hải Dương, Hải Phòng" target="_blank">
+                                                    <div class="logo_box">
+                                                        <img class="lazy-load" src="/assets/images/laptop.jpg" lazy="loaded">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <div class="company_namehot">
+                                                <div class="content">
+                                                    <p class="j_title text_ellipsis">
+                                                        <a href="login.html" class="el-tooltip item" id="vieclamluongcao" title="Nhân Viên Phát Triển Thị Trường Tại Hà Nội, Hải Dương, Hải Phòng" target="_blank">
+                                                            <span>
+                                                                      <strong>Nhân Viên Phát Triển Thị Trường Tại Hà Nội, Hải Dương, Hải Phòng</strong>
+                                                                  </span>
+                                                        </a>
+                                                    </p>
+                                                    <div class="j_company">
+                                                        <div class="name">
+                                                            <a href="login.html" target="_blank" title="Công Ty CP Tổ Hợp Công Nghiệp Xây Dựng Nam Hải tuyển dụng">
+                                                                <span>
+                                                                          Công Ty CP Tổ Hợp Công Nghiệp Xây Dựng Nam Hải
+                                                                      </span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="viewed">
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="extra-info">
+                                                <div class="table-item">
+                                                    <div class="dollar">
+                                                        <i class="li-cash-dollar"> </i> &nbsp;8 triệu - 12 triệu
+                                                    </div>
+                                                    <div title="Hà Nội, Hải Dương, Hải Phòng" class="location text_ellipsis">
+                                                        <i class="li-map-marker"></i>&nbsp;Hà Nội, Hải Dương, Hải Phòng
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
 
                             </div>
                             <div class="col-md-12" style="padding-top: 10px;">
@@ -796,8 +1018,41 @@
             </div>
         </footer>
     </section>
-    <script src="/js/home.js">
-    </script>
+    <script src="/js/home.js"></script>
+    <!-- <script type="text/javascript">
+        $('.slider').slick({
+            dots: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                }, {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                }, {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+                // You can unslick at a given breakpoint now by adding:
+                // settings: "unslick"
+                // instead of a settings object
+            ]
+        });
+    </script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
