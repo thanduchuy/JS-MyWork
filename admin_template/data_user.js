@@ -1,62 +1,7 @@
-// let user=[
-//     {
-//         active : true,
-//         email : "nacu22984@gmail.com",
-//         id : 1,
-//         name: "Le Thi Hong Nhung",
-//         pass :"thayGiaoDepTrai",
-//         phone: "01234314414",
-//         role: "admin" 
-//     },
-//     {
-//         active : true,
-//         email : "someOne@gmail.com",
-//         id : 2,
-//         name: "Ton That  Hoang Vu",
-//         pass :"thayGiaoXauTrai",
-//         phone: "0834314414",
-//         role: "admin" 
-//     },
-//     {
-//         active : true,
-//         email : "someOne222@gmail.com",
-//         id : 3,
-//         name: "Ai Do Deo Biet",
-//         pass :"thayGiaoXauTrai",
-//         phone: "0123441454",
-//         role: "admin" 
-//     },
-//     {
-//         active : true,
-//         email : "hhhhh@gmail.com",
-//         id : 4,
-//         name: "Ai Do Khong Biet",
-//         pass :"thayGiaoXauTrai",
-//         phone: "0123441454",
-//         role: "admin" 
-//     },
-//     {
-//         active : false,
-//         email : "aaaaaaaa@gmail.com",
-//         id : 5,
-//         name: "aaaaaaa",
-//         pass :"thayGiaoXauTrai",
-//         phone: "0123441454",
-//         role: "user" 
-//     },
-//     {
-//         active : false,
-//         email : "bbbbbbbbbb@gmail.com",
-//         id : 6,
-//         name: "bbbbbbb",
-//         pass :"thayGiaoXauTrai",
-//         phone: "0123441454",
-//         role: "user" 
-//     }
-// ]
-// localStorage.setItem("user", JSON.stringify(user));
+var db = firebase.firestore();
 let intelval
 window.onload = loadData
+let listUserTemp = []
 function showData(id) {
     if (intelval) clearInterval(intelval)
     switch (id) {
@@ -102,69 +47,132 @@ function loadData() {
     showData(0)
 }
 function getDataUser() {
-    let users = JSON.parse(localStorage.getItem("user"));
-    return users;
+    return new Promise((resove, reject) => {
+        let users = []
+        db.collection("Profile").get().then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+                let user = {
+                    id: doc.id,
+                    name: doc.data().name,
+                    phone: doc.data().phone,
+                    email: doc.data().email,
+                    birthday: doc.data().birthday,
+                    gender: doc.data().gender,
+                    status: doc.data().status,
+                    address: doc.data().address,
+                    country: doc.data().country,
+                    city: doc.data().city,
+                    district: doc.data().district,
+                    role: doc.data().role,
+                    active: doc.data().active
+                }
+                users.push(user);
+            });
+            resove(users);
+        });
+    })
 }
+
 function saveLocalStorage(user) {
     localStorage.setItem("user", JSON.stringify(user));
 }
 
 function listUser(id) {
-    user = getDataUser()
-    if (id === 3) {
-        var showUser = getUserActive(user);
-        intelval = setInterval(() => {
-            const element = document.querySelector('#user-item')
-            if (element) {
-                element.innerHTML = showUser
-                clearInterval(intelval)
-            }
-        }, [500])
-    } else {
-        var showUser = getUserUnActive(user);
-        intelval = setInterval(() => {
-            const element = document.querySelector('#user-item')
-            if (element) {
-                element.innerHTML = showUser
-                clearInterval(intelval)
-            }
-        }, [500])
-    }
+    getDataUser().then(user => {
+        if (id === 3) {
+            var showUser = getUserActive(user);
+            intelval = setInterval(() => {
+                const element = document.querySelector('#user-item')
+                if (element) {
+                    element.innerHTML = showUser
+                    clearInterval(intelval)
+                }
+            }, [500])
+        } else {
+            var showUser = getUserUnActive(user);
+            intelval = setInterval(() => {
+                const element = document.querySelector('#user-item')
+                if (element) {
+                    element.innerHTML = showUser
+                    clearInterval(intelval)
+                }
+            }, [500])
+        }
+
+    })
 
 }
 
 function reloadDataUser() {
-    listUser = getDataUser()
-    var showUser = getUserActive(listUser);
-    document.getElementById("user-item").innerHTML = showUser;
+    getDataUser().then(listUser => {
+        var showUser = getUserActive(listUser);
+        document.getElementById("user-item").innerHTML = showUser;
+    })
 }
 function getUserById(id) {
-    listUser = getDataUser()
-    list = []
-    for (var i = 0; i < listUser.length; i++) {
-        if (listUser[i].id == id) {
-            list.push(listUser[i])
-        }
-    }
-    return list
+    return new Promise((resovle, reject) => {
+        getDataUser().then(listUser => {
+            list = []
+            for (var i = 0; i < listUser.length; i++) {
+                if (listUser[i].id == id) {
+                    list.push(listUser[i])
+                }
+            }
+            resovle(list)
+        })
+    })
 }
 
 function eventShowDataEdit(id) {
-    user = getUserById(id)
-    var showUser = showUserToEdit(user);
-    document.getElementById("exampleModal").innerHTML = showUser;
+    getUserById(id).then(user => {
+        var showUser = showUserToEdit(user);
+        document.getElementById("exampleModal").innerHTML = showUser;
+    })
+
 }
 
 function eventDelete(id) {
-    listUser = getDataUser()
-    list = []
+    // listUser = getDataUser()
+    // list = []
+    // if (confirm("Do you want to delete this user? ")) {
+    //     for (var i = 0; i < listUser.length; i++) {
+    //         if (listUser[i].id == id) {
+    //             listUser.splice(i, 1);
+    //             localStorage.setItem("user", JSON.stringify(listUser));
+    //         }
+    //     }
+    //     alert(" Delete success! ");
+    //     reloadDataUser()
+    // }
+    console.log(id);
     if (confirm("Do you want to delete this user? ")) {
-        for (var i = 0; i < listUser.length; i++) {
-            if (listUser[i].id == id) {
-                listUser.splice(i, 1);
-                localStorage.setItem("user", JSON.stringify(listUser));
+        let element = {}
+        for (let i = 0; i < listUserTemp.length; i++) {
+            if (listUserTemp[i].id == id) {
+                element = listUserTemp[i]
             }
         }
+        console.log(element);
+        element.active = false
+        db.collection("Profile").doc(id).set({
+            name: element.name,
+            phone: element.phone,
+            email: element.email,
+            birthday: element.birthday,
+            gender: element.gender,
+            status: element.status,
+            address: element.address,
+            country: element.country,
+            city: element.city,
+            district: element.district,
+            role: element.role,
+            active: element.active
+        }).then(function () {
+            console.log("Update success !");
+        })
+        .catch(function (error) {
+            console.error("Update Fail: ", error);
+        });
         alert(" Delete success! ");
         reloadDataUser()
     }
@@ -207,10 +215,6 @@ function showUserToEdit(user) {
                                     <input type="text" class="form-input" id="name" name="name" value="${element.name}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="name" class="form-label">Password: </label>
-                                    <input type="text" class="form-input" id="pass" name="pass" value="${element.pass}">
-                                </div>
-                                <div class="form-group">
                                     <label for="price" class="form-label">Email: </label>
                                     <input type="text" class="form-input" id="email" name="email" value="${element.email}">
                                 </div>
@@ -218,9 +222,13 @@ function showUserToEdit(user) {
                                     <label for="price" class="form-label">Phone: </label>
                                     <input type="text" class="form-input" id="phone" name="phone"  value="${element.phone}">
                                 </div>
+                                 <div class="form-group">
+                                    <label for="name" class="form-label">Active: </label>
+                                    <input type="text" class="form-input" id="active" name="active" value="${element.active}">
+                                </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
-                                        data-dismiss="modal" onclick="saveUpdate()" >Save</button>
+                                        onclick="saveUpdate()" >Save</button>
                                 </div>							
                             </form>
                         </div>	
@@ -232,6 +240,7 @@ function showUserToEdit(user) {
 
 function getUserActive(listUser) {
     list = []
+    listUserTemp = listUser
     for (var i = 0; i < listUser.length; i++) {
         if (listUser[i].active == true) {
             list.push(listUser[i])
@@ -239,19 +248,18 @@ function getUserActive(listUser) {
     }
     var renderUser = (list || []).map((element, index) => {
         return `<tr>
-      <td>${element.id}</td>
       <td>${element.name}</td>
       <td>${element.phone}</td>
       <td>${element.email}</td>
       <td>
           <button type="button" class="btn btn-primary" data-toggle="modal"
               data-target="#exampleModal"
-              onclick="eventShowDataEdit(${element.id})">Edit</button>
+              onclick="eventShowDataEdit('${element.id}')">Edit</button>
           <!-- Modal ADD DATA -->
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalLabel" aria-hidden="true">
         </div>
-          <button type="button" class="btn btn-primary" onclick="eventDelete(${element.id})">
+          <button type="button" class="btn btn-primary" onclick="eventDelete('${element.id}')">
               Delete
           </button>
       </td>
@@ -264,7 +272,6 @@ function getUserActive(listUser) {
 function getUserSearch(listUser) {
     var renderUser = (listUser || []).map((element, index) => {
         return `<tr>
-      <td>${element.id}</td>
       <td>${element.name}</td>
       <td>${element.phone}</td>
       <td>${element.email}</td>
@@ -310,23 +317,45 @@ function getUserUnActive(listUser) {
     return renderUser.join('');
 }
 
+
+
 function saveUpdate() {
     var id = document.getElementById("id").value;
     var name = document.getElementById("name").value;
-    var pass = document.getElementById("pass").value;
+    var active = document.getElementById("active").value;
     var email = document.getElementById("email").value;
     var phone = document.getElementById("phone").value;
-    
-    userData = getDataUser()
-    for (var i = 0; i < userData.length; i++) {
-        if (userData[i].id == id) {
-            userData[i].name = name
-            userData[i].pass = pass
-            userData[i].email = email
-            userData[i].phone = phone
+    let element = {}
+    for (let i = 0; i < listUserTemp.length; i++) {
+        if (listUserTemp[i].id == id) {
+            element = listUserTemp[i]
         }
     }
-    saveLocalStorage(userData)
+    element.name = name
+    element.active = active == 'true'
+    element.email = email
+    element.phone = phone
+    db.collection("Profile").doc(id).set({
+        name: element.name,
+        phone: element.phone,
+        email: element.email,
+        birthday: element.birthday,
+        gender: element.gender,
+        status: element.status,
+        address: element.address,
+        country: element.country,
+        city: element.city,
+        district: element.district,
+        role: element.role,
+        active: element.active
+    })
+        .then(function () {
+            console.log("Update success !");
+        })
+        .catch(function (error) {
+            console.error("Update Fail: ", error);
+        });
+
     reloadDataUser()
 }
 
@@ -338,7 +367,7 @@ function search() {
     if (categoryId == 2) {
         userData = getDataUser()
         for (var i = 0; i < userData.length; i++) {
-            if(userData[i].name.toLowerCase().includes(name)){
+            if (userData[i].name.toLowerCase().includes(name)) {
                 list.push(userData[i])
             }
         }
@@ -377,7 +406,6 @@ function showCenSoredUser() {
 			<table>
 				<thead>
 					<tr>
-						<th>Id</th>
 						<th>Name</th>
 						<th>Phone</th>
 						<th>Email</th>
@@ -405,7 +433,6 @@ function showUnCenSoredUser() {
 			<table>
 				<thead>
 					<tr>
-						<th>Id</th>
 						<th>Name</th>
 						<th>Phone</th>
 						<th>Email</th>
