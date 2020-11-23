@@ -1,19 +1,118 @@
-let jobs = []
+
 let listCV = []
-let cvChoose = 0
+
 function loadData() {
-    jobs = loadJobLocal()
-    showJobViewMuch()
-    getListCVOfUser()
+    getAllDocFromCollection("Jobs").then(list=>{
+        showJobViewMuch(list)
+    })
+    getUserLogged().then(uid=>{
+        getDocFromCollection("Profile",uid).then(data=>{
+            info.phone.value = data.phone
+            info.email.value = data.email
+        })
+        cvUser(uid).then(data=>{
+            listCV = data
+            getListCVOfUser(data);
+        })
+    })
+
 }
-function loadJobLocal() {
-    return JSON.parse(localStorage.getItem("jobs"))
+function cvUser(id) {
+    return new Promise((resove,reject)=>{
+        let listCV = []
+        db.collection("CV").where("idUser", "==", id)
+        .get().then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
+                let cv = {
+                    id:doc.id,
+                    cvImage:doc.data().cvImage,
+                    idUser:doc.data().idUser
+                }
+                listCV.push(cv);
+            });
+            resove(listCV);
+        });
+    })
 }
-function showJobViewMuch() {
+function getDocFromCollection(nameCollection,id) {
+    return new Promise((resolve,reject)=>{
+        var ref = db.collection(nameCollection).doc(id)
+        ref.get().then(function(doc) {
+            if (doc.exists) {
+                resolve(doc.data());
+            } else {
+                reject("No such document!");
+            }
+        }).catch(function(error) {
+            reject("Error getting document:");
+        });
+    })
+
+}
+function getUserLogged() {
+    return new Promise((resolve,reject)=>{
+        firebase.auth().onAuthStateChanged(function(user) {
+            resolve(user.uid)
+        });
+    })
+}
+function getAllDocFromCollection(nameCollection) {
+    return new Promise((resolve,reject)=>{
+        db.collection(nameCollection).get().then(function(querySnapshot) {
+            let list = []
+            querySnapshot.forEach(function(doc) {
+                let job = {
+                    id: doc.id,
+                    career: doc.data().career,
+                    datePost: doc.data().datePost,
+                    imageCompany: doc.data().imageCompany,
+                    location: doc.data().location,
+                    nameCompany: doc.data().nameCompany,
+                    nameJob: doc.data().nameJob,
+                    salary: doc.data().salary
+                }
+                list.push(job)
+            });
+            resolve(list);
+        });
+    })
+}
+function jobSearchByName(name) {
+    return new Promise((resove, reject) => {
+        let listJob = []
+        db.collection("Jobs").where("nameJob", "==", name)
+            .get().then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    console.log(doc.id, " => ", doc.data());
+                    let job = {
+                        id: doc.id,
+                        career: doc.data().career,
+                        datePost: doc.data().datePost,
+                        imageCompany: doc.data().imageCompany,
+                        location: doc.data().location,
+                        nameCompany: doc.data().nameCompany,
+                        nameJob: doc.data().nameJob,
+                        salary: doc.data().salary
+                    }
+                    listJob.push(job);
+                });
+                resove(listJob);
+            });
+    })
+}
+
+function formatArray(arr) {
+    let inner = "";
+    for (let i = 0; i < 8; i++) {
+        inner += `    `;
+    }
+}
+
+function showJobViewMuch(jobs) {
     let temp = shuffle(jobs);
     let inner = "";
     for (let index = 0; index < 3; index++) {
-        inner+= `
+        inner += `
         <div class="col-md-12 col-lg-12 job-over-item">
         <div class="row job-item">
             <p class="j-title-text-ellipsis">
@@ -62,6 +161,7 @@ function showJobViewMuch() {
     }
     document.getElementById("jobViewMuch").innerHTML = inner;
 }
+
 function shuffle(a) {
     for (let i = a.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -69,13 +169,9 @@ function shuffle(a) {
     }
     return a;
 }
-function getListCVOfUser() {
-    let user = JSON.parse(sessionStorage.getItem("userLogin"))
-    let temp = JSON.parse(localStorage.getItem("listCV"))
-    listCV = temp.filter(element => element["idUser"] == user["id"])
-    info.phone.value = user["phone"]
-    info.email.value = user["email"]
-    document.getElementById("listCV").innerHTML =  listCV.map((element,index)=> {
+
+function getListCVOfUser(listCV) {
+    document.getElementById("listCV").innerHTML = listCV.map((element, index) => {
         return `
         <div class="col-4">
             <div class="col-12 items d-flex justify-content-center align-items-center" name="itemCV"
@@ -94,6 +190,7 @@ function getListCVOfUser() {
     document.getElementsByName("checkCV")[0].style.display = "block"
 
 }
+
 function chooseCVSent(index) {
     cvChoose = index
     for (var i = 0; i < listCV.length; i++) {
