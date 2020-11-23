@@ -237,7 +237,7 @@ function searchWork() {
     let location = form.locations.value;
 
     window.location.href = `
-                http://127.0.0.1:5502/html/result.html?name=${name}&career=${career}&location=${location}`;
+                http://127.0.0.1:5503/html/result.html?name=${name}&career=${career}&location=${location}`;
 }
 
 function More1() {

@@ -125,6 +125,18 @@ function loadDataFromURL() {
         })
         return;
     }
+    if (location == "" && career == "") {
+        console.log(name);
+        getJob().then(list => {
+            let temp = list;
+            temp = temp.filter(element => {
+                return element.nameJob.toLowerCase().trim().includes(name);
+            })
+            document.getElementById("bodyJobs").innerHTML = formatArray(temp).join("");
+            document.getElementById("countJobs").innerHTML = `Tìm thấy ${temp.length} việc làm đang tuyển dụng`;
+        })
+        return;
+    }
     if (name == "" && career == "") {
         jobSearchByLocation(location).then(list => {
             document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
@@ -138,16 +150,6 @@ function loadDataFromURL() {
             document.getElementById("countJobs").innerHTML = `Tìm thấy ${list.length} việc làm đang tuyển dụng`;
         })
         return;
-    }
-    if (location == "" && career == "") {
-        getJob().then(list => {
-            let temp = list;
-            temp = temp.filter(element => {
-                return element.nameJob.toLowerCase().trim().includes(name);
-            })
-            document.getElementById("bodyJobs").innerHTML = formatArray(temp).join("");
-            document.getElementById("countJobs").innerHTML = `Tìm thấy ${temp.length} việc làm đang tuyển dụng`;
-        })
     }
     if (name == "") {
         jobSearchByCarloca(career, location).then(list => {
@@ -193,6 +195,21 @@ function searchBox(e) {
     })
 }
 
+function searchCareer() {
+    var e = document.getElementById("jobs");
+    jobSearchByCareer(e.options[e.selectedIndex].text).then(list => {
+        document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
+        document.getElementById("countJobs").innerHTML = `Tìm thấy ${list.length} việc làm đang tuyển dụng`;
+    })
+}
+
+function searchLocation() {
+    var e = document.getElementById("locations");
+    jobSearchByLocation(e.options[e.selectedIndex].text).then(list => {
+        document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
+        document.getElementById("countJobs").innerHTML = `Tìm thấy ${list.length} việc làm đang tuyển dụng`;
+    })
+}
 
 
 function jobSearchByCarloca(career, location) {
