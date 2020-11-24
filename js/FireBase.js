@@ -181,3 +181,18 @@ function cvUser(id) {
         });
     });
 }
+function checkAdmin() {
+    return new Promise((resove,reject)=>{
+        var user = firebase.auth().currentUser;
+        var ref = db.collection("Profile").doc(user.uid)
+        ref.get().then(function(doc) {
+        if (doc.exists) {
+            resove(doc.data().role == "admin")
+        } else {
+            reject(false)
+        }
+        }).catch(function(error) {
+            console.log("Error getting document:", error);
+        });
+    })
+}
