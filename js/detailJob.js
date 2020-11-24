@@ -1,6 +1,7 @@
 
 let listCV = []
 let cvChoose = 0
+let userTemp = {};
 function loadData() {
     getAllDocFromCollection("Jobs").then(list=>{
         showJobViewMuch(list)
@@ -72,6 +73,7 @@ function getDocFromCollection(nameCollection,id) {
 function getUserLogged() {
     return new Promise((resolve,reject)=>{
         firebase.auth().onAuthStateChanged(function(user) {
+            userTemp = user
             resolve(user.uid)
         });
     })
@@ -217,4 +219,25 @@ function chooseCVSent(index) {
         document.getElementsByName("itemCV")[i].style.borderColor = i == index ? "#009ce0" : "#e1e1e1"
         document.getElementsByName("checkCV")[i].style.display = i == index ? "block" : "none"
     }
+}
+function addJobFavourite() {
+    let today = new Date();
+    let nextday = new Date();
+    nextday.setDate(today.getDate() + 7);
+    db.collection("JobFavourite").add({
+        uid : userTemp.uid,
+        email: info.email.value ,
+        phone: info.phone.value,
+        position : "Nhân viên",
+        wage : "8 triệu - 10 triệu",
+        dateSave : today.toLocaleDateString("en-US"),
+        dateExpiration : nextday.toLocaleDateString("en-US"),
+        status : false,
+        note : "..."
+    }).then(function(docRef) {
+        alert("Lưu thành công");
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
 }
