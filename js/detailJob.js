@@ -1,6 +1,6 @@
 
 let listCV = []
-
+let cvChoose = 0
 function loadData() {
     getAllDocFromCollection("Jobs").then(list=>{
         showJobViewMuch(list)
@@ -16,6 +16,26 @@ function loadData() {
         })
     })
 
+}
+function sendCV() {
+    //job application
+    let today = new Date();
+    db.collection("JobApplication").add({
+        uid: listCV[cvChoose].idUser,
+        cv: listCV[cvChoose].cvImage,
+        email: info.email.value ,
+        phone: info.phone.value,
+        position : "Nhân viên",
+        wage : "8 triệu - 10 triệu",
+        date : today.toLocaleDateString("en-US"),
+        status : false,
+        note : "..."
+    }).then(function(docRef) {
+        alert("Ứng tuyển thành công");
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
 }
 function cvUser(id) {
     return new Promise((resove,reject)=>{

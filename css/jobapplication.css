@@ -248,10 +248,22 @@ a:visited {
   margin: 1em 0;
   padding: 1em;
 }
-.el-menu li:hover{
+.el-menu li:hover {
   background-color: #239fd5;
 }
-.icon1{
+.icon1 {
   background: rgb(86, 230, 86);
   border-radius: 12px;
+}
+.rowData {
+  border-bottom: lightgray 1px solid;
+}
+
+.rowData .active {
+  background-color: #239fd5;
+  color: white;
+}
+.rowData .nonactive {
+  background-color: #ff4949;
+  color: white;
 }
