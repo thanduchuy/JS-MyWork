@@ -1,6 +1,6 @@
 addSelectJobs();
 addSelectLocation();
-getUserLogged();
+
 var db = firebase.firestore();
 /* Placeholder Typewriter */
 var placeholderText = [
@@ -12,25 +12,7 @@ var placeholderText = [
 $('#search').placeholderTypewriter({
     text: placeholderText,
 });
-function onLogOut() {
-    firebase.auth().signOut().then(function() {
-        location.reload();
-    }).catch(function(error) {
-        console.log("fail");
-    });
-}
-function getUserLogged() {
-    firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            document.getElementById("emailUser").innerHTML = user.email
-            document.getElementById("notlogin").style.display = "none"
-            document.getElementById("logged").style.display = "inline"
-        } else {
-            document.getElementById("notlogin").style.display = "inline"
-            document.getElementById("logged").style.display = "none"
-        }
-    });
-}
+
 function addSelectJobs() {
     let jobs = [
         "Y tế",
@@ -87,7 +69,6 @@ function addSelectLocation() {
         "Sóc Trăng",
         "Bạc Liêu",
         "Cà Mau",
-        "Hà Nội",
     ];
     let row = locations.map((e) => {
         return `<option value="${e}">${e}</option>`;
@@ -172,12 +153,10 @@ function formatArray(arr) {
                         <div class="dollar">
                             <i class="li-cash-dollar">
                               </i> &nbsp;${arr[i]["salary"]}
-
                         </div>
                         <div title="${arr[i]["location"]}" class="location text_ellipsis" style="padding-left: 90px;">
                             <i class="li-map-marker">
                               </i> &nbsp;${arr[i]["location"]}
-
                         </div>
                     </div>
                 </div>
@@ -233,11 +212,8 @@ function formatArray2(arr, ele) {
                                                     </div>
                                                     <div title="Hà Nội" class="location text_ellipsis">
                                                         <i class="li-map-marker">
-
                                                                 </i>&nbsp;${arr[i]["location"]}
-
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -256,7 +232,7 @@ function searchWork() {
     let location = form.locations.value;
 
     window.location.href = `
-                http://127.0.0.1:5503/html/result.html?name=${name}&career=${career}&location=${location}`;
+                http://127.0.0.1:5502/html/result.html?name=${name}&career=${career}&location=${location}`;
 }
 
 function More1() {

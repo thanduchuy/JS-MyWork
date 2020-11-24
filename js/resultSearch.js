@@ -182,8 +182,7 @@ function loadDataFromURL() {
         return;
     }
 }
-//document.getElementById("bodyJobs").innerHTML = formatArray(result).join("");
-//document.getElementById("countJobs").innerHTML = `Tìm thấy ${result.length} việc làm đang tuyển dụng`;
+
 function searchBox(e) {
     var name = e.target.value.toLowerCase().trim();
     getJob().then(list => {
@@ -199,6 +198,15 @@ function searchBox(e) {
 function searchCareer() {
     var career = document.getElementById("jobs");
     var location = document.getElementById("locations");
+    if (location.options[location.selectedIndex].value == "" && career.options[career.selectedIndex].value == "") {
+        console.log("location k co gia tri , career k co gia tri")
+        getJob().then(list => {
+            document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
+            document.getElementById("countJobs").innerHTML = `Tìm thấy ${list.length} việc làm đang tuyển dụng`;
+        })
+        return;
+
+    }
     if (location.options[location.selectedIndex].value == "") {
         console.log("location k co gia tri")
         jobSearchByCareer(career.options[career.selectedIndex].text).then(list => {
@@ -224,11 +232,21 @@ function searchCareer() {
         })
         return;
     }
+
 }
 
 function searchLocation() {
     var career = document.getElementById("jobs");
     var location = document.getElementById("locations");
+    if (location.options[location.selectedIndex].value == "" && career.options[career.selectedIndex].value == "") {
+        console.log("location k co gia tri , career k co gia tri")
+        getJob().then(list => {
+            document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
+            document.getElementById("countJobs").innerHTML = `Tìm thấy ${list.length} việc làm đang tuyển dụng`;
+        })
+        return;
+
+    }
     if (career.options[career.selectedIndex].value == "") {
         console.log("career k gia tri")
         jobSearchByLocation(location.options[location.selectedIndex].text).then(list => {
