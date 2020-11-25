@@ -5,6 +5,8 @@ getUserLogged().then(uid => {
             location.href = "http://127.0.0.1:5501/html/loginUser.html"
         }
     })
+}).catch(() => {
+    location.href = "http://127.0.0.1:5501/html/loginUser.html"
 })
 
 function getUserLogged() {
@@ -28,6 +30,7 @@ function checkAdmin(uid) {
             } else {
                 reject(false)
             }
+
         }).catch(function(error) {
             console.log("Error getting document:", error);
         });
@@ -36,7 +39,7 @@ function checkAdmin(uid) {
 let intelval
 window.onload = loadData
 let listUserTemp = []
-
+let listJobItem = []
 function showData(id) {
     if (intelval) clearInterval(intelval)
     switch (id) {
@@ -45,14 +48,10 @@ function showData(id) {
             sessionStorage.setItem("categoryId", JSON.stringify(0));
             document.getElementById("row").innerHTML = data;
             break;
-        case 1:
-            var data = showCenSoredPost()
-            sessionStorage.setItem("categoryId", JSON.stringify(1));
-            document.getElementById("row").innerHTML = data;
-            break;
         case 2:
-            var data = showUnCenSoredPost()
+            var data = showCenSoredPost()
             sessionStorage.setItem("categoryId", JSON.stringify(2));
+            listJob(2)
             document.getElementById("row").innerHTML = data;
             break;
         case 3:
@@ -110,8 +109,29 @@ function getDataUser() {
     })
 }
 
-function saveLocalStorage(user) {
-    localStorage.setItem("user", JSON.stringify(user));
+function getDataJob() {
+    return new Promise((resove, reject) => {
+        let jobs = []
+        db.collection("Jobs").get().then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
+                let job = {
+                    id: doc.id,
+                    career: doc.data().career,
+                    datePost: doc.data().datePost,
+                    imageCompany: doc.data().imageCompany,
+                    location: doc.data().location,
+                    nameCompany: doc.data().nameCompany,
+                    nameJob: doc.data().nameJob,
+                    salary: doc.data().salary,
+                    status: doc.data().status,
+                    active: doc.data().active
+                }
+                jobs.push(job);
+            });
+            listJobItem = jobs
+            resove(jobs);
+        });
+    })
 }
 
 function listUser(id) {
@@ -140,10 +160,43 @@ function listUser(id) {
 
 }
 
+function listJob(id) {
+    getDataJob().then(user => {
+        if (id === 2) {
+            var showUser = getJobActive(user);
+            intelval = setInterval(() => {
+                const element = document.querySelector('#job-item')
+                if (element) {
+                    element.innerHTML = showUser
+                    clearInterval(intelval)
+                }
+            }, [500])
+        } else {
+            var showUser = getJobUnActive(user);
+            intelval = setInterval(() => {
+                const element = document.querySelector('#job-item')
+                if (element) {
+                    element.innerHTML = showUser
+                    clearInterval(intelval)
+                }
+            }, [500])
+        }
+
+    })
+
+}
+
 function reloadDataUser() {
     getDataUser().then(listUser => {
         var showUser = getUserActive(listUser);
         document.getElementById("user-item").innerHTML = showUser;
+    })
+}
+
+function reloadJob() {
+    getDataJob().then(listJob => {
+        var showUser = getJobActive(listJob);
+        document.getElementById("job-item").innerHTML = showUser;
     })
 }
 
@@ -212,22 +265,21 @@ function eventActiveUser(id) {
         }
         element.active = true
         db.collection("Profile").doc(id).set({
-                name: element.name,
-                phone: element.phone,
-                email: element.email,
-                birthday: element.birthday,
-                gender: element.gender,
-                status: element.status,
-                address: element.address,
-                country: element.country,
-                city: element.city,
-                district: element.district,
-                role: element.role,
-                active: element.active
-            }).then(function() {
-                console.log("Update success !");
-            })
-            .catch(function(error) {
+            name: element.name,
+            phone: element.phone,
+            email: element.email,
+            birthday: element.birthday,
+            gender: element.gender,
+            status: element.status,
+            address: element.address,
+            city: element.city,
+            district: element.district,
+            role: element.role,
+            active: element.active
+        }).then(function () {
+            console.log("Update success !");
+        })
+            .catch(function (error) {
                 console.error("Update Fail: ", error);
             });
         alert(" Active User success! ");
@@ -377,6 +429,84 @@ function getUserUnActive(listUser) {
     return renderUser.join('');
 }
 
+function getJobUnActive(listJob) {
+    list = []
+    for (var i = 0; i < listJob.length; i++) {
+        if (listJob[i].active == false) {
+            list.push(listJob[i])
+        }
+    }
+    var renderJob = (list || []).map((element, index) => {
+        return `<tr>
+      <td>${element.nameJob}</td>
+      <td>${element.salary}</td>
+      <td>${element.status}</td>
+      <td>
+          <button type="button" class="btn btn-primary" onclick="eventActiveUser('${element.id}')">
+              Active
+          </button>
+      </td>
+  </tr>
+      `;
+    });
+    return renderJob.join('');
+}
+
+function getJobActive(listJob) {
+    console.log(listJob);
+    list = []
+    for (var i = 0; i < listJob.length; i++) {
+        if (listJob[i].active == true) {
+            list.push(listJob[i])
+        }
+    }
+    console.log(list);
+    var renderJob = (list || []).map((element, index) => {
+        return `<tr>
+      <td>${element.career}</td>
+      <td><img src="${element.imageCompany}" style="width: 100px; height: 100px;" alt="User image" class="dropdown-toggle" data-toggle="user-menu"></td>
+      <td>${element.location}</td>
+      <td>${element.nameCompany}</td>
+      <td>
+          <button type="button" class="btn btn-primary" onclick="eventUnActivePost('${element.id}')">
+              UnActive
+          </button>
+      </td>
+  </tr>
+      `;
+    });
+    return renderJob.join('');
+}
+
+function eventUnActivePost(id) {
+    if (confirm("Do you want to UnAcitve this Job? ")) {
+        let element = {}
+        for (let i = 0; i < listJobItem.length; i++) {
+            if (listJobItem[i].id == id) {
+                element = listJobItem[i]
+            }
+        }
+        element.active = false
+        db.collection("Jobs").doc(id).set({
+            career: element.career,
+            datePost: element.datePost,
+            imageCompany: element.imageCompany,
+            location: element.location,
+            nameCompany: element.nameCompany,
+            nameJob: element.nameJob,
+            salary: element.salary,
+            status: element.status,
+            active: element.active
+        }).then(function () {
+            console.log("Update success !");
+        })
+            .catch(function (error) {
+                console.error("Update Fail: ", error);
+            });
+        alert(" UnActive Job success! ");
+        reloadJob()
+    }
+}
 
 
 function saveUpdate() {
@@ -396,20 +526,19 @@ function saveUpdate() {
     element.email = email
     element.phone = phone
     db.collection("Profile").doc(id).set({
-            name: element.name,
-            phone: element.phone,
-            email: element.email,
-            birthday: element.birthday,
-            gender: element.gender,
-            status: element.status,
-            address: element.address,
-            country: element.country,
-            city: element.city,
-            district: element.district,
-            role: element.role,
-            active: element.active
-        })
-        .then(function() {
+        name: element.name,
+        phone: element.phone,
+        email: element.email,
+        birthday: element.birthday,
+        gender: element.gender,
+        status: element.status,
+        address: element.address,
+        city: element.city,
+        district: element.district,
+        role: element.role,
+        active: element.active
+    })
+        .then(function () {
             console.log("Update success !");
         })
         .catch(function(error) {
@@ -464,7 +593,6 @@ function showHome() {
 }
 
 function showCenSoredUser() {
-    const userData = localStorage.getItem('user')
     return `<div class="col-8 col-m-12 col-sm-12" style="width: 100%;">
 	<div class="card">
 		<div class="card-header">
@@ -531,14 +659,14 @@ function showCenSoredPost() {
 			<table>
 				<thead>
 					<tr>
-						<th>Id</th>
-						<th>Name</th>
-						<th>Phone</th>
-						<th>Email</th>
+						<th>CAREER</th>
+						<th>IMAGE</th>
+						<th>LOCATION</th>
+						<th>NAME COMPANY</th>
 						<th style="padding-left: 40px;">Event</th>
 					</tr>
 				</thead>
-				<tbody id="user-item">
+				<tbody id="job-item">
 				</tbody>
 			</table>
 		</div>
@@ -546,30 +674,12 @@ function showCenSoredPost() {
 </div>`;
 }
 
-function showUnCenSoredPost() {
-    return `<div class="col-8 col-m-12 col-sm-12" style="width: 100%;">
-	<div class="card">
-		<div class="card-header">
-			<h3>
-				Data UNCENSORED POST Response
-			</h3>
-			<i class="fas fa-ellipsis-h"></i>
-		</div>
-		<div class="card-content">
-			<table>
-				<thead>
-					<tr>
-						<th>Id</th>
-						<th>Name</th>
-						<th>Phone</th>
-						<th>Email</th>
-						<th style="padding-left: 40px;">Event</th>
-					</tr>
-				</thead>
-				<tbody id="user-item">
-				</tbody>
-			</table>
-		</div>
-	</div>
-</div>`;
+function logoutUser() {
+    firebase.auth().signOut().then(function() {
+        console.log("sucess");
+        location.href = "http://127.0.0.1:5501/html/loginUser.html"
+    }).catch(function(error) {
+        console.log("fail");
+    });
 }
+
