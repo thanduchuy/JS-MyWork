@@ -24,14 +24,19 @@ function loginUserFireBase(email,password) {
     firebase.auth().signInWithEmailAndPassword(email, password)
     .then((user) => {
         getDocFromCollection("Profile",user.user.uid).then(info=>{
-            if (info.active == false || info.role != "User") {
-                logoutUser()
-                resetForm()
-                document.getElementById("error").innerHTML = "Tài khoản không phù hợp hoặc chưa kích hoạt"
-                document.getElementById("error").style.display = 'block';
+            if (info.role == "Admin") {
+                 document.location.href = "http://127.0.0.1:5501/admin_template/index.html"   
             } else {
-                document.location.href = "http://127.0.0.1:5503/html/home.html"   
+                if (info.active == false || info.role != "User") {
+                    logoutUser()
+                    resetForm()
+                    document.getElementById("error").innerHTML = "Tài khoản không phù hợp hoặc chưa kích hoạt"
+                    document.getElementById("error").style.display = 'block';
+                } else {
+                        // document.location.href = "http://127.0.0.1:5503/html/home.html"   
+                } 
             }
+
         })
     })
     .catch((error) => {
