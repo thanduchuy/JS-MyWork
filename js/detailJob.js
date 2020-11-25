@@ -2,8 +2,30 @@
 let listCV = []
 let cvChoose = 0
 let userTemp = {};
-let nameUser = ""
+let nameUser = "";
+let job = {};
+let jobProflie = {};
 function loadData() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const myParam = urlParams.get('id');
+    getJobFromCollection("Jobs",myParam).then((data)=>{
+        job = data;
+        document.getElementById("nameJob").innerHTML = data.nameJob
+        document.getElementById("nameCompany").innerHTML = data.nameCompany
+        document.getElementById("salary").innerHTML = data.salary
+        document.getElementById("datePost").innerHTML = data.datePost
+        document.getElementById("location").innerHTML = data.location
+        getJobDetailFromCollection("detailjobs",data.id).then(list=>{
+            document.getElementById("gender").innerHTML = list[0].gender
+            document.getElementById("jobReq").innerHTML = list[0].jobReq
+            document.getElementById("description").innerHTML = list[0].jobDesc
+            document.getElementById("ql").innerHTML = list[0].jobQl
+            document.getElementById("yc").innerHTML = list[0].jobYc
+            document.getElementById("hs").innerHTML = list[0].jobHs
+            console.log(list);
+        })
+    })
+
     getAllDocFromCollection("Jobs").then(list=>{
         showJobViewMuch(list)
     })
@@ -57,6 +79,53 @@ function cvUser(id) {
             resove(listCV);
         });
     })
+}
+function getJobDetailFromCollection(nameCollection,id) {
+    return new Promise((resolve,reject)=>{
+        db.collection(nameCollection).where("jobId", "==", id).get().then(function(querySnapshot) {
+            let detail = []
+            querySnapshot.forEach(function(doc) {
+                let job = {
+                    id: doc.id,
+                    gender: doc.data().gender,
+                    jobDesc: doc.data().jobDesc,
+                    jobHs: doc.data().jobHs,
+                    jobId: doc.data().jobId,
+                    jobQl: doc.data().jobQl,
+                    jobReq: doc.data().jobReq,
+                    jobYc: doc.data().jobYc
+                }
+                detail.push(job)
+            });
+            resolve(detail);
+        })
+    })
+
+}
+function getJobFromCollection(nameCollection,id) {
+    return new Promise((resolve,reject)=>{
+        var ref = db.collection(nameCollection).doc(id)
+        ref.get().then(function(doc) {
+            if (doc.exists) {
+                let job = {
+                    id: doc.id,
+                    career: doc.data().career,
+                    datePost: doc.data().datePost,
+                    imageCompany: doc.data().imageCompany,
+                    location: doc.data().location,
+                    nameCompany: doc.data().nameCompany,
+                    nameJob: doc.data().nameJob,
+                    salary: doc.data().salary
+                }
+                resolve(job);
+            } else {
+                reject("No such document!");
+            }
+        }).catch(function(error) {
+            reject("Error getting document:");
+        });
+    })
+
 }
 function getDocFromCollection(nameCollection,id) {
     return new Promise((resolve,reject)=>{
