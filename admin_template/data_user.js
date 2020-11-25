@@ -1,6 +1,6 @@
 var db = firebase.firestore();
-getUserLogged().then(uid=>{
-    checkAdmin(uid).then(bool=>{
+getUserLogged().then(uid => {
+    checkAdmin(uid).then(bool => {
         if (!bool) {
             location.href = "http://127.0.0.1:5501/html/loginUser.html"
         }
@@ -8,25 +8,26 @@ getUserLogged().then(uid=>{
 })
 
 function getUserLogged() {
-    return new Promise((resove,reject)=>{
+    return new Promise((resove, reject) => {
         firebase.auth().onAuthStateChanged(function(user) {
             if (user) {
                 resove(user.uid);
             } else {
                 reject("NAN");
             }
-          });
+        });
     })
 }
+
 function checkAdmin(uid) {
-    return new Promise((resove,reject)=>{
+    return new Promise((resove, reject) => {
         var ref = db.collection("Profile").doc(uid)
         ref.get().then(function(doc) {
-        if (doc.exists) {
-            resove(doc.data().role == "Admin")
-        } else {
-            reject(false)
-        }
+            if (doc.exists) {
+                resove(doc.data().role == "Admin")
+            } else {
+                reject(false)
+            }
         }).catch(function(error) {
             console.log("Error getting document:", error);
         });
@@ -35,6 +36,7 @@ function checkAdmin(uid) {
 let intelval
 window.onload = loadData
 let listUserTemp = []
+
 function showData(id) {
     if (intelval) clearInterval(intelval)
     switch (id) {
@@ -68,23 +70,24 @@ function showData(id) {
     }
     const listElement = document.querySelectorAll('a[data-active]')
     listElement.forEach(item => {
-        if (item.attributes['data-active'].nodeValue == id) {
-            item.classList.add('active')
-        } else {
-            item.classList.remove('active')
-        }
-    })
-    // const element = document.querySelector(`a[data-active="${id}"]`).classList.add('active')
+            if (item.attributes['data-active'].nodeValue == id) {
+                item.classList.add('active')
+            } else {
+                item.classList.remove('active')
+            }
+        })
+        // const element = document.querySelector(`a[data-active="${id}"]`).classList.add('active')
 }
 
 function loadData() {
     showData(0)
 }
+
 function getDataUser() {
     return new Promise((resove, reject) => {
         let users = []
-        db.collection("Profile").get().then(function (querySnapshot) {
-            querySnapshot.forEach(function (doc) {
+        db.collection("Profile").get().then(function(querySnapshot) {
+            querySnapshot.forEach(function(doc) {
                 let user = {
                     id: doc.id,
                     name: doc.data().name,
@@ -143,6 +146,7 @@ function reloadDataUser() {
         document.getElementById("user-item").innerHTML = showUser;
     })
 }
+
 function getUserById(id) {
     return new Promise((resovle, reject) => {
         getDataUser().then(listUser => {
@@ -173,24 +177,24 @@ function eventDelete(id) {
                 element = listUserTemp[i]
             }
         }
-         element.active = false
-         console.log(element);
+        element.active = false
+        console.log(element);
         db.collection("Profile").doc(id).set({
-            name: element.name,
-            phone: element.phone,
-            email: element.email,
-            birthday: element.birthday,
-            gender: element.gender,
-            status: element.status,
-            address: element.address,
-            city: element.city,
-            district: element.district,
-            role: element.role,
-            active: element.active
-        }).then(function () {
-            console.log("Update success !");
-        })
-            .catch(function (error) {
+                name: element.name,
+                phone: element.phone,
+                email: element.email,
+                birthday: element.birthday,
+                gender: element.gender,
+                status: element.status,
+                address: element.address,
+                city: element.city,
+                district: element.district,
+                role: element.role,
+                active: element.active
+            }).then(function() {
+                console.log("Update success !");
+            })
+            .catch(function(error) {
                 console.error("Update Fail: ", error);
             });
         alert(" Delete success! ");
@@ -208,22 +212,22 @@ function eventActiveUser(id) {
         }
         element.active = true
         db.collection("Profile").doc(id).set({
-            name: element.name,
-            phone: element.phone,
-            email: element.email,
-            birthday: element.birthday,
-            gender: element.gender,
-            status: element.status,
-            address: element.address,
-            country: element.country,
-            city: element.city,
-            district: element.district,
-            role: element.role,
-            active: element.active
-        }).then(function () {
-            console.log("Update success !");
-        })
-            .catch(function (error) {
+                name: element.name,
+                phone: element.phone,
+                email: element.email,
+                birthday: element.birthday,
+                gender: element.gender,
+                status: element.status,
+                address: element.address,
+                country: element.country,
+                city: element.city,
+                district: element.district,
+                role: element.role,
+                active: element.active
+            }).then(function() {
+                console.log("Update success !");
+            })
+            .catch(function(error) {
                 console.error("Update Fail: ", error);
             });
         alert(" Active User success! ");
@@ -332,6 +336,7 @@ function getUserSearchActive(listUser) {
     });
     return renderUser.join('');
 }
+
 function getUserSearchUnActive(listUser) {
     var renderUser = (listUser || []).map((element, index) => {
         return `<tr>
@@ -391,23 +396,23 @@ function saveUpdate() {
     element.email = email
     element.phone = phone
     db.collection("Profile").doc(id).set({
-        name: element.name,
-        phone: element.phone,
-        email: element.email,
-        birthday: element.birthday,
-        gender: element.gender,
-        status: element.status,
-        address: element.address,
-        country: element.country,
-        city: element.city,
-        district: element.district,
-        role: element.role,
-        active: element.active
-    })
-        .then(function () {
+            name: element.name,
+            phone: element.phone,
+            email: element.email,
+            birthday: element.birthday,
+            gender: element.gender,
+            status: element.status,
+            address: element.address,
+            country: element.country,
+            city: element.city,
+            district: element.district,
+            role: element.role,
+            active: element.active
+        })
+        .then(function() {
             console.log("Update success !");
         })
-        .catch(function (error) {
+        .catch(function(error) {
             console.error("Update Fail: ", error);
         });
 
