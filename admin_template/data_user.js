@@ -1,10 +1,36 @@
 var db = firebase.firestore();
-let userLogin = sessionStorage.getItem("userLogin");
-console.log(userLogin);
-if(userLogin == null || userLogin.role.toLowerCase().includes('User')){
-    function Redirect() {
-        window.location="file:///D:/learning_project/JS-MyWork/html/login.html";
-     }
+getUserLogged().then(uid=>{
+    checkAdmin(uid).then(bool=>{
+        if (!bool) {
+            location.href = "http://127.0.0.1:5501/html/loginUser.html"
+        }
+    })
+})
+
+function getUserLogged() {
+    return new Promise((resove,reject)=>{
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                resove(user.uid);
+            } else {
+                reject("NAN");
+            }
+          });
+    })
+}
+function checkAdmin(uid) {
+    return new Promise((resove,reject)=>{
+        var ref = db.collection("Profile").doc(uid)
+        ref.get().then(function(doc) {
+        if (doc.exists) {
+            resove(doc.data().role == "Admin")
+        } else {
+            reject(false)
+        }
+        }).catch(function(error) {
+            console.log("Error getting document:", error);
+        });
+    })
 }
 let intelval
 window.onload = loadData
@@ -68,7 +94,6 @@ function getDataUser() {
                     gender: doc.data().gender,
                     status: doc.data().status,
                     address: doc.data().address,
-                    country: doc.data().country,
                     city: doc.data().city,
                     district: doc.data().district,
                     role: doc.data().role,
@@ -148,7 +173,8 @@ function eventDelete(id) {
                 element = listUserTemp[i]
             }
         }
-        element.active = false
+         element.active = false
+         console.log(element);
         db.collection("Profile").doc(id).set({
             name: element.name,
             phone: element.phone,
@@ -157,7 +183,6 @@ function eventDelete(id) {
             gender: element.gender,
             status: element.status,
             address: element.address,
-            country: element.country,
             city: element.city,
             district: element.district,
             role: element.role,
