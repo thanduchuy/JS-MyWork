@@ -1,4 +1,37 @@
 var db = firebase.firestore();
+getUserLogged().then(uid=>{
+    checkAdmin(uid).then(bool=>{
+        if (!bool) {
+            location.href = "http://127.0.0.1:5501/html/loginUser.html"
+        }
+    })
+})
+
+function getUserLogged() {
+    return new Promise((resove,reject)=>{
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                resove(user.uid);
+            } else {
+                reject("NAN");
+            }
+          });
+    })
+}
+function checkAdmin(uid) {
+    return new Promise((resove,reject)=>{
+        var ref = db.collection("Profile").doc(uid)
+        ref.get().then(function(doc) {
+        if (doc.exists) {
+            resove(doc.data().role == "Admin")
+        } else {
+            reject(false)
+        }
+        }).catch(function(error) {
+            console.log("Error getting document:", error);
+        });
+    })
+}
 let intelval
 window.onload = loadData
 let listUserTemp = []
@@ -7,6 +40,7 @@ function showData(id) {
     switch (id) {
         case 0:
             var data = showHome()
+            sessionStorage.setItem("categoryId", JSON.stringify(0));
             document.getElementById("row").innerHTML = data;
             break;
         case 1:
@@ -16,18 +50,18 @@ function showData(id) {
             break;
         case 2:
             var data = showUnCenSoredPost()
-            sessionStorage.setItem("categoryId", JSON.stringify(1));
+            sessionStorage.setItem("categoryId", JSON.stringify(2));
             document.getElementById("row").innerHTML = data;
             break;
         case 3:
             var data = showCenSoredUser()
-            sessionStorage.setItem("categoryId", JSON.stringify(2));
+            sessionStorage.setItem("categoryId", JSON.stringify(3));
             listUser(3)
             document.getElementById("row").innerHTML = data;
             break;
         case 4:
             var data = showUnCenSoredUser()
-            sessionStorage.setItem("categoryId", JSON.stringify(2));
+            sessionStorage.setItem("categoryId", JSON.stringify(4));
             listUser(4)
             document.getElementById("row").innerHTML = data;
             break;
@@ -60,7 +94,6 @@ function getDataUser() {
                     gender: doc.data().gender,
                     status: doc.data().status,
                     address: doc.data().address,
-                    country: doc.data().country,
                     city: doc.data().city,
                     district: doc.data().district,
                     role: doc.data().role,
@@ -68,6 +101,7 @@ function getDataUser() {
                 }
                 users.push(user);
             });
+            listUserTemp = users
             resove(users);
         });
     })
@@ -132,19 +166,6 @@ function eventShowDataEdit(id) {
 }
 
 function eventDelete(id) {
-    // listUser = getDataUser()
-    // list = []
-    // if (confirm("Do you want to delete this user? ")) {
-    //     for (var i = 0; i < listUser.length; i++) {
-    //         if (listUser[i].id == id) {
-    //             listUser.splice(i, 1);
-    //             localStorage.setItem("user", JSON.stringify(listUser));
-    //         }
-    //     }
-    //     alert(" Delete success! ");
-    //     reloadDataUser()
-    // }
-    console.log(id);
     if (confirm("Do you want to delete this user? ")) {
         let element = {}
         for (let i = 0; i < listUserTemp.length; i++) {
@@ -152,8 +173,40 @@ function eventDelete(id) {
                 element = listUserTemp[i]
             }
         }
-        console.log(element);
-        element.active = false
+         element.active = false
+         console.log(element);
+        db.collection("Profile").doc(id).set({
+            name: element.name,
+            phone: element.phone,
+            email: element.email,
+            birthday: element.birthday,
+            gender: element.gender,
+            status: element.status,
+            address: element.address,
+            city: element.city,
+            district: element.district,
+            role: element.role,
+            active: element.active
+        }).then(function () {
+            console.log("Update success !");
+        })
+            .catch(function (error) {
+                console.error("Update Fail: ", error);
+            });
+        alert(" Delete success! ");
+        reloadDataUser()
+    }
+}
+
+function eventActiveUser(id) {
+    if (confirm("Do you want to Acitve this user? ")) {
+        let element = {}
+        for (let i = 0; i < listUserTemp.length; i++) {
+            if (listUserTemp[i].id == id) {
+                element = listUserTemp[i]
+            }
+        }
+        element.active = true
         db.collection("Profile").doc(id).set({
             name: element.name,
             phone: element.phone,
@@ -170,25 +223,10 @@ function eventDelete(id) {
         }).then(function () {
             console.log("Update success !");
         })
-        .catch(function (error) {
-            console.error("Update Fail: ", error);
-        });
-        alert(" Delete success! ");
-        reloadDataUser()
-    }
-}
-
-function eventActiveUser(id) {
-    listUser = getDataUser()
-    list = []
-    if (confirm("Do you want to Active this user? ")) {
-        for (var i = 0; i < listUser.length; i++) {
-            if (listUser[i].id == id) {
-                listUser[i].active = true;
-                localStorage.setItem("user", JSON.stringify(listUser));
-            }
-        }
-        alert(" Active success! ");
+            .catch(function (error) {
+                console.error("Update Fail: ", error);
+            });
+        alert(" Active User success! ");
         reloadDataUser()
     }
 }
@@ -271,7 +309,7 @@ function getUserActive(listUser) {
     return renderUser.join('');
 }
 
-function getUserSearch(listUser) {
+function getUserSearchActive(listUser) {
     var renderUser = (listUser || []).map((element, index) => {
         return `<tr>
       <td>${element.name}</td>
@@ -280,13 +318,29 @@ function getUserSearch(listUser) {
       <td>
           <button type="button" class="btn btn-primary" data-toggle="modal"
               data-target="#exampleModal"
-              onclick="eventShowDataEdit(${element.id})">Edit</button>
+              onclick="eventShowDataEdit('${element.id}')">Edit</button>
           <!-- Modal ADD DATA -->
           <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
         </div>
-          <button type="button" class="btn btn-primary" onclick="eventDelete(${element.id})">
+          <button type="button" class="btn btn-primary" onclick="eventDelete('${element.id}')">
               Delete
+          </button>
+      </td>
+  </tr>
+      `;
+    });
+    return renderUser.join('');
+}
+function getUserSearchUnActive(listUser) {
+    var renderUser = (listUser || []).map((element, index) => {
+        return `<tr>
+      <td>${element.name}</td>
+      <td>${element.phone}</td>
+      <td>${element.email}</td>
+      <td>
+          <button type="button" class="btn btn-primary" onclick="eventActiveUser('${element.id}')">
+              Active
           </button>
       </td>
   </tr>
@@ -304,12 +358,11 @@ function getUserUnActive(listUser) {
     }
     var renderUser = (list || []).map((element, index) => {
         return `<tr>
-      <td>${element.id}</td>
       <td>${element.name}</td>
       <td>${element.phone}</td>
       <td>${element.email}</td>
       <td>
-          <button type="button" class="btn btn-primary" onclick="eventActiveUser(${element.id})">
+          <button type="button" class="btn btn-primary" onclick="eventActiveUser('${element.id}')">
               Active
           </button>
       </td>
@@ -365,15 +418,26 @@ function search() {
     var name = form.search.value.toLowerCase();
     console.log(name);
     let categoryId = sessionStorage.getItem("categoryId");
+    console.log(categoryId);
     let list = []
-    if (categoryId == 2) {
-        userData = getDataUser()
-        for (var i = 0; i < userData.length; i++) {
-            if (userData[i].name.toLowerCase().includes(name)) {
-                list.push(userData[i])
+    if (categoryId == 3) {
+        for (var i = 0; i < listUserTemp.length; i++) {
+            if (listUserTemp[i].name.toLowerCase().includes(name) && listUserTemp[i].active == true) {
+                list.push(listUserTemp[i])
             }
         }
-        var showUser = getUserSearch(list);
+        console.log(list);
+        var showUser = getUserSearchActive(list);
+        document.getElementById("user-item").innerHTML = showUser;
+    }
+    if (categoryId == 4) {
+        for (var i = 0; i < listUserTemp.length; i++) {
+            if (listUserTemp[i].name.toLowerCase().includes(name) && listUserTemp[i].active == false) {
+                list.push(listUserTemp[i])
+            }
+        }
+        console.log(list);
+        var showUser = getUserSearchUnActive(list);
         document.getElementById("user-item").innerHTML = showUser;
     }
 }
