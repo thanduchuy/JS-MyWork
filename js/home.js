@@ -85,6 +85,31 @@ function showdata() {
 
 }
 
+function jobSearchByStatus(status) {
+    return new Promise((resove, reject) => {
+        let listJob = []
+        db.collection("Jobs").where("status", "==", status)
+            .get().then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    console.log(doc.id, " => ", doc.data());
+                    let job = {
+                        id: doc.id,
+                        career: doc.data().career,
+                        datePost: doc.data().datePost,
+                        imageCompany: doc.data().imageCompany,
+                        location: doc.data().location,
+                        nameCompany: doc.data().nameCompany,
+                        nameJob: doc.data().nameJob,
+                        salary: doc.data().salary,
+                        status: doc.data().status
+                    }
+                    listJob.push(job);
+                });
+                resove(listJob);
+            });
+    })
+}
+
 function getJob() {
     return new Promise((resove, reject) => {
         let listJob = []
@@ -99,7 +124,8 @@ function getJob() {
                         location: doc.data().location,
                         nameCompany: doc.data().nameCompany,
                         nameJob: doc.data().nameJob,
-                        salary: doc.data().salary
+                        salary: doc.data().salary,
+                        status: doc.data().status
                     }
                     listJob.push(job);
                 });
@@ -108,17 +134,11 @@ function getJob() {
     })
 }
 
-var List = [];
 
-function loadPage() {
-    getJob().then(list => {
-        formatArray(list)
-    })
-}
 
 function formatArray(arr) {
     let inner = "";
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 1; i++) {
         inner += `                      
         <div class="col-md-6 col-lg-6 job-over-item">
         <div class="row job-itemnow">
@@ -168,11 +188,25 @@ function formatArray(arr) {
     }
     document.getElementById("hurryjobs").innerHTML = inner;
 }
+
+function loadPage() {
+
+    jobSearchByStatus("tuyển gấp").then(list => {
+        formatArray(list)
+    })
+    jobSearchByStatus("hấp dẫn").then(list => {
+        formatArray2(list, "hotjobs")
+    })
+    jobSearchByStatus("lương cao").then(list => {
+        formatArray2(list, "salaryjobs")
+    })
+}
+
 loadPage();
 
 function formatArray2(arr, ele) {
     let inner = "";
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 1; i++) {
         inner += `                      
         <div class="col-md-6 col-lg-6 job-over-item" style="height: 80px ;">
                                     <div class="row job-item">
@@ -237,15 +271,15 @@ function searchWork() {
 
 function More1() {
     window.location.href = `
-                http://127.0.0.1:5502/html/result.html?danhmuc=tuyengap`;
+                http://127.0.0.1:5503/html/result.html?status=tuyển gấp`;
 }
 
 function More2() {
     window.location.href = `
-                http://127.0.0.1:5502/html/result.html?danhmuc=hapdan`;
+                http://127.0.0.1:5503/html/result.html?status=hấp dẫn`;
 }
 
 function More3() {
     window.location.href = `
-                http://127.0.0.1:5502/html/result.html?danhmuc=luongcao`;
+                http://127.0.0.1:5503/html/result.html?status=lương cao`;
 }
