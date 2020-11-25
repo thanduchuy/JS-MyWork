@@ -3,6 +3,7 @@ let cv = {};
 let nameCV = "formCV1";
 function getData() {
   let cv = JSON.parse(localStorage.getItem("cv"));
+  console.log(cv);
   return cv;
 }
 function createCV() {
@@ -172,7 +173,7 @@ function setValueExperience(arr) {
           d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"
         />
       </svg>
-      <span>${element.start} - ${element.end}</span>
+      <span>${element.year}</span>
     </div>
     <div class="content">
       ${element.value}
@@ -186,7 +187,7 @@ function setValueExperience2(arr) {
     return ` 
     <li class="d-flex">
       <span id="highlight">Thời gian: </span>
-      <p>${element.start} - ${element.end}</p>
+      <p>${element.year}</p>
     </li>
     <li class="d-flex">
       <span id="highlight">Vị trí: </span>

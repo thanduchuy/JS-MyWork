@@ -2,6 +2,7 @@
 let listCV = []
 let cvChoose = 0
 let userTemp = {};
+let nameUser = ""
 function loadData() {
     getAllDocFromCollection("Jobs").then(list=>{
         showJobViewMuch(list)
@@ -10,6 +11,7 @@ function loadData() {
         getDocFromCollection("Profile",uid).then(data=>{
             info.phone.value = data.phone
             info.email.value = data.email
+            nameUser = data.name
         })
         cvUser(uid).then(data=>{
             listCV = data
@@ -22,6 +24,7 @@ function sendCV() {
     //job application
     let today = new Date();
     db.collection("JobApplication").add({
+        name:nameUser,
         uid: listCV[cvChoose].idUser,
         cv: listCV[cvChoose].cvImage,
         email: info.email.value ,
