@@ -60,31 +60,15 @@
 		<ul class="navbar-nav nav-right">
 			<li class="nav-item avt-wrapper">
 				<div class="avt dropdown">
-					<img src="assets/tuat.jpg" alt="User image" class="dropdown-toggle" data-toggle="user-menu">
+					<img src="assets/tuat.jpg" alt="User image"  class="dropdown-toggle" data-toggle="user-menu">
 					<ul id="user-menu" class="dropdown-menu">
-						<li class="dropdown-menu-item">
-							<a class="dropdown-menu-link">
-								<div>
-									<i class="fas fa-user-tie"></i>
-								</div>
-								<span>Profile</span>
-							</a>
-						</li>
-						<li class="dropdown-menu-item">
-							<a href="#" class="dropdown-menu-link">
-								<div>
-									<i class="fas fa-cog"></i>
-								</div>
-								<span>Settings</span>
-							</a>
-						</li>
 
 						<li class="dropdown-menu-item">
 							<a href="#" class="dropdown-menu-link">
 								<div>
-									<i class="fas fa-sign-out-alt"></i>
+									<i class="fas fa-sign-out-alt" onclick="logoutUser()" ><span>Logout</span></i>
 								</div>
-								<span>Logout</span>
+								
 							</a>
 						</li>
 					</ul>
@@ -107,20 +91,12 @@
 					</span>
 				</a>
 			</li>
-			<li class="sidebar-nav-item" onclick="showData(1)">
-				<a href="#" class="sidebar-nav-link active" data-active="1">
-					<div>
-						<i class="fab fa-accusoft"></i>
-					</div>
-					<span>UNCENSORED POST</span>
-				</a>
-			</li>
 			<li class="sidebar-nav-item" onclick="showData(2)">
 				<a href="#" class="sidebar-nav-link" data-active="2">
 					<div>
 						<i class="fas fa-tasks"></i>
 					</div>
-					<span>CENSORED POST</span>
+					<span>ACTIVE POST</span>
 				</a>
 			</li>
 			<li class="sidebar-nav-item" onclick="showData(3)">
@@ -162,7 +138,7 @@
 	<!-- end sidebar -->
 	<!-- main content -->
 	<div class="wrapper">
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-3 col-m-6 col-sm-6">
 				<div class="counter bg-primary">
 					<p>
@@ -181,7 +157,7 @@
 					<p>UNCENSORED POST</p>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
 		<div class="row" id="row">
 
