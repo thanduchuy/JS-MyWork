@@ -9,10 +9,9 @@ var placeholderText = [
     "Địa điểm làm việc...",
     "Mức lương mong muốn..."
 ];
-$('#search').placeholderTypewriter({
-    text: placeholderText,
-});
-
+// $('#search').placeholderTypewriter({
+//     text: placeholderText,
+// });
 function onLogOut() {
     firebase.auth().signOut().then(function() {
         location.reload();
@@ -20,6 +19,7 @@ function onLogOut() {
         console.log("fail");
     });
 }
+
 function getUserLogged() {
     firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
@@ -34,6 +34,7 @@ function getUserLogged() {
         }
     });
 }
+
 function addSelectJobs() {
     let jobs = [
         "Y tế",
@@ -99,12 +100,7 @@ function addSelectLocation() {
 
 
 
-function showdata() {
-    formatArray(listhurryJobs);
-    formatArray2(listhotJobs, "hotjobs");
-    formatArray2(listhurryJobs, "salaryjobs")
 
-}
 
 function jobSearchByStatus(status) {
     return new Promise((resove, reject) => {
