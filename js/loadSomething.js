@@ -67,3 +67,4 @@ function load() {
   </ul>
     `;
 }
+load();
