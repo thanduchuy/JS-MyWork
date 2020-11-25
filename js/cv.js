@@ -1,9 +1,7 @@
 var objectives = [];
-var index = 1;
 let schools = [];
 let cv = {};
 let url = "";
-customListYear(index);
 function addObjectives() {
   let item = `
     <div class="item d-flex justify-content-between" name="objValue" >
@@ -37,27 +35,17 @@ function removeElement(event) {
   let parent = target.parentElement.parentElement;
   parent.remove();
 }
-function customListYear(index) {
-  var start = 2000;
-  var end = new Date().getFullYear();
-  var options = new String();
-  for (var year = start; year <= end; year++) {
-    options += "<option>" + year + "</option>";
-  }
-  document.getElementById(`start${index}`).innerHTML += options;
-  document.getElementById(`end${index}`).innerHTML += options;
-}
 function addExperience() {
-  index++;
   let item = `
   <div class="itemCus2  d-flex justify-content-around align-items-center">
   <div class="time col-4 d-flex">
-   <select id="start${index}"  name="expStart">
-     <option>Thời gian bắt đầu</option>
-   </select>
-   <select id="end${index}"  name="expEnd">
-     <option>Thời gian kết thúc</option>
-   </select>
+  <select id="start" name="expYear">
+  <option value= "">Thời gian đi làm </option>
+  <option value= "dưới 1 năm">dưới 1 năm</option>
+  <option value= "1 năm">1 năm </option>
+  <option value= "2 năm">2 năm</option>
+  <option value= "trên 2 năm">trên 2 năm</option>
+  </select>
   </div>
    <input type="text" class="col-4" placeholder="Nơi làm việc"  name="expValue">
    <div class="action" class="col-2">
@@ -75,7 +63,6 @@ function addExperience() {
 </div>
     `;
   document.getElementById("expBody").innerHTML += item;
-  customListYear(index);
 }
 function showPreview(event) {
   if (event.target.files.length > 0) {
@@ -95,14 +82,12 @@ function submitCV() {
   let address = formCV.address.value;
   let job = formCV.job.value;
   let objectives = getValueByName("objectives");
-  let expStarts = getValueByName("expStart");
-  let expEnds = getValueByName("expEnd");
+  let expYear = getValueByName("expYear");
   let expValues = getValueByName("expValue");
   let exp = [];
   for (let i = 0; i < expValues.length; i++) {
     exp.push({
-      start: expStarts[i],
-      end: expEnds[i],
+      year: expYear[i],
       value: expValues[i],
     });
   }
@@ -128,7 +113,7 @@ function submitCV() {
     schools: schools,
   };
   saveLocalStorage();
-  window.location.href = "http://127.0.0.1:5502/html/cv/cvCreate.html";
+  window.location.href = "http://127.0.0.1:5503/html/cv/cvCreate.html";
 }
 function saveLocalStorage() {
   localStorage.setItem("cv", JSON.stringify(cv));

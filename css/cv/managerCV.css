@@ -50,9 +50,9 @@
 .mainList {
   background: #fff3d7;
   border: 1px solid #ecd6a1;
-  height: 28em;
   margin: 20px 5px;
   border-radius: 5px;
+  padding: 1em 0;
 }
 .mainList .topList h3 {
   color: #926d14;
@@ -86,7 +86,7 @@
   height: 10em;
   width: 100%;
   position: absolute;
-  top: -2em;
+  top: -3em;
 }
 #removeCV {
   border-radius: 100%;
@@ -94,5 +94,5 @@
   background-color: red;
   color: #fff;
   position: absolute;
-  bottom: -10px;
+  bottom: 10px;
 }
