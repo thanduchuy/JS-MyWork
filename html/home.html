@@ -56,7 +56,7 @@
                                     <span>TẠO TÀI KHOẢN</span>
                                 </li>
                             </a>
-                            <a href="login.html">
+                            <a href="login.html" id="notlogin">
                                 <li class="d-flex flex-column align-items-center justify-content-around">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-lock-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                       <path
@@ -70,7 +70,18 @@
                                     <span>ĐĂNG NHẬP</span>
                                 </li>
                             </a>
-
+                            <li id="logged">
+                                <div class="dropdown">
+                                    <div class="d-flex flex-column align-items-center justify-content-around" id="btnUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img src="/assets/images/user.png" alt="" srcset="">
+                                        <p id="emailUser"></p>
+                                    </div>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                      <a class="dropdown-item" href="./user/UserInfo.html">Quản lý người dùng</a>
+                                      <a class="dropdown-item" onclick="onLogOut()">Đăng xuất</a>
+                                    </div>
+                                  </div> 
+                            </li>
                             <li class="d-flex flex-column align-items-center justify-content-around">
                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-briefcase-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path
