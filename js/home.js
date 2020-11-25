@@ -1,6 +1,6 @@
 addSelectJobs();
 addSelectLocation();
-
+getUserLogged();
 var db = firebase.firestore();
 /* Placeholder Typewriter */
 var placeholderText = [
@@ -13,6 +13,27 @@ $('#search').placeholderTypewriter({
     text: placeholderText,
 });
 
+function onLogOut() {
+    firebase.auth().signOut().then(function() {
+        location.reload();
+    }).catch(function(error) {
+        console.log("fail");
+    });
+}
+function getUserLogged() {
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            console.log(user);
+            document.getElementById("emailUser").innerHTML = user.email
+            document.getElementById("notlogin").style.display = "none"
+            document.getElementById("logged").style.display = "inline"
+        } else {
+            console.log("NAN");
+            document.getElementById("notlogin").style.display = "inline"
+            document.getElementById("logged").style.display = "none"
+        }
+    });
+}
 function addSelectJobs() {
     let jobs = [
         "Y tế",
@@ -85,6 +106,31 @@ function showdata() {
 
 }
 
+function jobSearchByStatus(status) {
+    return new Promise((resove, reject) => {
+        let listJob = []
+        db.collection("Jobs").where("status", "==", status)
+            .get().then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    console.log(doc.id, " => ", doc.data());
+                    let job = {
+                        id: doc.id,
+                        career: doc.data().career,
+                        datePost: doc.data().datePost,
+                        imageCompany: doc.data().imageCompany,
+                        location: doc.data().location,
+                        nameCompany: doc.data().nameCompany,
+                        nameJob: doc.data().nameJob,
+                        salary: doc.data().salary,
+                        status: doc.data().status
+                    }
+                    listJob.push(job);
+                });
+                resove(listJob);
+            });
+    })
+}
+
 function getJob() {
     return new Promise((resove, reject) => {
         let listJob = []
@@ -99,7 +145,8 @@ function getJob() {
                         location: doc.data().location,
                         nameCompany: doc.data().nameCompany,
                         nameJob: doc.data().nameJob,
-                        salary: doc.data().salary
+                        salary: doc.data().salary,
+                        status: doc.data().status
                     }
                     listJob.push(job);
                 });
@@ -108,23 +155,17 @@ function getJob() {
     })
 }
 
-var List = [];
 
-function loadPage() {
-    getJob().then(list => {
-        formatArray(list)
-    })
-}
 
 function formatArray(arr) {
     let inner = "";
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 1; i++) {
         inner += `                      
         <div class="col-md-6 col-lg-6 job-over-item">
         <div class="row job-itemnow">
             <div class="col-md-12 col-lg-12 job_info">
                 <div class="company_logo">
-                    <a href="login.html " class title="" target="_blank">
+                    <a href="detailjob.html?id=${arr[i]["id"]}" class title="" target="_blank">
                         <div class="logo_box">
                             <img class="lazy-load" src="${arr[i]["imageCompany"]}" lazy="error">
                         </div>
@@ -132,7 +173,7 @@ function formatArray(arr) {
                 </div>
                 <div class="company_name">
                     <p class="j_title text_ellipsis">
-                        <a href="detailjob.html?name=${arr[i]["nameJob"]}" id="vieclamtuyengap" class="el-tooltip item" title="">
+                        <a href="detailjob.html?id=${arr[i]["id"]}" id="vieclamtuyengap" class="el-tooltip item" title="">
                             <span>
                                   <strong>${arr[i]["nameJob"]}</strong>
                               </span>
@@ -140,7 +181,7 @@ function formatArray(arr) {
                     </p>
                     <div class="j_company">
                         <div class="name">
-                            <a href="login.html" target="_blank" title="${arr[i]["nameCompany"]}">
+                            <a href="detailjob.html?id=${arr[i]["id"]}" target="_blank" title="${arr[i]["nameCompany"]}">
                                 <span>
                                      ${arr[i]["nameCompany"]}
                                   </span>
@@ -168,11 +209,25 @@ function formatArray(arr) {
     }
     document.getElementById("hurryjobs").innerHTML = inner;
 }
+
+function loadPage() {
+
+    jobSearchByStatus("tuyển gấp").then(list => {
+        formatArray(list)
+    })
+    jobSearchByStatus("hấp dẫn").then(list => {
+        formatArray2(list, "hotjobs")
+    })
+    jobSearchByStatus("lương cao").then(list => {
+        formatArray2(list, "salaryjobs")
+    })
+}
+
 loadPage();
 
 function formatArray2(arr, ele) {
     let inner = "";
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 1; i++) {
         inner += `                      
         <div class="col-md-6 col-lg-6 job-over-item" style="height: 80px ;">
                                     <div class="row job-item">
@@ -187,7 +242,7 @@ function formatArray2(arr, ele) {
                                             <div class="company_namehot">
                                                 <div class="content">
                                                     <p class="j_title text_ellipsis">
-                                                        <a href="detailjob.html?name=${arr[i]["nameJob"]}" class="el-tooltip item" id="vieclamhapdan" title="Chuyên Viên Kinh Doanh BĐS Có Lương Cứng" target="_blank">
+                                                        <a href="detailjob.html?name=${arr[i]["id"]}" class="el-tooltip item" id="vieclamhapdan" title="Chuyên Viên Kinh Doanh BĐS Có Lương Cứng" target="_blank">
                                                             <span>
                                                                         <strong>${arr[i]["nameJob"]}</strong>
                                                                     </span>
@@ -232,20 +287,20 @@ function searchWork() {
     let location = form.locations.value;
 
     window.location.href = `
-                http://127.0.0.1:5502/html/result.html?name=${name}&career=${career}&location=${location}`;
+                http://127.0.0.1:5503/html/result.html?name=${name}&career=${career}&location=${location}`;
 }
 
 function More1() {
     window.location.href = `
-                http://127.0.0.1:5502/html/result.html?danhmuc=tuyengap`;
+                http://127.0.0.1:5503/html/result.html?status=tuyển gấp`;
 }
 
 function More2() {
     window.location.href = `
-                http://127.0.0.1:5502/html/result.html?danhmuc=hapdan`;
+                http://127.0.0.1:5503/html/result.html?status=hấp dẫn`;
 }
 
 function More3() {
     window.location.href = `
-                http://127.0.0.1:5502/html/result.html?danhmuc=luongcao`;
+                http://127.0.0.1:5503/html/result.html?status=lương cao`;
 }
