@@ -9,10 +9,9 @@ var placeholderText = [
     "Địa điểm làm việc...",
     "Mức lương mong muốn..."
 ];
-$('#search').placeholderTypewriter({
-    text: placeholderText,
-});
-
+// $('#search').placeholderTypewriter({
+//     text: placeholderText,
+// });
 function onLogOut() {
     firebase.auth().signOut().then(function() {
         location.reload();

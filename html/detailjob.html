@@ -187,7 +187,7 @@
                             <div class="box multiple">
                                 <div class="col-md-12 col-lg-12">
                                     <h1 class="main-title">
-                                        <span>Cán Bộ Pháp Lý Địa Bàn</span>
+                                        <span id="nameJob">Cán Bộ Pháp Lý Địa Bàn</span>
                                     </h1>
                                     <a href="https://mywork.com.vn/tuyen-dung/nha-tuyen-dung/561969/cong-ty-luat-tnhh-mtv-hpdr.html" title="CÔNG TY LUẬT TNHH MTV HPDR" target="_blank">
                                         <h4 class="desc-for-title mb-20">
@@ -197,7 +197,7 @@
                                                 <path
                                                     d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z" />
                                             </svg>
-                                            <span>CÔNG TY LUẬT TNHH MTV HPDR</span>
+                                            <span id="nameCompany">CÔNG TY LUẬT TNHH MTV HPDR</span>
                                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-patch-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd"
                                                     d="M10.273 2.513l-.921-.944.715-.698.622.637.89-.011a2.89 2.89 0 0 1 2.924 2.924l-.01.89.636.622a2.89 2.89 0 0 1 0 4.134l-.637.622.011.89a2.89 2.89 0 0 1-2.924 2.924l-.89-.01-.622.636a2.89 2.89 0 0 1-4.134 0l-.622-.637-.89.011a2.89 2.89 0 0 1-2.924-2.924l.01-.89-.636-.622a2.89 2.89 0 0 1 0-4.134l.637-.622-.011-.89a2.89 2.89 0 0 1 2.924-2.924l.89.01.622-.636a2.89 2.89 0 0 1 4.134 0l-.715.698a1.89 1.89 0 0 0-2.704 0l-.92.944-1.32-.016a1.89 1.89 0 0 0-1.911 1.912l.016 1.318-.944.921a1.89 1.89 0 0 0 0 2.704l.944.92-.016 1.32a1.89 1.89 0 0 0 1.912 1.911l1.318-.016.921.944a1.89 1.89 0 0 0 2.704 0l.92-.944 1.32.016a1.89 1.89 0 0 0 1.911-1.912l-.016-1.318.944-.921a1.89 1.89 0 0 0 0-2.704l-.944-.92.016-1.32a1.89 1.89 0 0 0-1.912-1.911l-1.318.016z" />
@@ -223,7 +223,7 @@
                                                             <span
                                                                 style="font-size: 16px; color: #939393; text-transform: uppercase;">Mức
                                                                 lương</span>
-                                                        <br> 15 triệu - 20 triệu
+                                                        <br> <label id="salary">15 triệu - 20 triệu</label>
                                                         <span>(Có phần trăm hoa hồng)</span>
                                                         </span>
                                                     </div>
@@ -239,7 +239,7 @@
                                                                 style="font-size: 16px; color: #939393; text-transform: uppercase;">Hạn
                                                                 nộp hồ sơ</span>
                                                         <br>
-                                                        <span>04/11/2020</span>
+                                                        <span id="datePost">04/11/2020</span>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -257,7 +257,7 @@
                                                             <span
                                                                 style="font-size:16px; color: #939393; text-transform: uppercase;">Địa
                                                                 điểm tuyển dụng</span>
-                                                        <div class="txt-ellipsis">Đà Nẵng, Hải Dương, Lâm Đồng, Quảng Ngãi, Quảng Ninh</div>
+                                                        <div class="txt-ellipsis" id="location">Đà Nẵng, Hải Dương, Lâm Đồng, Quảng Ngãi, Quảng Ninh</div>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -345,7 +345,7 @@
                                                                 style="font-size: 16px; color: #939393; text-transform: uppercase;">Yêu
                                                                 cầu bằng cấp</span>
                                                         <br>
-                                                        <div class="txt-ellipsis">Trung cấp</div>
+                                                        <div class="txt-ellipsis" id="jobReq">Trung cấp</div>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -377,7 +377,7 @@
                                                                 style="font-size: 16px; color: #939393; text-transform: uppercase;">
                                                                 Yêu cầu giới tính</span>
                                                         <br>
-                                                        <div class="txt-ellipsis">Nam</div>
+                                                        <div class="txt-ellipsis" id="gender">Nam</div>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -452,26 +452,10 @@
                                 </div>
                                 <div class="col-md-9 col-lg-9" style="margin-top: 20px;">
                                     <h3 class="heading-title">Mô tả công việc</h3>
-                                    <div class="mw-box-item">
-                                        - Hỗ trợ Luật sư và Bộ phận nghiệp vụ tố tụng xác minh/ đối chiếu các thông tin của Khách hàng theo vụ việc ủy quyền của Ngân hàng;
-                                        <br> - Xác lập hồ sơ pháp lý khởi kiện đối với các trường hợp Khách hàng được Ngân hàng ủy quyền;
-                                        <br> - Tư vấn, giải thích pháp luật;
-                                        <br> - Chuyển văn bản, công văn khởi kiện đến Khách hàng/ Cơ quan nhà nước có thẩm quyền theo phân công;
-                                        <br> - Thực hiện các thủ tục pháp lý khác liên quan đến việc xác lập hồ sơ pháp lý khởi kiện (nếu có);
-                                        <br> * Nơi làm việc:
-                                        <br> - Lâm Đồng: 02 NV
-                                        <br> - Đắc Lắc: 02 NV
-                                        <br> - Gia Lai: 02 NV
-                                        <br> - Quảng Nam: 02 NV
-                                        <br> - Quảng Ngãi: 02 NV
-                                        <br> - Đà Nẵng: 02 NV
-                                        <br> - Hải Phòng: 02 NV
-                                        <br> - Hải Dương : 02 NV
-                                        <br> - Quảng Ninh : 02 NV
-                                        <br> - Hưng Yên : 02 NV
+                                    <div class="mw-box-item" id="description">
                                     </div>
                                     <h3 class="heading-title">Quyền lợi được hưởng</h3>
-                                    <div class="mw-box-item">
+                                    <div class="mw-box-item" id="ql">
                                         Lương + Phụ cấp: 5.000.000đ – 7.000.000đ;
                                         <br> Thưởng theo kết quả công việc: 6.000.000Đ – 20.000.000Đ ( Căn cứ vào kết quả công việc);
                                         <br> Đào tạo, hướng dẫn nghiệp vụ miễn phí.
@@ -481,14 +465,14 @@
                                         <br> Môi trường làm việc thoải mái, hòa đồng, gắn bó lâu dài và lộ trình thăng tiến rõ ràng;
                                     </div>
                                     <h3 class="heading-title">Yêu cầu công việc</h3>
-                                    <div class="mw-box-item">
+                                    <div class="mw-box-item" id="yc">
                                         Không yêu cầu kinh nghiệm;
                                         <br> Chăm chỉ, chịu khó, trung thực;
                                         <br> Có phương tiện cá nhân đi lại.
                                         <br> Trình độ trung cấp (tất cả các chuyên ngành: Ưu tiên chuyên ngành Luật; An ninh; Pháp lý; …, Công an/ Bộ đội phục viên,…)
                                     </div>
                                     <h3 class="heading-title">Yêu cầu hồ sơ</h3>
-                                    <div class="mw-box-item">
+                                    <div class="mw-box-item" id="hs">
                                         - Đơn xin việc.
                                         <br> - Sơ yếu lý lịch.
                                         <br> - Hộ khẩu, chứng minh nhân dân và giấy khám sức khỏe.
