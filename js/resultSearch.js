@@ -1,6 +1,9 @@
 addSelectJobs();
 addSelectLocation();
 var db = firebase.firestore();
+let listTemp = [];
+
+
 /* Placeholder Typewriter */
 var placeholderText = [
     "Nhập tiêu đề công việc mà bạn muốn...",
@@ -180,16 +183,19 @@ function loadDataFromURL() {
             document.getElementById("countJobs").innerHTML = `Tìm thấy ${temp.length} việc làm đang tuyển dụng`;
         })
         return;
+
     }
 }
 
 function searchBox(e) {
     var name = e.target.value.toLowerCase().trim();
+    console.log(name);
     getJob().then(list => {
-        let temp = list;
+        let temp = list
         temp = temp.filter(element => {
             return element.nameJob.toLowerCase().trim().includes(name);
         })
+        console.log(temp);
         document.getElementById("bodyJobs").innerHTML = formatArray(temp).join("");
         document.getElementById("countJobs").innerHTML = `Tìm thấy ${temp.length} việc làm đang tuyển dụng`;
     })
@@ -217,12 +223,14 @@ function searchCareer() {
     }
     if (location.options[location.selectedIndex].value != "" && career.options[career.selectedIndex].value == "") {
         console.log("location co gia tri")
+
+
+
         jobSearchByLocation(location.options[location.selectedIndex].text).then(list => {
             document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
             document.getElementById("countJobs").innerHTML = `Tìm thấy ${list.length} việc làm đang tuyển dụng`;
         })
         return;
-
     }
     if (location.options[location.selectedIndex].value != "" && career.options[career.selectedIndex].value != "") {
         console.log("location  co gia tri , career co gia tri")
@@ -232,8 +240,10 @@ function searchCareer() {
         })
         return;
     }
-
 }
+
+
+
 
 function searchLocation() {
     var career = document.getElementById("jobs");
@@ -249,6 +259,7 @@ function searchLocation() {
     }
     if (career.options[career.selectedIndex].value == "") {
         console.log("career k gia tri")
+        console.log(listTemp);
         jobSearchByLocation(location.options[location.selectedIndex].text).then(list => {
             document.getElementById("bodyJobs").innerHTML = formatArray(list).join("");
             document.getElementById("countJobs").innerHTML = `Tìm thấy ${list.length} việc làm đang tuyển dụng`;
@@ -390,8 +401,8 @@ function formatArray(arr) {
         <div class="item">
         <div class="row">
             <div class="col-8">
-                <a class="nameJob" href="detailjob.html">${item.nameJob}</a>
-                <p class="nameCompany">${item.nameCompany}</p>
+                <a class="nameJob" href="detailjob.html?id=${item.id}">${item.nameJob}</a>
+                <p class="nameCompany" >${item.nameCompany}</p>
                 <div class="row d-flex justify-content-between">
                     <div class="col-3">
                         <div class="content d-flex align-items-center">
@@ -421,11 +432,13 @@ function formatArray(arr) {
                     </div>
                 </div>
             </div>
-            <div class="col-4 d-flex align-items-center justify-content-center" >
-                <div class="avatar" style="
+            <div    class="col-4 d-flex align-items-center justify-content-center" >
+            
+            <div class="avatar"   style="
                 background-image: url('${item.imageCompany}');
               "></div>
             </div>
+           
         </div>
        </div>
         `;

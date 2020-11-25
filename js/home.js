@@ -124,7 +124,7 @@ function formatArray(arr) {
         <div class="row job-itemnow">
             <div class="col-md-12 col-lg-12 job_info">
                 <div class="company_logo">
-                    <a href="login.html " class title="" target="_blank">
+                    <a href="detailjob.html?id=${arr[i]["id"]}" class title="" target="_blank">
                         <div class="logo_box">
                             <img class="lazy-load" src="${arr[i]["imageCompany"]}" lazy="error">
                         </div>
@@ -132,7 +132,7 @@ function formatArray(arr) {
                 </div>
                 <div class="company_name">
                     <p class="j_title text_ellipsis">
-                        <a href="detailjob.html?name=${arr[i]["nameJob"]}" id="vieclamtuyengap" class="el-tooltip item" title="">
+                        <a href="detailjob.html?id=${arr[i]["id"]}" id="vieclamtuyengap" class="el-tooltip item" title="">
                             <span>
                                   <strong>${arr[i]["nameJob"]}</strong>
                               </span>
@@ -140,7 +140,7 @@ function formatArray(arr) {
                     </p>
                     <div class="j_company">
                         <div class="name">
-                            <a href="login.html" target="_blank" title="${arr[i]["nameCompany"]}">
+                            <a href="detailjob.html?id=${arr[i]["id"]}" target="_blank" title="${arr[i]["nameCompany"]}">
                                 <span>
                                      ${arr[i]["nameCompany"]}
                                   </span>
@@ -187,7 +187,7 @@ function formatArray2(arr, ele) {
                                             <div class="company_namehot">
                                                 <div class="content">
                                                     <p class="j_title text_ellipsis">
-                                                        <a href="detailjob.html?name=${arr[i]["nameJob"]}" class="el-tooltip item" id="vieclamhapdan" title="Chuyên Viên Kinh Doanh BĐS Có Lương Cứng" target="_blank">
+                                                        <a href="detailjob.html?name=${arr[i]["id"]}" class="el-tooltip item" id="vieclamhapdan" title="Chuyên Viên Kinh Doanh BĐS Có Lương Cứng" target="_blank">
                                                             <span>
                                                                         <strong>${arr[i]["nameJob"]}</strong>
                                                                     </span>
@@ -232,7 +232,7 @@ function searchWork() {
     let location = form.locations.value;
 
     window.location.href = `
-                http://127.0.0.1:5502/html/result.html?name=${name}&career=${career}&location=${location}`;
+                http://127.0.0.1:5503/html/result.html?name=${name}&career=${career}&location=${location}`;
 }
 
 function More1() {
