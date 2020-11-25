@@ -1,3 +1,4 @@
+let listTemp = [];
 function getJob() {
   return new Promise((resolve, reject) => {
     let listJob = [];
@@ -25,6 +26,7 @@ function getJob() {
 
 let displayHtml = "";
 const list = getJob().then((list) => {
+  listTemp = list;
   list.map((item, index) => {
     displayHtml += `<div class="col-lg-6 col-xl-4">
         <div class="card card-default p-4">
@@ -32,6 +34,8 @@ const list = getJob().then((list) => {
             href="javascript:0"
             class="media text-secondary"
             onclick="openModal(${index})"
+            data-toggle="modal"
+            data-target="#modal-contact"
           >
             <img
               src=${item.cv}
@@ -64,12 +68,10 @@ const list = getJob().then((list) => {
   document.querySelector("#listUser").innerHTML = displayHtml;
   return list;
 });
-console.log(list);
 const openModal = (index) => {
-  document.querySelector("#modal").value = ``;
-};
-
-<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+  document.querySelector(
+    "#modal-contact"
+  ).innerHTML = `<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
   <div class="modal-content">
     <div class="modal-header justify-content-end border-bottom-0">
       <button
@@ -121,13 +123,17 @@ const openModal = (index) => {
           <div class="profile-content-left px-4">
             <div class="card text-center widget-profile px-0 border-0">
               <div class="card-img mx-auto rounded-circle">
-                <img src="assets/img/user/u6.jpg" alt="user image" />
+                <img src=${listTemp[index].cv} alt="user image" />
               </div>
               <div class="card-body">
-                <h4 class="py-2 text-dark">Albrecht Straub</h4>
-                <p>Albrecht.straub@gmail.com</p>
-                <a class="btn btn-primary btn-pill btn-lg my-4" href="#">
-                  Follow
+                <h4 class="py-2 text-dark">${listTemp[index].name}</h4>
+                <p>${listTemp[index].email}</p>
+                <a class="${
+                  listTemp[index].status
+                    ? "btn btn-primary btn-pill btn-lg my-4"
+                    : "btn btn-danger btn-pill btn-lg my-4"
+                }" onclick="activeUser(${index})">
+                  Active
                 </a>
               </div>
             </div>
@@ -151,11 +157,11 @@ const openModal = (index) => {
           <div class="contact-info px-4">
             <h4 class="text-dark mb-1">Contact Details</h4>
             <p class="text-dark font-weight-medium pt-4 mb-2">Email address</p>
-            <p>Albrecht.straub@gmail.com</p>
+            <p>${listTemp[index].email}</p>
             <p class="text-dark font-weight-medium pt-4 mb-2">Phone Number</p>
-            <p>+99 9539 2641 31</p>
-            <p class="text-dark font-weight-medium pt-4 mb-2">Birthday</p>
-            <p>Nov 15, 1990</p>
+            <p>${listTemp[index].phone}</p>
+            <p class="text-dark font-weight-medium pt-4 mb-2">Date</p>
+            <p>${listTemp[index].date}</p>
             <p class="text-dark font-weight-medium pt-4 mb-2">Event</p>
             <p>Lorem, ipsum dolor</p>
           </div>
@@ -163,4 +169,24 @@ const openModal = (index) => {
       </div>
     </div>
   </div>
-</div>;
+</div>;`;
+};
+function activeUser(i) {
+  console.log(listTemp[i]);
+  db.collection("JobApplication")
+    .doc(listTemp[i].id)
+    .set({
+      name: listTemp[i].name,
+      cv: listTemp[i].cv,
+      email: listTemp[i].email,
+      phone: listTemp[i].phone,
+      position: listTemp[i].position,
+      wage: listTemp[i].wage,
+      date: listTemp[i].date,
+      status: !listTemp[i].status,
+    })
+    .then(function (docRef) {
+      alert(" thành công");
+      location.reload();
+    });
+}
