@@ -16,6 +16,13 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../../css/userInfo.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-storage.js"></script>
+    <script src="/js/FireBase.js"></script>
+    <script src="/js/managerUser.js"></script>
   </head>
 
   <body>
@@ -44,7 +51,7 @@
                 />
               </svg>
             </div>
-            <p>Đức Huy</p>
+            <p id="nameUser"></p>
             <div class="processProfile">
               <div class="des d-flex justify-content-between">
                 <label>Hoàn thiện hồ sơ</label>
@@ -415,7 +422,12 @@
           </div>
           <div class="main">
             <div
-              class="alertPhone d-flex justify-content-between align-items-baseline"
+              class="
+                alertPhone
+                d-flex
+                justify-content-between
+                align-items-baseline
+              "
             >
               <div class="right">
                 <svg
@@ -455,7 +467,12 @@
               </div>
             </div>
             <div
-              class="alertWork d-flex justify-content-between align-items-baseline"
+              class="
+                alertWork
+                d-flex
+                justify-content-between
+                align-items-baseline
+              "
             >
               <div class="right">
                 <svg
