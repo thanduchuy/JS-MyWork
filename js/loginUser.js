@@ -1,18 +1,43 @@
+import LoginUserAction from "./LoginUserAction.js";
+var firebaseConfig = {
+  apiKey: "AIzaSyCoUI46QHrmu50xeBHhznw8UG23Ji6Qpvw",
+  authDomain: "timvieclam-9b36f.firebaseapp.com",
+  databaseURL: "https://timvieclam-9b36f.firebaseio.com",
+  projectId: "timvieclam-9b36f",
+  storageBucket: "timvieclam-9b36f.appspot.com",
+  messagingSenderId: "263868475317",
+  appId: "1:263868475317:web:ac56342d37d1e6f9145bfc",
+  measurementId: "G-E9YCYT1L12",
+};
+firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
+loadPage();
 function loadPage() {
   document.getElementById("error").style.display = "none";
 }
 function loginUser() {
-  let email = form.email.value;
-  let pass = form.pass.value;
-  if (email == "" || pass == "") {
+  let email = document.querySelector("#email").value;
+  let pass = document.querySelector("#pass").value;
+  if (LoginUserAction.checkEmptyField(email, pass)) {
     document.getElementById("error").innerHTML =
       "Không được bỏ trống trường nào";
     document.getElementById("error").style.display = "block";
   } else {
-    loginUserFireBase(email, pass);
+    if (
+      LoginUserAction.validateEmail(email) &&
+      LoginUserAction.validatePassword(pass)
+    ) {
+      loginUserFireBase(email, pass);
+    } else {
+      document.getElementById("error").innerHTML =
+        "Email và Pasword nhập không đúng format";
+      document.getElementById("error").style.display = "block";
+    }
   }
 }
+document.querySelector("#btnSignIn").addEventListener("click", () => {
+  loginUser();
+});
 function resetForm() {
   form.email.value = "";
   form.pass.value = "";
@@ -25,18 +50,17 @@ function loginUserFireBase(email, password) {
     .signInWithEmailAndPassword(email, password)
     .then((user) => {
       getDocFromCollection("Profile", user.user.uid).then((info) => {
-        if (info.role == "Admin") {
-          document.location.href =
-            "http://127.0.0.1:5503/admin_template/index.html";
+        if (LoginUserAction.isAdmin(info)) {
+          document.location.href = LoginUserAction.createHomeURLForRole(info);
         } else {
-          if (info.active == false || info.role != "User") {
+          if (LoginUserAction.isEmployer(info)) {
             logoutUser();
             resetForm();
             document.getElementById("error").innerHTML =
               "Tài khoản không phù hợp hoặc chưa kích hoạt";
             document.getElementById("error").style.display = "block";
           } else {
-            document.location.href = "http://127.0.0.1:5503/html/home.html";
+            document.location.href = LoginUserAction.createHomeURLForRole(info);
           }
         }
       });
