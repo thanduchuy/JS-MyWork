@@ -26,6 +26,35 @@ function createHomeURLForRole(info) {
     : "http://127.0.0.1:5503/html/home.html";
 }
 
+function changeStateUI(enable) {
+  return enable ? "block" : "none";
+}
+
+function checkEmptyProfile(info) {
+  return (
+    info.name != undefined ||
+    info.email != undefined ||
+    info.pass != undefined ||
+    info.role != undefined ||
+    info.active != undefined
+  );
+}
+
+function logErrorLogin(caseError) {
+  switch (caseError) {
+    case 1:
+      return "Không được bỏ trống trường nào";
+    case 2:
+      return "Email và Pasword nhập không đúng format";
+    case 3:
+      return "Tài khoản không phù hợp hoặc chưa kích hoạt";
+    case 4:
+      return "Lấy thông tin tài khoản thất bại";
+    default:
+      return "Email hoặc mật khẩu không đúng";
+  }
+}
+
 const LoginUserAction = {
   checkEmptyField,
   validateEmail,
@@ -33,6 +62,9 @@ const LoginUserAction = {
   createHomeURLForRole,
   isAdmin,
   isEmployer,
+  logErrorLogin,
+  changeStateUI,
+  checkEmptyProfile,
 };
 
 module.exports = LoginUserAction;
