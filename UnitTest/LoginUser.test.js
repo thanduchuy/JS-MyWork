@@ -8,6 +8,14 @@ let userTest = {
   active: false,
 };
 
+let LoginErrosEnum = Object.freeze({
+  empty: 1,
+  format: 2,
+  notRole: 3,
+  infoGetFail: 4,
+  wrong: 5,
+});
+
 it("Case Empty Field Of Form Login", () => {
   expect(LoginUserAction.checkEmptyField("", "")).toBe(true);
 });
@@ -44,4 +52,18 @@ it("Case create url for role", () => {
       active: userTest.active,
     })
   ).toMatch(/home.html/);
+});
+
+it("Check data profile not undefined", () => {
+  expect(LoginUserAction.checkEmptyProfile(userTest)).toBe(true);
+});
+
+it("Check change state ui", () => {
+  expect(LoginUserAction.changeStateUI(true)).toMatch("none");
+});
+
+it("Check log error login", () => {
+  expect(LoginUserAction.logErrorLogin(LoginErrosEnum.empty)).toMatch(
+    "Không được bỏ trống trường nào"
+  );
 });

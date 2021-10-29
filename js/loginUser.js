@@ -11,17 +11,27 @@ var firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
+const LoginErrosEnum = Object.freeze({
+  empty: 1,
+  format: 2,
+  notRole: 3,
+  infoGetFail: 4,
+  wrong: 5,
+});
 loadPage();
 function loadPage() {
-  document.getElementById("error").style.display = "none";
+  document.getElementById("error").style.display =
+    LoginUserAction.changeStateUI(false);
 }
 function loginUser() {
   let email = document.querySelector("#email").value;
   let pass = document.querySelector("#pass").value;
-  if (LoginUserAction.checkEmptyField(email, pass)) {
-    document.getElementById("error").innerHTML =
-      "Không được bỏ trống trường nào";
-    document.getElementById("error").style.display = "block";
+  if (!LoginUserAction.checkEmptyField(email, pass)) {
+    document.getElementById("error").innerHTML = LoginUserAction.logErrorLogin(
+      LoginErrosEnum["empty"]
+    );
+    document.getElementById("error").style.display =
+      LoginUserAction.changeStateUI(true);
   } else {
     if (
       LoginUserAction.validateEmail(email) &&
@@ -30,8 +40,9 @@ function loginUser() {
       loginUserFireBase(email, pass);
     } else {
       document.getElementById("error").innerHTML =
-        "Email và Pasword nhập không đúng format";
-      document.getElementById("error").style.display = "block";
+        LoginUserAction.logErrorLogin(LoginErrosEnum["format"]);
+      document.getElementById("error").style.display =
+        LoginUserAction.changeStateUI(true);
     }
   }
 }
@@ -41,7 +52,8 @@ document.querySelector("#btnSignIn").addEventListener("click", () => {
 function resetForm() {
   form.email.value = "";
   form.pass.value = "";
-  document.getElementById("error").style.display = "none";
+  document.getElementById("error").style.display =
+    LoginUserAction.changeStateUI(false);
 }
 
 function loginUserFireBase(email, password) {
@@ -50,15 +62,21 @@ function loginUserFireBase(email, password) {
     .signInWithEmailAndPassword(email, password)
     .then((user) => {
       getDocFromCollection("Profile", user.user.uid).then((info) => {
-        if (LoginUserAction.isAdmin(info)) {
+        if (LoginUserAction.checkEmptyProfile(info)) {
+          document.getElementById("error").innerHTML =
+            LoginUserAction.logErrorLogin(LoginErrosEnum["infoGetFail"]);
+          document.getElementById("error").style.display =
+            LoginUserAction.changeStateUI(true);
+        } else if (LoginUserAction.isAdmin(info)) {
           document.location.href = LoginUserAction.createHomeURLForRole(info);
         } else {
           if (LoginUserAction.isEmployer(info)) {
             logoutUser();
             resetForm();
             document.getElementById("error").innerHTML =
-              "Tài khoản không phù hợp hoặc chưa kích hoạt";
-            document.getElementById("error").style.display = "block";
+              LoginUserAction.logErrorLogin(LoginErrosEnum["notRole"]);
+            document.getElementById("error").style.display =
+              LoginUserAction.changeStateUI(true);
           } else {
             document.location.href = LoginUserAction.createHomeURLForRole(info);
           }
@@ -68,8 +86,9 @@ function loginUserFireBase(email, password) {
     .catch((error) => {
       resetForm();
       document.getElementById("error").innerHTML =
-        "Email hoặc mật khẩu không đúng";
-      document.getElementById("error").style.display = "block";
+        LoginUserAction.logErrorLogin(LoginErrosEnum["wrong"]);
+      document.getElementById("error").style.display =
+        LoginUserAction.changeStateUI(true);
     });
 }
 function logoutUser() {
