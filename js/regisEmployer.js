@@ -86,7 +86,7 @@ function addProfileUser(id,user) {
         field : user.field
     })
     .then(function() {
-        document.location.href = "http://127.0.0.1:5502/html/home.html";
+        document.location.href = "http://127.0.0.1:5503/html/home.html";
     })
     .catch(function(error) {
         console.error("Error writing document: ", error);

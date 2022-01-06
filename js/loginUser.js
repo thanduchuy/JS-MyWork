@@ -26,7 +26,7 @@ function loadPage() {
 function loginUser() {
   let email = document.querySelector("#email").value;
   let pass = document.querySelector("#pass").value;
-  if (!LoginUserAction.checkEmptyField(email, pass)) {
+  if (LoginUserAction.checkEmptyField(email, pass)) {
     document.getElementById("error").innerHTML = LoginUserAction.logErrorLogin(
       LoginErrosEnum["empty"]
     );
@@ -62,7 +62,7 @@ function loginUserFireBase(email, password) {
     .signInWithEmailAndPassword(email, password)
     .then((user) => {
       getDocFromCollection("Profile", user.user.uid).then((info) => {
-        if (LoginUserAction.checkEmptyProfile(info)) {
+        if (!LoginUserAction.checkEmptyProfile(info)) {
           document.getElementById("error").innerHTML =
             LoginUserAction.logErrorLogin(LoginErrosEnum["infoGetFail"]);
           document.getElementById("error").style.display =
