@@ -67,3 +67,24 @@ it("Check log error login", () => {
     "Không được bỏ trống trường nào"
   );
 });
+
+/*
+  thì sau này khi em tải bất cứ project nào trên mạng mà nó code node module
+  như là : reactjs hay cái project này của ta
+  thì e phải npm i đây là câu lệnh tắt của npm install
+  nó sẽ cài các module ở trong file package.json của ta
+
+  thì khi em cài một cái module mới cho dự án thì em nên sài
+  npm save dev để nó lưu thư viện vô trong pakage json 
+  còn ko thì nó sẽ ko lưu người khác tải về sẽ ko có đc thư viên e đã cài
+  
+  đó thư viên e đã cài sẽ nằm trong devDependencies
+  thì khi em cài th này vô thì lúc em npm test
+  nó sẽ ko hiện như cái lúc truocs nữa mà nó sẽ render cho ta file test_report.html 
+  giờ ta thử xóa cái config xem nó thế nào nè 
+  đó nó hiện về như lúc trước
+  giờ thêm vô lại nhé 
+  đó 
+  lâu em sẽ sài thằng này để tạo nên các danh mục cho sản phẩm
+  như áo dài, áo ấm, áo phao, chân váy,.... 
+*/

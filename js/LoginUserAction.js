@@ -67,4 +67,4 @@ const LoginUserAction = {
   checkEmptyProfile,
 };
 
-module.exports = LoginUserAction;
+export default LoginUserAction
